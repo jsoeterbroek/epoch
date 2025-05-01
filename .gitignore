@@ -1,5 +1,4 @@
 ### AL ###
-#Template for AL projects for Dynamics 365 Business Central
 #launch.json folder
 .vscode/
 #Cache folder
@@ -20,3 +19,6 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+.pio/
+epoch.code-workspace
