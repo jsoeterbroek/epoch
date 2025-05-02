@@ -20,6 +20,10 @@ constexpr double ISLAMIC_EPOCH = 1948439.5;  // July 16, 622 (Julian)
 constexpr double HEBREW_EPOCH = -1373429.0;  // Hebrew calendar epoch: October 7, 3761 BCE (Julian)
 constexpr double PERSIAN_EPOCH = 1948320.5;  // March 19, 622 CE (Julian)
 constexpr double FRENCH_REV_EPOCH = 2375839.5;  // 22 September 1792 (Gregorian)
+constexpr double MAYAN_EPOCH = 584283.5;  // August 11, 3114 BCE (Gregorian)
+constexpr double SAKA_EPOCH = 1749994.5;  // JD of March 22, 78 CE
+
+
 
 // Function declarations
 std::array<int, 3> jd_to_iso_week(double jd);
@@ -31,13 +35,13 @@ bool leap_gregorian(int year);
 bool leap_julian(int year);
 double gregorian_to_jd(int year, int month, int day);
 std::array<int, 3> jd_to_gregorian(double jd);
-std::string format_gregorian_date_simple(double jd);
+std::string format_gregorian_date(double jd);
 
 double julian_to_jd(int year, int month, int day);
 std::array<int, 3> jd_to_julian(double jd);
-std::string format_julian_date_simple(double jd);
+std::string format_julian_date(double jd);
 
-std::string format_islamic_date_simple(double jd);
+std::string format_islamic_date(double jd);
 
 double hebrew_to_jd(int year, int month, int day);
 std::array<int, 3> jd_to_hebrew(double jd);
@@ -46,9 +50,13 @@ int hebrew_year_days(int year);
 int hebrew_year_months(int year);
 double hebrew_delay_1(int year);
 double hebrew_delay_2(int year);
-std::string format_hebrew_date_simple(double jd);
-std::string format_persian_date_simple(double jd);
+std::string format_hebrew_date(double jd);
+std::string format_persian_date(double jd);
 std::string format_french_date(double jd);
+std::string format_mayan_date(double jd);
+std::string format_full_mayan_date(double jd);
+std::string format_saka_date(double jd);
+
 
  
 enum Weekday {

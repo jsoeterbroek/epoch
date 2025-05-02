@@ -174,7 +174,7 @@ std::array<int, 3> jd_to_gregorian(double jd) {
 
     return {year, month, day};
 }
-std::string format_gregorian_date_simple(double jd) {
+std::string format_gregorian_date(double jd) {
     auto date = calendar::jd_to_gregorian(jd);
     return "Gregorian: " + std::to_string(date[2]) + "/" +
            std::to_string(date[1]) + "/" +
@@ -220,7 +220,7 @@ std::array<int, 3> jd_to_julian(double jd) {
     return {year, month, day};
 }
 
-std::string format_julian_date_simple(double jd) {
+std::string format_julian_date(double jd) {
     auto date = calendar::jd_to_julian(jd);
     return "Julian: " + std::to_string(date[2]) + "/" +
            std::to_string(date[1]) + "/" +
@@ -249,7 +249,7 @@ std::array<int, 3> jd_to_islamic(double jd) {
     return {year, month, day};
 }
 
-std::string format_islamic_date_simple(double jd) {
+std::string format_islamic_date(double jd) {
     auto date = calendar::jd_to_islamic(jd);
     return "Islamic: " + std::to_string(date[2]) + "/" +
            std::to_string(date[1]) + "/" +
@@ -344,7 +344,7 @@ int hebrew_month_days(int year, int month) {
     return 30;
 }
 
-std::string format_hebrew_date_simple(double jd) {
+std::string format_hebrew_date(double jd) {
     auto date = calendar::jd_to_hebrew(jd);
     return "Hebrew: " + std::to_string(date[2]) + "/" +
            std::to_string(date[1]) + "/" +
@@ -395,7 +395,7 @@ std::array<int, 3> jd_to_persian(double jd) {
     return {year, month, day};
 }
 
-std::string format_persian_date_simple(double jd) {
+std::string format_persian_date(double jd) {
     auto date = calendar::jd_to_persian(jd);
     return "Persian: " + std::to_string(date[2]) + "/" +
            std::to_string(date[1]) + "/" +
@@ -481,6 +481,212 @@ std::string format_french_date(double jd) {
            std::to_string(day) + " " +
            month_str + ", Year " +
            std::to_string(year);
+}
+
+
+//
+// Mayan
+//
+std::array<int, 5> jd_to_mayan(double jd) {
+    int count = static_cast<int>(jd - MAYAN_EPOCH);
+
+    int baktun = count / 144000;
+    count %= 144000;
+    int katun = count / 7200;
+    count %= 7200;
+    int tun = count / 360;
+    count %= 360;
+    int uinal = count / 20;
+    int kin = count % 20;
+
+    return {baktun, katun, tun, uinal, kin};
+}
+double mayan_to_jd(int baktun, int katun, int tun, int uinal, int kin) {
+    return MAYAN_EPOCH +
+           baktun * 144000 +
+           katun * 7200 +
+           tun * 360 +
+           uinal * 20 +
+           kin;
+}
+
+std::string format_mayan_date(double jd) {
+    auto date = jd_to_mayan(jd);
+    char buffer[40];
+    snprintf(buffer, sizeof(buffer), "Mayan Long Count: %d.%d.%d.%d.%d",
+             date[0], date[1], date[2], date[3], date[4]);
+    return std::string(buffer);
+}
+
+const char* tzolkin_names[20] = {
+    "Imix", "Ik’", "Ak’b’al", "K’an", "Chikchan",
+    "Kimi", "Manik’", "Lamat", "Muluk", "Ok",
+    "Chuwen", "Eb", "B’en", "Ix", "Men",
+    "K’ib’", "Kaban", "Etz’nab’", "Kawak", "Ajaw"
+};
+
+std::pair<int, const char*> jd_to_tzolkin(double jd) {
+    int day_count = static_cast<int>(jd - MAYAN_EPOCH);
+    int number = ((day_count + 4) % 13) + 1;  // Ajaw was day 20, number 8 on epoch
+    const char* name = tzolkin_names[(day_count + 19) % 20];
+    return {number, name};
+}
+
+const char* haab_months[19] = {
+    "Pop", "Wo", "Sip", "Sotz’", "Sek", "Xul",
+    "Yaxk’in", "Mol", "Ch’en", "Yax", "Sak’", "Keh",
+    "Mak", "K’ank’in", "Muwan", "Pax", "K’ayab", "Kumk’u", "Wayeb’"
+};
+
+std::pair<int, const char*> jd_to_haab(double jd) {
+    int day_count = static_cast<int>(jd - MAYAN_EPOCH);
+    int haab_day = (day_count + 348) % 365;  // 8 Kumk’u was day 0
+    int day = haab_day % 20;
+    int month = haab_day / 20;
+    if (month == 18) day = haab_day - 360;  // Wayeb’ has only 5 days
+    return {day, haab_months[month]};
+}
+
+std::string format_full_mayan_date(double jd) {
+    auto lc = jd_to_mayan(jd);
+    auto tz = jd_to_tzolkin(jd);
+    auto haab = jd_to_haab(jd);
+
+    char buffer[100];
+    snprintf(buffer, sizeof(buffer),
+             "Mayan Long Count: %d.%d.%d.%d.%d\nTzolk’in: %d %s\nHaab’: %d %s",
+             lc[0], lc[1], lc[2], lc[3], lc[4],
+             tz.first, tz.second,
+             haab.first, haab.second);
+
+    return std::string(buffer);
+}
+
+//
+// Indian civil - saka
+//
+const char* saka_months[12] = {
+    "Chaitra", "Vaisakha", "Jyeshtha", "Ashadha", "Shravana", "Bhadra",
+    "Ashwin", "Kartika", "Agrahayana", "Pausha", "Magha", "Phalguna"
+};
+
+std::array<int, 3> jd_to_saka(double jd) {
+    auto g = calendar::jd_to_gregorian(jd);
+    int gy = g[0], gm = g[1], gd = g[2];
+
+    int leap = calendar::leap_gregorian(gy) ? 1 : 0;
+    int saka_year = gy - 78;
+    int start_month = 3;
+    int start_day = leap ? 21 : 22;
+
+    int gday_of_year = static_cast<int>(jd - calendar::gregorian_to_jd(gy, 1, 1)) + 1;
+    int saka_new_year = static_cast<int>(calendar::gregorian_to_jd(gy, start_month, start_day) -
+                                         calendar::gregorian_to_jd(gy, 1, 1)) + 1;
+
+    int saka_day_of_year;
+    if (gday_of_year < saka_new_year) {
+        saka_year -= 1;
+        leap = calendar::leap_gregorian(gy - 1) ? 1 : 0;
+        saka_day_of_year = gday_of_year + (365 + leap) - (leap ? 80 : 79);
+    } else {
+        saka_day_of_year = gday_of_year - saka_new_year;
+    }
+
+    int saka_month, saka_day;
+    int month_lengths[12] = {31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 30};
+    month_lengths[0] = leap ? 31 : 30;
+
+    for (saka_month = 0; saka_month < 12; saka_month++) {
+        if (saka_day_of_year < month_lengths[saka_month]) {
+            saka_day = saka_day_of_year + 1;
+            break;
+        }
+        saka_day_of_year -= month_lengths[saka_month];
+    }
+
+    return {saka_year, saka_month + 1, saka_day};
+}
+
+std::string format_saka_date(double jd) {
+    auto saka = jd_to_saka(jd);
+    int year = saka[0], month = saka[1], day = saka[2];
+
+    const char* name = saka_months[month - 1];
+    char buffer[40];
+    snprintf(buffer, sizeof(buffer), "Saka: %d %s, %d", day, name, year);
+    return std::string(buffer);
+}
+
+double saka_to_jd(int year, int month, int day) {
+    int gy = year + 78;
+    bool leap = calendar::leap_gregorian(gy);
+
+    int start_day = leap ? 21 : 22;
+    double jd = calendar::gregorian_to_jd(gy, 3, start_day);  // Chaitra 1
+
+    // Month lengths
+    int month_lengths[12] = {30, 31, 31, 31, 31, 31,
+                             30, 30, 30, 30, 30, 30};
+    month_lengths[0] = leap ? 31 : 30;  // Chaitra
+
+    // Sum days of complete months before this one
+    for (int i = 0; i < month - 1; ++i) {
+        jd += month_lengths[i];
+    }
+
+    // Add day offset
+    jd += day - 1;
+    return jd;
+}
+
+const char* saka_months_hi[12] = {
+    "चैत्र", "वैशाख", "ज्येष्ठ", "आषाढ़", "श्रावण", "भाद्रपद",
+    "आश्विन", "कार्तिक", "अग्रहायण", "पौष", "माघ", "फाल्गुन"
+};
+
+const char* saka_months_sa[12] = {
+    "Chaitra", "Vaishakha", "Jyeshtha", "Ashadha", "Shravana", "Bhadrapada",
+    "Ashvina", "Kartika", "Agrahayana", "Pausha", "Magha", "Phalguna"
+};
+
+const char* weekday_names_hi[7] = {
+    "सोमवार", "मंगलवार", "बुधवार", "गुरुवार", "शुक्रवार", "शनिवार", "रविवार"
+};
+
+
+const char* weekday_names_sa[7] = {
+    "Somavara", "Mangalavara", "Budhavara", "Guruvara",
+    "Shukravara", "Shanivara", "Ravivara"
+};
+
+std::string format_saka_date_local(double jd, bool use_hindi = true) {
+    auto saka = jd_to_saka(jd);
+    int year = saka[0], month = saka[1], day = saka[2];
+    int weekday = calendar::iso_day_of_week(jd);  // ISO: Mon=1, Sun=7
+
+    const char* month_name = use_hindi ? saka_months_hi[month - 1] : saka_months_sa[month - 1];
+    const char* weekday_name = use_hindi ? weekday_names_hi[weekday - 1] : weekday_names_sa[weekday - 1];
+
+    char buffer[80];
+    snprintf(buffer, sizeof(buffer), "साका %d %s, %d (%s)", day, month_name, year, weekday_name);
+    return std::string(buffer);
+}
+
+
+std::string format_all_calendars(double jd) {
+    std::string result;
+
+    result += format_gregorian_date(jd) + "\n";
+    result += format_julian_date(jd) + "\n";
+    result += format_iso_date(jd) + "\n";
+    result += format_islamic_date(jd) + "\n";
+    result += format_hebrew_date(jd) + "\n";
+    result += format_persian_date(jd) + "\n";
+    result += format_french_date(jd) + "\n";
+    result += format_saka_date_local(jd, true) + "\n";
+    result += format_full_mayan_date(jd);
+
+    return result;
 }
 
 } // namespace calendar
