@@ -12,6 +12,8 @@
 #include "secFont.h"
 #include "smallFont.h"
 
+#include "serialTest.h"
+
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
 
@@ -137,6 +139,7 @@ void setup() {
 
 void loop() {
     StickCP2.update();
-    drawMain();
+    serialTest();
+    //drawMain();
     delay(100);
 }

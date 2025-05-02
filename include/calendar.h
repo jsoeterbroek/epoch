@@ -2,6 +2,7 @@
 #define CALENDAR_H
 
 #include <array>
+#include <string>
 #include <astro.h>
 
 namespace calendar {
@@ -21,12 +22,22 @@ constexpr double PERSIAN_EPOCH = 1948320.5;  // March 19, 622 CE (Julian)
 constexpr double FRENCH_REV_EPOCH = 2375839.5;  // 22 September 1792 (Gregorian)
 
 // Function declarations
+std::array<int, 3> jd_to_iso_week(double jd);
+std::array<int, 3> jd_to_iso(double jd);
+std::string format_iso_date(double jd);
+std::string format_iso_week(double jd);
+
 bool leap_gregorian(int year);
 bool leap_julian(int year);
 double gregorian_to_jd(int year, int month, int day);
 std::array<int, 3> jd_to_gregorian(double jd);
+std::string format_gregorian_date_simple(double jd);
+
 double julian_to_jd(int year, int month, int day);
 std::array<int, 3> jd_to_julian(double jd);
+std::string format_julian_date_simple(double jd);
+
+std::string format_islamic_date_simple(double jd);
 
 double hebrew_to_jd(int year, int month, int day);
 std::array<int, 3> jd_to_hebrew(double jd);
@@ -35,6 +46,9 @@ int hebrew_year_days(int year);
 int hebrew_year_months(int year);
 double hebrew_delay_1(int year);
 double hebrew_delay_2(int year);
+std::string format_hebrew_date_simple(double jd);
+std::string format_persian_date_simple(double jd);
+std::string format_french_date(double jd);
 
  
 enum Weekday {
