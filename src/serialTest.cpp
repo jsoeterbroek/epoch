@@ -18,7 +18,7 @@ void serialTest(void) {
     //Serial.println("To do: Solar Hijri calendar	12 Ordibehesht, 1404 SH");
     //Serial.println("To do: Bengali calendar	Boisakh 19, 1432 BS");
     //Serial.println("To do: Ancient Egypt calendar"); planetcalc 8448
-    //Serial.println("To do: Babylonian calendar");
+    //Serial.println("To do: Babylonian calendar");  https://en.wikipedia.org/wiki/Babylonian_calendar
     //Zoroastrian calendar
     //Armenian calendar  https://www.epistemeacademy.org/calendars/yearly_calendar.html?cyear=2020&vADBC=AD&CCode=Armenian&day=1  https://planetcalc.com/8491/
     //Georgian calendar https://en.wikipedia.org/wiki/Georgian_calendar
@@ -30,6 +30,13 @@ void serialTest(void) {
     // Ethiopian https://en.wikipedia.org/wiki/Ethiopian_calendar  https://planetcalc.com/8504/
     // UNIX time
     // since Kali Yuga
+    // old russian
+    // Reddit 8-Day Week Calendar
+    // chine zodiac
+    // old norse https://en.wikipedia.org/wiki/Early_Germanic_calendars
+    // shire calendar
+    // 360-day calendar https://en.wikipedia.org/wiki/360-day_calendar
+    // Darian  https://github.com/ai/darian
 
     Serial.println("-----------------------------------");
     delay(_delay);
@@ -86,6 +93,16 @@ void serialTest(void) {
     //Serial.print(calendar::format_bengali_date(jd).c_str());
     Serial.print("Bengali: TODO");
     Serial.println(" - (Should be: Boisakh 19, 1432 BS)");
+
+    // Star Trek
+    //Serial.print(calendar::format_startrek_date(jd).c_str());
+    //Serial.print("Stardate: TODO");
+    //Serial.println(" - (Should be: -297665.9729198377)");
+
+    // Reddit 
+    //Serial.print(calendar::format_reddit_date(jd).c_str());
+    Serial.print("Reddit: TODO");
+    Serial.println(" - (Should be: 26 april )");
 
 
     Serial.println("Serial test end");
