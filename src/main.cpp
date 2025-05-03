@@ -19,7 +19,6 @@ TFT_eSprite sprite = TFT_eSprite(&tft);
 // WiFi Manager
 WiFiManager wm;
 
-
 struct tm timeinfo;
 
 void setTimezone(String timezone) {
