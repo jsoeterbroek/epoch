@@ -30,6 +30,25 @@ const char* saka_months[12] = {
     "Ashwin", "Kartika", "Agrahayana", "Pausha", "Magha", "Phalguna"
 };
 
+const char* saka_months_sa[12] = {
+    "Chaitra", "Vaishakha", "Jyeshtha", "Ashadha", "Shravana", "Bhadrapada",
+    "Ashvina", "Kartika", "Agrahayana", "Pausha", "Magha", "Phalguna"
+};
+
+const char* saka_months_hi[12] = {
+    "चैत्र", "वैशाख", "ज्येष्ठ", "आषाढ़", "श्रावण", "भाद्रपद",
+    "आश्विन", "कार्तिक", "अग्रहायण", "पौष", "माघ", "फाल्गुन"
+};
+
+const char* weekday_names_sa[7] = {
+    "Somavara", "Mangalavara", "Budhavara", "Guruvara",
+    "Shukravara", "Shanivara", "Ravivara"
+};
+
+const char* weekday_names_hi[7] = {
+    "सोमवार", "मंगलवार", "बुधवार", "गुरुवार", "शुक्रवार", "शनिवार", "रविवार"
+};
+
 std::array<int, 3> jd_to_saka(double jd) {
     auto g = jd_to_gregorian(jd);
     int gy = g[0], gm = g[1], gd = g[2];
@@ -88,26 +107,6 @@ double saka_to_jd(int year, int month, int day) {
     jd += day - 1;
     return jd;
 }
-
-const char* saka_months_hi[12] = {
-    "चैत्र", "वैशाख", "ज्येष्ठ", "आषाढ़", "श्रावण", "भाद्रपद",
-    "आश्विन", "कार्तिक", "अग्रहायण", "पौष", "माघ", "फाल्गुन"
-};
-
-const char* saka_months_sa[12] = {
-    "Chaitra", "Vaishakha", "Jyeshtha", "Ashadha", "Shravana", "Bhadrapada",
-    "Ashvina", "Kartika", "Agrahayana", "Pausha", "Magha", "Phalguna"
-};
-
-const char* weekday_names_hi[7] = {
-    "सोमवार", "मंगलवार", "बुधवार", "गुरुवार", "शुक्रवार", "शनिवार", "रविवार"
-};
-
-
-const char* weekday_names_sa[7] = {
-    "Somavara", "Mangalavara", "Budhavara", "Guruvara",
-    "Shukravara", "Shanivara", "Ravivara"
-};
 
 std::string format_saka_date(double jd) {
     auto saka = jd_to_saka(jd);

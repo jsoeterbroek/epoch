@@ -73,7 +73,6 @@ void configModeCallback(WiFiManager *myWiFiManager) {
 
 }
 
-
 void setup() {
 
     Serial.begin(115200);
