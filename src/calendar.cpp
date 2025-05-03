@@ -121,22 +121,4 @@ std::string format_iso_date(double jd) {
     snprintf(buffer, sizeof(buffer), "ISO: %d-W%02d-%d (%s)", year, week, weekday, name);
     return std::string(buffer);
 }
-
-
-std::string format_all_calendars(double jd) {
-    std::string result;
-
-    result += format_gregorian_date(jd) + "\n";
-    result += format_julian_date(jd) + "\n";
-    result += format_iso_date(jd) + "\n";
-    result += format_islamic_date(jd) + "\n";
-    result += format_hebrew_date(jd) + "\n";
-    result += format_persian_date(jd) + "\n";
-    result += format_french_date(jd) + "\n";
-    result += format_saka_date(jd) + "\n";
-    result += format_mayan_date(jd);
-
-    return result;
-}
-
 } // namespace calendar

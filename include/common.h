@@ -42,12 +42,12 @@ const char* wifi_mngr_password = "password";
 
 //time variables
 String h, m, s;
-int day, month;
+int day, month, year, sol;
 int8_t hour = 0;
 int8_t minute = 0;
 int8_t second = 0;
 
-//battery
+//b,,,,,,
 int vol;
 int volE;
 

@@ -17,9 +17,9 @@
 
 #include "calendar.h"
 #include "cal_gregorian.h"
+#include "astro.h"
 #include <cmath>
 #include <array>
-#include "astro.h"
 #include <string>
 
 //

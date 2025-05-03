@@ -13,25 +13,6 @@ void serialTest(void) {
     double jd = gregorian_to_jd(2025, 5, 2);  // 5th may, 2025
     Serial.println(calendar::format_iso_date(jd).c_str());
 
-    // TODO
-    //Ancient Egypt calendar"); planetcalc 8448
-    //Babylonian calendar");  https://en.wikipedia.org/wiki/Babylonian_calendar
-    //Zoroastrian calendar
-    //Armenian calendar  https://www.epistemeacademy.org/calendars/yearly_calendar.html?cyear=2020&vADBC=AD&CCode=Armenian&day=1  https://planetcalc.com/8491/
-    //Georgian calendar https://en.wikipedia.org/wiki/Georgian_calendar
-    //Mandaean calendar https://en.wikipedia.org/wiki/Mandaean_calendar
-    //chinese zodiac calendar https://en.wikipedia.org/wiki/Chinese_calendar
-    //buddhist https://en.wikipedia.org/wiki/Buddhist_calendar
-    //Mongolian https://en.wikipedia.org/wiki/Mongolian_calendar
-    //Discworld https://en.wikipedia.org/wiki/Discworld_(world)#calendar
-    //Ethiopian https://en.wikipedia.org/wiki/Ethiopian_calendar  https://planetcalc.com/8504/
-    //UNIX time
-    //Kali Yuga
-    //old norse https://en.wikipedia.org/wiki/Early_Germanic_calendars
-    //shire calendar
-    //360-day calendar https://en.wikipedia.org/wiki/360-day_calendar
-    //Darian  https://github.com/ai/darian
-
     Serial.println("-----------------------------------");
     delay(_delay);
 
@@ -49,10 +30,10 @@ void serialTest(void) {
     Serial.println(" - (Should be: al-Jumah, 4 Dhu al-Qi'dah, 1446 AH)");
     Serial.print("format_islamic_date: ");
     Serial.println(format_islamic_date(jd).c_str());
-    Serial.println("format_islamic_date_local use_arabic=false");
+    Serial.println("format_islamic_date_local: ");
     Serial.println(format_islamic_date_local(jd, false).c_str());
-    Serial.println("format_islamic_date_local use_arabic=true");
-    Serial.println(format_islamic_date_local(jd, true).c_str());
+    //Serial.println("format_islamic_date_local use_arabic=true");
+    //Serial.println(format_islamic_date_local(jd, true).c_str());
     delay(_delay);
     Serial.println("-----------------------------------");
 
@@ -82,10 +63,10 @@ void serialTest(void) {
     Serial.println(" - (Should be: 1947 Vaisakha 12)");
     Serial.print("format_saka_date: ");
     Serial.println(format_saka_date(jd).c_str());
-    Serial.print("format_saka_date_local use_hindi=false: ");
+    Serial.print("format_saka_date_local: ");
     Serial.println(format_saka_date_local(jd, false).c_str());
-    Serial.print("format_saka_date_local use_hindi=true: ");
-    Serial.println(format_saka_date_local(jd, true).c_str());
+    //Serial.print("format_saka_date_local use_hindi=true: ");
+    //Serial.println(format_saka_date_local(jd, true).c_str());
     delay(_delay);
     Serial.println("-----------------------------------");
     
@@ -99,11 +80,6 @@ void serialTest(void) {
     //Serial.print(calendar::format_bengali_date(jd).c_str());
     Serial.print("Bengali: TODO");
     Serial.println(" - (Should be: Boisakh 19, 1432 BS)");
-
-    // Reddit 8-Day Week Calendar
-    //Serial.print(calendar::format_reddit_date(jd).c_str());
-    Serial.print("Reddit: TODO");
-    Serial.println(" - (Should be: 26 april )");
 
     Serial.println("Serial test end");
     Serial.println("+++++++++++++++++++++++++++++++++++");
