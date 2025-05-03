@@ -20,11 +20,13 @@ void serialTest(void) {
     Serial.print(format_julian_date(jd).c_str());
     Serial.println(" - (Should be: 19 April 2025)");
     delay(_delay);
+    Serial.println("-----------------------------------");
 
     // Gregorian
     Serial.print(format_gregorian_date(jd).c_str());
     Serial.println(" - (Should be: May 2, 2025)");
     delay(_delay);
+    Serial.println("-----------------------------------");
 
     // Islamic
     Serial.println(" - (Should be: al-Jumah, 4 Dhu al-Qi'dah, 1446 AH)");
@@ -41,30 +43,34 @@ void serialTest(void) {
     Serial.print(format_hebrew_date(jd).c_str());
     Serial.println(" - (Should be: 4 Iyar, AM 5785 ----Omer 19)");
     delay(_delay);
+    Serial.println("-----------------------------------");
 
     // Persian 
     Serial.print(format_persian_date(jd).c_str());
     Serial.println(" - (Should be: Jomeh, 12 Ordibehesht, 1404 SH)");
     delay(_delay);
+    Serial.println("-----------------------------------");
 
     // French Rev
     Serial.println(format_french_date(jd).c_str());
     delay(_delay);
+    Serial.println("-----------------------------------");
 
     // Mayan long
     Serial.println(format_mayan_date(jd).c_str());
     delay(_delay);
+    Serial.println("-----------------------------------");
 
     // Mayan full
     //Serial.println(format_mayan_date_full(jd).c_str());
     //delay(_delay);
 
     // Saka
-    Serial.println(" - (Should be: 1947 Vaisakha 12)");
+    Serial.println(" - (Should be: 12 Vaisakha 1947)");
     Serial.print("format_saka_date: ");
     Serial.println(format_saka_date(jd).c_str());
-    Serial.print("format_saka_date_local: ");
-    Serial.println(format_saka_date_local(jd, false).c_str());
+    //Serial.print("format_saka_date_local: ");
+    //Serial.println(format_saka_date_local(jd, false).c_str());
     //Serial.print("format_saka_date_local use_hindi=true: ");
     //Serial.println(format_saka_date_local(jd, true).c_str());
     delay(_delay);
@@ -75,11 +81,15 @@ void serialTest(void) {
     //Serial.print(calendar::format_coptic_date(jd).c_str());
     Serial.print("Coptic: TODO");
     Serial.println(" - (Should be: Parmouti 24, 1741 AM)");
+    delay(_delay);
+    Serial.println("-----------------------------------");
     
     // Bengali
     //Serial.print(calendar::format_bengali_date(jd).c_str());
     Serial.print("Bengali: TODO");
     Serial.println(" - (Should be: Boisakh 19, 1432 BS)");
+    delay(_delay);
+    Serial.println("-----------------------------------");
 
     Serial.println("Serial test end");
     Serial.println("+++++++++++++++++++++++++++++++++++");
