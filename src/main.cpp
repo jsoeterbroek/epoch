@@ -1,5 +1,5 @@
 #include <common.h>
-
+#include "M5Unified.h"
 #include <astro.h>
 #include <calendar.h>
 #include <WiFiManager.h>
@@ -12,8 +12,8 @@
 
 #include <Arduino.h>
 
-//TFT_eSPI tft = TFT_eSPI();
-//TFT_eSprite sprite = TFT_eSprite(&tft);
+TFT_eSPI tft = TFT_eSPI();
+TFT_eSprite sprite = TFT_eSprite(&tft);
 
 // WiFi Manager
 //WiFiManager wm;
@@ -50,24 +50,24 @@ struct tm timeinfo;
 // }
 
 
-// void drawMain() {
+void drawMain() {
 
-//     sprite.createSprite(MY_WIDTH, MY_HEIGHT);
-//     sprite.fillSprite(BG_COLOR);
+     sprite.createSprite(MY_WIDTH, MY_HEIGHT);
+     sprite.fillSprite(BG_COLOR);
 //     drawTime();
 
-//     sprite.unloadFont();
-//     tft.pushImage(0, 0, MY_WIDTH, MY_HEIGHT, (uint16_t*)sprite.getPointer());
+     sprite.unloadFont();
+     tft.pushImage(0, 0, MY_WIDTH, MY_HEIGHT, (uint16_t*)sprite.getPointer());
 
-// }
+}
 
 void setup() {
 
     Serial.begin(115200);
     Serial.println("foo");
-    // tft.init();
-    // tft.setRotation(0);
-    // tft.fillScreen(BG_COLOR);
+    tft.init();
+    tft.setRotation(0);
+    tft.fillScreen(BG_COLOR);
     // wm.setConfigPortalTimeout(5000);
     // wm.setAPCallback(configModeCallback);
     // bool res;
@@ -89,6 +89,6 @@ void setup() {
 
 void loop() {
     serialTest();
-    //drawMain();
-    //delay(100);
+    drawMain();
+    delay(100);
 }
