@@ -41,6 +41,8 @@ int iso_day_of_week(double jd) {
     return dow == 0 ? 7 : dow;  // Convert Sunday (0) to 7
 }
 
+
+
 double iso_to_jd(int year, int week, int day) {
     double jan4_jd = gregorian_to_jd(year, 1, 4);
     int jan4_dow = calendar::iso_day_of_week(jan4_jd);  // Monday = 1 ... Sunday = 7

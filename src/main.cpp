@@ -25,6 +25,7 @@ String dayStamp;
 String timeStamp;
 
 void getData() {
+
     M5.SHT30.UpdateData();
     temHere = M5.SHT30.GetTemperature();
     humHere = M5.SHT30.GetRelHumidity();
@@ -33,8 +34,6 @@ void getData() {
     canvas.setFreeFont(&Orbitron_Bold_66);
     canvas.drawString(String((int)humHere),180,380);
 }
-
-
 
 void setup() {
 
@@ -62,4 +61,3 @@ void loop() {
 
     serialTest();
 }
-
