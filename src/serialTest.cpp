@@ -1,11 +1,10 @@
 #include <serialTest.h>
-#include <Arduino.h>
 
 int _delay = 2000;
 
 void serialTest(void) {
 
-    Serial.println("+++++++++++++++++++++++++++++++++++");
+    //Serial.println("+++++++++++++++++++++++++++++++++++");
     Serial.println("Serial test start");
     delay(_delay);
     

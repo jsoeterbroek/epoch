@@ -1,4 +1,5 @@
 #include <colors.h>
+#include <Arduino.h>
 
 #define PD_VERSION_MAJOR 1
 #define PD_VERSION_MINOR 3
@@ -15,26 +16,19 @@ static inline int pd_version_patch(void) {
 }
 
 // status flags
-boolean STATUS_WIFI_OK = false;
-boolean STATUS_WIFI_MGR_OK = false;
-boolean STATUS_WIFI_MGR_CONFIG_MODE_OK = false;
-boolean STATUS_TIME_OK = false;
-boolean STATUS_NTP_OK = false;
-boolean STATUS_CONFIG_DATA_OK = false;
-boolean STATUS_BLE_OK = false;
-boolean STATUS_GET_CONFIG_DATA_SPIFF_OK = false;
-boolean STATUS_SET_CONFIG_DATA_SPIFF_OK = false;
-boolean STATUS_GET_CONFIG_DATA_HTTP_OK = false;
+bool STATUS_WIFI_OK = false;
+bool STATUS_WIFI_MGR_OK = false;
+bool STATUS_WIFI_MGR_CONFIG_MODE_OK = false;
+bool STATUS_TIME_OK = false;
+bool STATUS_NTP_OK = false;
 
-boolean GET_CONFIG_DATA_HTTP = false;
-boolean GET_CONFIG_DATA_SPIFF = true;
 
 const char* ntpServer = "europe.pool.ntp.org";
 #define NTP_TIMEZONE  "UTC+1"
 String timezone = "CET-1CEST,M3.5.0,M10.5.0/3";
 
 // WiFi
-const char* wifi_mngr_networkname = "pictostick";
+const char* wifi_mngr_networkname = "m5paper";
 const char* wifi_mngr_password = "password";
 
 #define MY_WIDTH  TFT_HEIGHT

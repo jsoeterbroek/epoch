@@ -2,6 +2,7 @@
 #define SERIALTEST_H
 
 #include "calendar.h"
+#include <Arduino.h>
 
 void serialTest(void);
 
