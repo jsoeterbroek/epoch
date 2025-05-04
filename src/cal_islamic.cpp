@@ -117,6 +117,6 @@ std::string format_islamic_date_local(double jd, bool use_arabic = true) {
     const char* weekday_name = use_arabic ? islamic_weekday_names_ar[weekday - 1] : islamic_weekday_names[weekday - 1];
 
     char buffer[80];
-    snprintf(buffer, sizeof(buffer), "Islamic: %d %s, %d (%s)", day, month_name, year, weekday_name);
+    snprintf(buffer, sizeof(buffer), "Islamic: (%s) %d %s, %d AH", weekday_name, day, month_name, year);
     return std::string(buffer);
 }
