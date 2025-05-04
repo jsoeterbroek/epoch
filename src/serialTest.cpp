@@ -9,7 +9,9 @@ void serialTest(void) {
     delay(_delay);
     
     // jd_to iso
-    double jd = gregorian_to_jd(2025, 5, 2);  // 5th may, 2025
+    double jd = gregorian_to_jd(2025, 5, 2);  // 2th may, 2025 (= 2460797.5)
+    Serial.print("Calculated JD (should be '2460797.5'): ");
+    Serial.println(jd);
     Serial.println(calendar::format_iso_date(jd).c_str());
 
     Serial.println("-----------------------------------");
@@ -28,10 +30,10 @@ void serialTest(void) {
     Serial.println("-----------------------------------");
 
     // Islamic
-    Serial.println(" - (Should be: al-Jumah, 4 Dhu al-Qi'dah, 1446 AH)");
-    Serial.print("format_islamic_date: ");
-    Serial.println(format_islamic_date(jd).c_str());
-    Serial.println("format_islamic_date_local: ");
+    Serial.println(" - (Should be: (al-Jumah) 4 Dhu al-Qi'dah, 1446 AH)");
+    //Serial.print("format_islamic_date: ");
+    ////Serial.println(format_islamic_date(jd).c_str());
+    Serial.print("format_islamic_date_local: ");
     Serial.println(format_islamic_date_local(jd, false).c_str());
     //Serial.println("format_islamic_date_local use_arabic=true");
     //Serial.println(format_islamic_date_local(jd, true).c_str());
@@ -77,16 +79,26 @@ void serialTest(void) {
     
     // Coptic
     //https://planetcalc.com/8500/
-    //Serial.print(calendar::format_coptic_date(jd).c_str());
+    //Serial.print(format_coptic_date(jd).c_str());
     Serial.print("Coptic: TODO");
     Serial.println(" - (Should be: Parmouti 24, 1741 AM)");
     delay(_delay);
     Serial.println("-----------------------------------");
     
     // Bengali
-    //Serial.print(calendar::format_bengali_date(jd).c_str());
+    //Serial.print(format_bengali_date(jd).c_str());
     Serial.print("Bengali: TODO");
     Serial.println(" - (Should be: Boisakh 19, 1432 BS)");
+    delay(_delay);
+    Serial.println("-----------------------------------");
+
+    // Zoroastrian
+    Serial.println(" - (Should be: Ram roj, Adar mah)");
+    Serial.println(format_zoroastrian_date(jd, ZoroastrianCalendarVariant::Shenshai));
+    Serial.println(" - (Should be: Tir roj, Ardibehesht mah)");
+    Serial.println(format_zoroastrian_date(jd, ZoroastrianCalendarVariant::Fasli));
+    Serial.println(" - (Should be: Ram roj, Dae mah)");
+    Serial.println(format_zoroastrian_date(jd, ZoroastrianCalendarVariant::Kadmi));
     delay(_delay);
     Serial.println("-----------------------------------");
 
