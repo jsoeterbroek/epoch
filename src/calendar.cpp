@@ -29,6 +29,21 @@ int jd_to_weekday(double jd) {
     return static_cast<int>(std::fmod(std::floor(jd + 1.5), 7.0));
 }
 
+const char* calendar_name(int index) {
+    static const char* calendar_names[] = {
+        "gregorian",
+        "julian",
+        "hebrew",
+        "islamic",
+        "mayan",
+        "persian",
+        "rev_french",
+        "saka",
+        "zoroastrian"
+    };
+    return calendar_names[index % 9];
+};
+
 const char* day_of_week_name(int weekday) {
     static const char* names[] = {
         "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
@@ -40,8 +55,6 @@ int iso_day_of_week(double jd) {
     int dow = static_cast<int>(std::fmod(std::floor(jd + 1.5), 7.0));
     return dow == 0 ? 7 : dow;  // Convert Sunday (0) to 7
 }
-
-
 
 double iso_to_jd(int year, int week, int day) {
     double jan4_jd = gregorian_to_jd(year, 1, 4);

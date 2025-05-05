@@ -21,10 +21,13 @@
 #include "astro.h"
 #include <string>
 
-
 //
 // Julian
 //
+const char* julian_weekday_names[7] = {
+    WEEKDAY_MONDAY, WEEKDAY_TUESDAY, WEEKDAY_WEDNESDAY, WEEKDAY_THURSDAY, WEEKDAY_FRIDAY, WEEKDAY_SATURDAY, WEEKDAY_SUNDAY
+};
+
 double julian_to_jd(int year, int month, int day) {
     if (year < 1) {
         year++;
@@ -66,4 +69,15 @@ std::string format_julian_date(double jd) {
     return "Julian: " + std::to_string(date[2]) + "/" +
            std::to_string(date[1]) + "/" +
            std::to_string(date[0]);
+}
+
+std::string format_julian_date_weekday(double jd) {
+    auto julian = jd_to_julian(jd);
+    int weekday = calendar::iso_day_of_week(jd);  // ISO: Mon=1, Sun=7
+
+    const char* weekday_name = julian_weekday_names[weekday - 1];
+
+    char buffer[20];
+    snprintf(buffer, sizeof(buffer), "%s", weekday_name);
+    return std::string(buffer);
 }

@@ -4,7 +4,7 @@
 #include <array>
 #include <string>
 #include <astro.h>
-
+#include <calendar.h>
 
 // Constants
 constexpr double GREGORIAN_EPOCH = 1721425.5;
@@ -14,6 +14,7 @@ bool leap_gregorian(int year);
 double gregorian_to_jd(int year, int month, int day);
 std::array<int, 3> jd_to_gregorian(double jd);
 std::string format_gregorian_date(double jd);
+std::string format_gregorian_date_weekday(double jd);
 
 #endif
 

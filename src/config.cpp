@@ -110,7 +110,7 @@ const char *DATE_FORMAT = "%a, %B %e"; // ex: Sat, January 1
 const char *REFRESH_TIME_FORMAT = "%x %H:%M";
 // NTP_SERVER_1 is the primary time server, while NTP_SERVER_2 is a fallback.
 // pool.ntp.org will find the closest available NTP server to you.
-const char *NTP_SERVER_1 = "pool.ntp.org";
+const char *NTP_SERVER_1 = "europe.pool.ntp.org";
 const char *NTP_SERVER_2 = "time.nist.gov";
 // If you encounter the 'Failed To Fetch The Time' error, try increasing
 // NTP_TIMEOUT or select closer/lower latency time servers.

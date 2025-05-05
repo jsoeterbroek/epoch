@@ -16,14 +16,18 @@
     call on the function in which whey are used.  */
 
 #include "cal_gregorian.h"
+#include "astro.h"
 #include <cmath>
 #include <array>
-#include "astro.h"
 #include <string>
 
 //
 // Gregorian
 //
+const char* gregorian_weekday_names[7] = {
+    WEEKDAY_MONDAY, WEEKDAY_TUESDAY, WEEKDAY_WEDNESDAY, WEEKDAY_THURSDAY, WEEKDAY_FRIDAY, WEEKDAY_SATURDAY, WEEKDAY_SUNDAY
+};
+
 bool leap_gregorian(int year) {
     return ((year % 4) == 0) &&
            (!(((year % 100) == 0) && ((year % 400) != 0)));
@@ -73,8 +77,19 @@ std::array<int, 3> jd_to_gregorian(double jd) {
     return {year, month, day};
 }
 std::string format_gregorian_date(double jd) {
-    auto date = jd_to_gregorian(jd);
-    return "Gregorian: " + std::to_string(date[2]) + "/" +
-           std::to_string(date[1]) + "/" +
-           std::to_string(date[0]);
+    auto gregorian = jd_to_gregorian(jd);
+    return "Gregorian: " + std::to_string(gregorian[2]) + "/" +
+           std::to_string(gregorian[1]) + "/" +
+           std::to_string(gregorian[0]);
+}
+
+std::string format_gregorian_date_weekday(double jd) {
+    auto gregorian = jd_to_gregorian(jd);
+    int weekday = calendar::iso_day_of_week(jd);  // ISO: Mon=1, Sun=7
+
+    const char* weekday_name = gregorian_weekday_names[weekday - 1];
+
+    char buffer[20];
+    snprintf(buffer, sizeof(buffer), "%s", weekday_name);
+    return std::string(buffer);
 }

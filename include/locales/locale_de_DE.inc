@@ -455,3 +455,12 @@ const char *TXT_WM_WEBPORTAL_STARTED = "Webportal started at: ";
 const char *TXT_WM_CONNECT_SSID = "Please connect to WiFi SSID: ";
 const char *TXT_WM_WITH_PASSWORD = "with password 'password' to";
 const char *TXT_WM_CONFIG_DEVICE = "configure WiFI for this device.";
+
+// WEEKDAYS
+const char *WEEKDAY_MONDAY = "Montag";
+const char *WEEKDAY_TUESDAY = "Dienstag";
+const char *WEEKDAY_WEDNESDAY = "Mittwoch";
+const char *WEEKDAY_THURSDAY = "Donnerstag";
+const char *WEEKDAY_FRIDAY = "Freitag";
+const char *WEEKDAY_SATURDAY = "Samstag";
+const char *WEEKDAY_SUNDAY = "Sonntag";

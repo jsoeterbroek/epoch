@@ -1,4 +1,5 @@
 #include "PSpref.h"
+#include "config.h"
 
 Preferences psPrefs; // preferences
 
@@ -82,4 +83,18 @@ void decr_pspref_brightness(void) {
     default:
         set_pspref_brightness(61); break;
     }
+}
+
+void set_pspref_calendar(int _pspref_calendar) {
+    psPrefs.end();
+    psPrefs.begin(PSNS, PS_RW_MODE);
+    psPrefs.putInt("ps_c", _pspref_calendar);
+    psPrefs.end();
+    psPrefs.begin(PSNS, PS_RO_MODE);
+}
+
+bool get_pspref_calendar() {
+    bool _rc = false;
+    _rc = psPrefs.getBool("ps_c");
+    return _rc;
 }

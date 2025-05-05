@@ -50,17 +50,44 @@ void drawMain() {
     canvas.createCanvas(960, 540);
     canvas.fillCanvas(0);
     canvas.setFreeFont(&Orbitron_Bold_66);
-    canvas.drawString(String(temHere).substring(0, 4), 100, 140);
-    canvas.setFreeFont(&Orbitron_Bold_66);
-    canvas.drawString(String((int)humHere), 100, 220);
-    canvas.pushCanvas(0, 0, UPDATE_MODE_A2);    
+
+    M5.RTC.getTime(&RTCtime);
+    char timeStrbuff[44];
+    sprintf(timeStrbuff, "%02d:%02d", RTCtime.hour, RTCtime.min);
+    canvas.drawString(timeStrbuff, 100, 20);
+
+    M5.RTC.getDate(&RTCdate);
+    double jd = gregorian_to_jd(RTCdate.day, RTCdate.mon, RTCdate.year);
+
+    int c = get_pspref_calendar();
+    String calendar = calendar::calendar_name(c);
+    Serial.print("DEBUG: draw main screen with calendar: "); // FIXME, remove later
+    Serial.println(calendar); // FIXME, remove later
+
+    String weekday;
+    switch (c) {
+        case 0:
+            weekday = format_julian_date_weekday(jd).c_str();
+            break;
+        case 1:
+            weekday = format_gregorian_date_weekday(jd).c_str();
+            break;
+        default:
+            weekday = "unknown";
+    }
+
+
+    canvas.drawString(weekday, 100, 120);
+
+    canvas.drawString(String(temHere).substring(0, 4), 100, 200);
+    canvas.drawString(String((int)humHere), 100, 290);
+    canvas.pushCanvas(0, 0, UPDATE_MODE_A2);
 }
 
 void configModeCallback(WiFiManager *myWiFiManager) {
 
     Serial.println("******************");
-    Serial.println(TXT_WM_WEBPORTAL_STARTED);
-    Serial.println(WiFi.softAPIP().toString());
+    Serial.println(TXT_WM_WEBPORTAL_STARTED); Serial.println(WiFi.softAPIP().toString());
     Serial.println(TXT_WM_CONNECT_SSID);
     Serial.println(myWiFiManager->getConfigPortalSSID());
     Serial.println(TXT_WM_WITH_PASSWORD);
@@ -76,6 +103,11 @@ void setup() {
     M5.EPD.Clear(true);
     M5.RTC.begin();
     M5.SHT30.Begin();
+
+    // Set Calendar to Preferences
+    // set gregorian as default
+    set_pspref_calendar(0);
+
     canvas.createCanvas(960, 540);
     Serial.begin(115200);
 
@@ -135,9 +167,6 @@ void setup() {
     RTCdate.year = atoi(DATE_YEAR);
     M5.RTC.setDate(&RTCdate);
 
-
-    // Set Calendar to Preferences
-    // set gregorian as default
 
 
 

@@ -22,6 +22,7 @@ bool leap_julian(int year);
 double julian_to_jd(int year, int month, int day);
 std::array<int, 3> jd_to_julian(double jd);
 std::string format_julian_date(double jd);
+std::string format_julian_date_weekday(double jd);
 
 #endif
 

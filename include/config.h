@@ -66,13 +66,10 @@
 //   German (Germany)                de_DE
 //   English (United Kingdom)        en_GB
 //   English (United States)         en_US
-//   Estonian (Estonia)              et_EE
-//   Finnish (Finland)               fi_FI
 //   French (France)                 fr_FR
 //   Italiano (Italia)               it_IT
-//   Dutch (Belgium)                 nl_BE
-//   Portuguese (Brazil)             pt_BR
-#define LOCALE en_US
+//   Dutch (Nederland)               nl_NL
+#define LOCALE nl_NL
 
 // UNITS
 // Define exactly one macro for each measurement type below.

@@ -279,4 +279,12 @@ extern const char *TXT_WM_CONNECT_SSID;
 extern const char *TXT_WM_WITH_PASSWORD;
 extern const char *TXT_WM_CONFIG_DEVICE;
 
+// WEEKDAYS
+extern const char *WEEKDAY_MONDAY;
+extern const char *WEEKDAY_TUESDAY;
+extern const char *WEEKDAY_WEDNESDAY;
+extern const char *WEEKDAY_THURSDAY;
+extern const char *WEEKDAY_FRIDAY;
+extern const char *WEEKDAY_SATURDAY;
+extern const char *WEEKDAY_SUNDAY;
 #endif
