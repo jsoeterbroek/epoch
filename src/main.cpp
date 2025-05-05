@@ -1,6 +1,7 @@
 // https://github.com/VolosR/WeatherM5Paper/blob/main/Weather/Weather.ino
 #include <M5EPD.h>
-#include <common.h>
+#include <config.h>
+#include <_strftime.h>
 #include <astro.h>
 #include <calendar.h>
 #include <WiFi.h>
