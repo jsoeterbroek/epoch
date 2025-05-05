@@ -272,4 +272,11 @@ extern const char *TXT_WL_CONNECT_FAILED;
 extern const char *TXT_WL_CONNECTION_LOST;
 extern const char *TXT_WL_DISCONNECTED;
 
+// WIFI MANAGER
+extern const char *TXT_WM_START;
+extern const char *TXT_WM_WEBPORTAL_STARTED;
+extern const char *TXT_WM_CONNECT_SSID;
+extern const char *TXT_WM_WITH_PASSWORD;
+extern const char *TXT_WM_CONFIG_DEVICE;
+
 #endif

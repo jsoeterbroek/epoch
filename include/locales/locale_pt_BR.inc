@@ -449,3 +449,10 @@ const char *TXT_WL_CONNECTED       = "Conectado";
 const char *TXT_WL_CONNECT_FAILED  = "Falha na Conex\343o";
 const char *TXT_WL_CONNECTION_LOST = "Conex\343o Perdida";
 const char *TXT_WL_DISCONNECTED    = "Desconectado";
+
+// WIFI MANAGER
+const char *TXT_WM_START = "Starting WiFiManager";
+const char *TXT_WM_WEBPORTAL_STARTED = "Webportal started at: ";
+const char *TXT_WM_CONNECT_SSID = "Please connect to WiFi SSID: ";
+const char *TXT_WM_WITH_PASSWORD = "with password 'password' to";
+const char *TXT_WM_CONFIG_DEVICE = "configure WiFI for this device.";

@@ -16,6 +16,7 @@
  */
 
 #include "config.h"
+#include "_locale.h"
 
 #define STR(s) #s
 #define X_LOCALE_INC(code) STR(locales/locale_ ## code.inc)

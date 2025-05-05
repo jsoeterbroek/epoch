@@ -44,9 +44,9 @@
 // const uint8_t BME_ADDRESS = 0x76; // 0x76 if SDO -> GND; 0x77 if SDO -> VCC
 
 // WIFI
-const char *WIFI_SSID     = "ssid";
-const char *WIFI_PASSWORD = "password";
-const unsigned long WIFI_TIMEOUT = 10000; // ms, WiFi connection timeout.
+// const char *WIFI_SSID     = "ssid";
+// const char *WIFI_PASSWORD = "password";
+// const unsigned long WIFI_TIMEOUT = 10000; // ms, WiFi connection timeout.
 
 // HTTP
 // The following errors are likely the result of insuffient http client tcp 
@@ -58,8 +58,8 @@ const unsigned HTTP_CLIENT_TCP_TIMEOUT = 10000; // ms
 
 // OPENWEATHERMAP API
 // OpenWeatherMap API key, https://openweathermap.org/
-const String OWM_APIKEY   = "abcdefghijklmnopqrstuvwxyz012345";
-const String OWM_ENDPOINT = "api.openweathermap.org";
+// const String OWM_APIKEY   = "abcdefghijklmnopqrstuvwxyz012345";
+// const String OWM_ENDPOINT = "api.openweathermap.org";
 // OpenWeatherMap One Call 2.5 API is deprecated for all new free users
 // (accounts created after Summer 2022).
 //
@@ -87,7 +87,8 @@ const String CITY_STRING = "New York";
 // TIME
 // For list of time zones see
 // https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
-const char *TIMEZONE = "EST5EDT,M3.2.0,M11.1.0";
+// const char *TIMEZONE = "EST5EDT,M3.2.0,M11.1.0";
+const char *TIMEZONE = "CET-1CEST,M3.5.0,M10.5.0/3";
 // Time format used when displaying sunrise/set times. (Max 11 characters)
 // For more information about formatting see
 // https://man7.org/linux/man-pages/man3/strftime.3.html
@@ -164,3 +165,6 @@ const uint32_t MIN_BATTERY_VOLTAGE = 3000; // (millivolts)
 // ALERTS
 // BATTERY MONITORING
 
+// WiFi Manager
+const char* wifi_mngr_networkname = "m5paper";
+const char* wifi_mngr_password = "password";

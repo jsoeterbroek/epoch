@@ -415,4 +415,8 @@ extern const uint32_t MIN_BATTERY_VOLTAGE;
   #error Invalid configuration. DEBUG_LEVEL not defined.
 #endif
 
+// WiFi Manager
+extern const char* wifi_mngr_networkname;
+extern const char* wifi_mngr_password;
+
 #endif
