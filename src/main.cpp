@@ -24,25 +24,27 @@ String formattedDate;
 String dayStamp;
 String timeStamp;
 
-void getData() {
+void drawMain() {
 
+    M5.EPD.Clear(true);
     M5.SHT30.UpdateData();
     temHere = M5.SHT30.GetTemperature();
     humHere = M5.SHT30.GetRelHumidity();
     canvas.setFreeFont(&Orbitron_Bold_66);
-    canvas.drawString(String(temHere).substring(0,4),180,260);
+    canvas.drawString(String(temHere).substring(0,4),100,140);
     canvas.setFreeFont(&Orbitron_Bold_66);
-    canvas.drawString(String((int)humHere),180,380);
+    canvas.drawString(String((int)humHere),100,220);
+    canvas.pushCanvas(0,0,UPDATE_MODE_A2  );    
 }
 
 void setup() {
 
     M5.begin();
-    M5.EPD.SetRotation(90);
+    M5.EPD.SetRotation(180);
     M5.EPD.Clear(true);
     M5.RTC.begin();
     M5.SHT30.Begin();
-    canvas.createCanvas(540, 960);
+    canvas.createCanvas(960, 540);
     Serial.begin(115200);
 
     canvas.useFreetypeFont(false);
@@ -53,9 +55,7 @@ void setup() {
 
 void loop() {
     delay(100);
-    getData();
-    canvas.drawString(String(M5.getBatteryVoltage()/1000.00),430,884);
-    canvas.pushCanvas(0,0,UPDATE_MODE_A2  );    
+    drawMain();
     delay(700);
     M5.shutdown(600);
 

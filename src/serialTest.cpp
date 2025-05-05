@@ -93,12 +93,12 @@ void serialTest(void) {
     Serial.println("-----------------------------------");
 
     // Zoroastrian
-    Serial.println(" - (Should be: Ram roj, Adar mah)");
-    Serial.println(format_zoroastrian_date(jd, ZoroastrianCalendarVariant::Shenshai));
-    Serial.println(" - (Should be: Tir roj, Ardibehesht mah)");
+    //Serial.println(" Zoroastrian (Shenshai)");
+    //Serial.println(format_zoroastrian_date(jd, ZoroastrianCalendarVariant::Shenshai));
+    Serial.println(" Zoroastrian (Fasli)");
     Serial.println(format_zoroastrian_date(jd, ZoroastrianCalendarVariant::Fasli));
-    Serial.println(" - (Should be: Ram roj, Dae mah)");
-    Serial.println(format_zoroastrian_date(jd, ZoroastrianCalendarVariant::Kadmi));
+    //Serial.println(" Zoroastrian (Kadmi)");
+    //Serial.println(format_zoroastrian_date(jd, ZoroastrianCalendarVariant::Kadmi));
     delay(_delay);
     Serial.println("-----------------------------------");
 

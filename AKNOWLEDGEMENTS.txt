@@ -1,0 +1,13 @@
+Aknowledgements
+===============
+
+Ideas, (parts of) code taken from:
+----------------------------------
+
+1. JavaScript functions for the Fourmilab Calendar Converter
+   by John Walker  --  September, MIM
+   http://www.fourmilab.ch/documents/calendar/
+
+2. https://github.com/lmarzen/esp32-weather-epd
+
+3. https://github.com/VolosR/WeatherM5Paper
