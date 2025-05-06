@@ -19,4 +19,4 @@ void incr_pspref_brightness();
 void decr_pspref_brightness();
 
 void set_pspref_calendar(int pspref_calendar);
-bool get_pspref_calendar();
+int get_pspref_calendar();

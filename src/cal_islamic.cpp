@@ -27,8 +27,8 @@
 // Islamic
 //
 const char* islamic_months[12] = {
-    "al-Muḥarram", "Ṣafar", "Rabīʿ al-ʾAwwal", "Rabīʿ ath-Thānī", "Jumādā al-ʾŪlā", "Jumādā ath-Thāniyah",
-    "Rajab", "Shaʿbān", "Ramaḍān", "Shawwāl", "Ḏū al-Qaʿdah", "Ḏū al-Ḥijjah"
+    "al-Muḥarram", "Safar", "Rabi al-Awwal", "Rabi ath-Thani", "Jumada al-Ula", "Jumada ath-Thaniyah",
+    "Rajab", "Shaban", "Ramadan", "Shawwal", "Dhu al-Qidah", "Dhu al-Ḥijjah"
 };
 
 const char* islamic_months_ar[12] = {
@@ -37,7 +37,7 @@ const char* islamic_months_ar[12] = {
 };
 
 const char* islamic_weekday_names[7] = {
-    "al-ʾAḥad", "al-Ithnayn", "ath-Thulāthāʾ", "al-ʾArbiʿāʾ", "al-Khamīs", "al-Jumʿah", "as-Sabt"
+    "al-Ahad", "al-Ithnayn", "ath-Thulatha", "al-Arbia", "al-Khamis", "al-Jumah", "as-Sabt"
 };
 
 const char* islamic_weekday_names_ar[7] = {
@@ -100,10 +100,10 @@ std::string format_islamic_date(double jd) {
     auto islamic = jd_to_islamic(jd);
     int year = islamic[0], month = islamic[1], day = islamic[2];
     
-    const char* name = islamic_months[month - 1];
+    const char* month_name = islamic_months[month - 1];
 
     char buffer[40];
-    snprintf(buffer, sizeof(buffer), "Islamic: %d %s, %d AH", day, name, year);
+    snprintf(buffer, sizeof(buffer), "%s %d, %d AH", month_name, day, year);
     return std::string(buffer);
 }
 
@@ -111,12 +111,22 @@ std::string format_islamic_date(double jd) {
 std::string format_islamic_date_local(double jd, bool use_arabic = true) {
     auto islamic = jd_to_islamic(jd);
     int year = islamic[0], month = islamic[1], day = islamic[2];
-    int weekday = islamic_day_of_week(jd);
 
     const char* month_name = use_arabic ? islamic_months_ar[month - 1] : islamic_months[month - 1];
+
+    char buffer[80];
+    snprintf(buffer, sizeof(buffer), "%s %d, %d AH", month_name, day, year);
+    return std::string(buffer);
+}
+
+// TODO: bidi, proper display arabic
+std::string format_islamic_date_weekday(double jd, bool use_arabic = false) {
+    auto islamic = jd_to_islamic(jd);
+    int weekday = islamic_day_of_week(jd);
+
     const char* weekday_name = use_arabic ? islamic_weekday_names_ar[weekday - 1] : islamic_weekday_names[weekday - 1];
 
     char buffer[80];
-    snprintf(buffer, sizeof(buffer), "Islamic: (%s) %d %s, %d AH", weekday_name, day, month_name, year);
+    snprintf(buffer, sizeof(buffer), "%s", weekday_name);
     return std::string(buffer);
 }

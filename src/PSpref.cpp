@@ -93,8 +93,8 @@ void set_pspref_calendar(int _pspref_calendar) {
     psPrefs.begin(PSNS, PS_RO_MODE);
 }
 
-bool get_pspref_calendar() {
-    bool _rc = false;
-    _rc = psPrefs.getBool("ps_c");
+int get_pspref_calendar(void) {
+    int _rc = 0;
+    _rc = psPrefs.getInt("ps_c");
     return _rc;
 }

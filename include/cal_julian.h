@@ -5,7 +5,6 @@
 #include <string>
 #include <astro.h>
 
-
 // Constants
 constexpr double J0000 = 1721424.5;
 
@@ -15,14 +14,14 @@ constexpr double J1900 = 2415020.5;
 constexpr double J1904 = 2416480.5;
 constexpr double JULIAN_EPOCH = 1721423.5;
 
-
-
 // Function declarations
 bool leap_julian(int year);
 double julian_to_jd(int year, int month, int day);
 std::array<int, 3> jd_to_julian(double jd);
 std::string format_julian_date(double jd);
 std::string format_julian_date_weekday(double jd);
+std::string format_julian_date_day(double jd);
+std::string format_julian_date_month(double jd);
+std::string format_julian_date_year(double jd);
 
 #endif
-

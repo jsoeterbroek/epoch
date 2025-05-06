@@ -8,7 +8,7 @@
                 This program is in the public domain.
 */
 
-#include "cal_gregorian.h"
+#include "calendar.h"
 #include "astro.h"
 #include <cmath>
 #include <array>
@@ -19,7 +19,7 @@
 //
 const char* gregorian_weekday_name(int day) {
     static const char* names[] = {
-    WEEKDAY_MONDAY, WEEKDAY_TUESDAY, WEEKDAY_WEDNESDAY, WEEKDAY_THURSDAY, WEEKDAY_FRIDAY, WEEKDAY_SATURDAY, WEEKDAY_SUNDAY
+        WEEKDAY_MONDAY, WEEKDAY_TUESDAY, WEEKDAY_WEDNESDAY, WEEKDAY_THURSDAY, WEEKDAY_FRIDAY, WEEKDAY_SATURDAY, WEEKDAY_SUNDAY
     };
     return names[day % 7 -1];
 };
@@ -113,5 +113,5 @@ std::string format_gregorian_date_month(double jd) {
 
 std::string format_gregorian_date_year(double jd) {
     auto date = jd_to_gregorian(jd);
-    return std::to_string(date[0]) + " ad.";
+    return std::to_string(date[0]) + " AD";
 }

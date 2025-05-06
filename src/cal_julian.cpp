@@ -17,12 +17,28 @@
 //
 // Julian
 //
-const char* julian_weekday_names[7] = {
-    WEEKDAY_MONDAY, WEEKDAY_TUESDAY, WEEKDAY_WEDNESDAY, WEEKDAY_THURSDAY, WEEKDAY_FRIDAY, WEEKDAY_SATURDAY, WEEKDAY_SUNDAY
+const char* julian_weekday_name(int day) {
+    static const char* names[] = {
+        WEEKDAY_MONDAY, WEEKDAY_TUESDAY, WEEKDAY_WEDNESDAY, WEEKDAY_THURSDAY, WEEKDAY_FRIDAY, WEEKDAY_SATURDAY, WEEKDAY_SUNDAY
+    };
+    return names[day % 7 -1];
 };
+
+const char* julian_month_name(int month) {
+    static const char* names[] = {
+        MONTH_JAN, MONTH_FEB, MONTH_MAR, MONTH_APR, MONTH_MAY, MONTH_JUN,
+        MONTH_JUL, MONTH_AUG, MONTH_SEP, MONTH_OCT, MONTH_NOV, MONTH_DEC
+    };
+    if (month < 1 || month > 12) return "Invalid";
+    return names[month - 1];
+}
 
 bool leap_julian(int year) {
     return astro::mod(year, 4) == ((year > 0) ? 0 : 3);
+}
+
+int julian_jd_to_weekday(double jd) {
+    return static_cast<int>(std::fmod(std::floor(jd + 1.5), 7.0));
 }
 
 double julian_to_jd(int year, int month, int day) {
@@ -72,9 +88,28 @@ std::string format_julian_date_weekday(double jd) {
     auto julian = jd_to_julian(jd);
     int weekday = calendar::iso_day_of_week(jd);  // ISO: Mon=1, Sun=7
 
-    const char* weekday_name = julian_weekday_names[weekday - 1];
+    const char* weekday_name = julian_weekday_name(julian_jd_to_weekday(jd));
 
     char buffer[20];
     snprintf(buffer, sizeof(buffer), "%s", weekday_name);
     return std::string(buffer);
+}
+
+std::string format_julian_date_day(double jd) {
+    auto date = jd_to_julian(jd);
+    return std::to_string(date[2]);
+}
+ 
+std::string format_julian_date_month(double jd) {
+    auto date = jd_to_julian(jd);
+    int month = date[1];
+    const char* month_str = julian_month_name(month);
+    char buffer[20];
+    snprintf(buffer, sizeof(buffer), "%s", month_str);
+    return std::string(buffer);
+}
+
+std::string format_julian_date_year(double jd) {
+    auto date = jd_to_julian(jd);
+    return std::to_string(date[0]) + " AD";
 }

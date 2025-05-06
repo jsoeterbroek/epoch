@@ -5,8 +5,8 @@
 #include <string>
 #include "astro.h"
 #include "_locale.h"
-#include "cal_julian.h"
 #include "cal_gregorian.h"
+#include "cal_julian.h"
 #include "cal_rev_french.h"
 #include "cal_islamic.h"
 #include "cal_hebrew.h"
@@ -14,6 +14,8 @@
 #include "cal_mayan.h"
 #include "cal_saka.h"
 #include "cal_zoroastrian.h"
+#include "cal_anglosaxon.h"
+#include "cal_old_high_german.h"
 
 
 namespace calendar {

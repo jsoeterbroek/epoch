@@ -36,27 +36,26 @@ const char* calendar_name(int index) {
         "julian",       //  2
         "hebrew",       //  3
         "islamic",      //  4
-        "egyptian",     //  4
+        "egyptian",     //  5
         "coptic",       //  6
         "mayan",        //  7
         "persian",      //  8
-        "rev_french",   //  9
+        "french_rev",   //  9
         "saka",         // 10
-        "norse",        // 11
-        "anglo-saxon",  // 12
-        "armenian",     // 13
-        "georgian",     // 14
-        "mandaean",     // 15
-        "chinese",      // 16
-        "buddhist",     // 17
-        "mongolian",    // 18
-        "ethiopian",    // 19
-        "norse",        // 20
-        "anglo-saxon",  // 21
-        "zoroastrian",  // 22
-        "darian"        // 23
+        "icelandic",    // 11
+        "anglosaxon",   // 12
+        "oldhighgerman",// 13
+        "armenian",     // 14
+        "georgian",     // 15
+        "mandaean",     // 16
+        "chinese",      // 17
+        "buddhist",     // 18
+        "mongolian",    // 19
+        "ethiopian",    // 20
+        "zoroastrian",  // 21
+        "darian"        // 22
     };
-    return calendar_names[index % 9];
+    return calendar_names[index % 23];
 };
 
 const char* day_of_week_name(int weekday) {
