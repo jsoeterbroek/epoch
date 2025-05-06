@@ -112,9 +112,9 @@ std::string format_saka_date(double jd) {
     auto saka = jd_to_saka(jd);
     int year = saka[0], month = saka[1], day = saka[2];
 
-    const char* name = saka_months[month - 1];
+    const char* month_name = saka_months[month - 1];
     char buffer[40];
-    snprintf(buffer, sizeof(buffer), "Saka: %d %s, %d", day, name, year);
+    snprintf(buffer, sizeof(buffer), "Saka: %d %s, %d", day, month_name, year);
     return std::string(buffer);
 }
 

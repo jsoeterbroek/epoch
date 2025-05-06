@@ -8,13 +8,6 @@
                 This program is in the public domain.
 */
 
-/*  You may notice that a variety of array variables logically local
-    to functions are declared globally here.  In JavaScript, construction
-    of an array variable from source code occurs as the code is
-    interpreted.  Making these variables pseudo-globals permits us
-    to avoid overhead constructing and disposing of them in each
-    call on the function in which whey are used.  */
-
 #include "cal_gregorian.h"
 #include "astro.h"
 #include <cmath>
@@ -24,17 +17,29 @@
 //
 // Gregorian
 //
-const char* gregorian_weekday_names[7] = {
+const char* gregorian_weekday_name(int day) {
+    static const char* names[] = {
     WEEKDAY_MONDAY, WEEKDAY_TUESDAY, WEEKDAY_WEDNESDAY, WEEKDAY_THURSDAY, WEEKDAY_FRIDAY, WEEKDAY_SATURDAY, WEEKDAY_SUNDAY
+    };
+    return names[day % 7 -1];
 };
+
+const char* gregorian_month_name(int month) {
+    static const char* names[] = {
+        MONTH_JAN, MONTH_FEB, MONTH_MAR, MONTH_APR, MONTH_MAY, MONTH_JUN,
+        MONTH_JUL, MONTH_AUG, MONTH_SEP, MONTH_OCT, MONTH_NOV, MONTH_DEC
+    };
+    if (month < 1 || month > 12) return "Invalid";
+    return names[month - 1];
+}
 
 bool leap_gregorian(int year) {
     return ((year % 4) == 0) &&
            (!(((year % 100) == 0) && ((year % 400) != 0)));
 }
 
-bool leap_julian(int year) {
-    return astro::mod(year, 4) == ((year > 0) ? 0 : 3);
+int gregorian_jd_to_weekday(double jd) {
+    return static_cast<int>(std::fmod(std::floor(jd + 1.5), 7.0));
 }
 
 double gregorian_to_jd(int year, int month, int day) {
@@ -67,29 +72,36 @@ std::array<int, 3> jd_to_gregorian(double jd) {
     if (!(cent == 4 || yindex == 4)) {
         year++;
     }
-
     int yearday = static_cast<int>(wjd - gregorian_to_jd(year, 1, 1));
     leapadj = (wjd < gregorian_to_jd(year, 3, 1)) ? 0 :
               (leap_gregorian(year) ? 1 : 2);
     month = static_cast<int>(std::floor((((yearday + leapadj) * 12) + 373) / 367.0));
+    if (month < 1) month = 1;
+    if (month > 12) month = 12;  
     day = static_cast<int>(wjd - gregorian_to_jd(year, month, 1)) + 1;
-
     return {year, month, day};
 }
+
 std::string format_gregorian_date(double jd) {
-    auto gregorian = jd_to_gregorian(jd);
-    return "Gregorian: " + std::to_string(gregorian[2]) + "/" +
-           std::to_string(gregorian[1]) + "/" +
-           std::to_string(gregorian[0]);
+    auto date = jd_to_gregorian(jd);
+    return "Gregorian: " + std::to_string(date[2]) + "/" +
+           std::to_string(date[1]) + "/" +
+           std::to_string(date[0]);
 }
 
 std::string format_gregorian_date_weekday(double jd) {
-    auto gregorian = jd_to_gregorian(jd);
-    int weekday = calendar::iso_day_of_week(jd);  // ISO: Mon=1, Sun=7
-
-    const char* weekday_name = gregorian_weekday_names[weekday - 1];
-
+    auto date = jd_to_gregorian(jd);
+    const char* weekday_name = gregorian_weekday_name(gregorian_jd_to_weekday(jd));
     char buffer[20];
     snprintf(buffer, sizeof(buffer), "%s", weekday_name);
+    return std::string(buffer);
+}
+
+std::string format_gregorian_date_month(double jd) {
+    auto date = jd_to_gregorian(jd);
+    int month = date[1];
+    const char* month_str = gregorian_month_name(month);
+    char buffer[20];
+    snprintf(buffer, sizeof(buffer), "%s", month_str);
     return std::string(buffer);
 }

@@ -464,3 +464,17 @@ const char *WEEKDAY_THURSDAY = "Donnerstag";
 const char *WEEKDAY_FRIDAY = "Freitag";
 const char *WEEKDAY_SATURDAY = "Samstag";
 const char *WEEKDAY_SUNDAY = "Sonntag";
+
+// MONTHS
+const char *MONTH_JAN = "Januar";
+const char *MONTH_FEB = "Februar";
+const char *MONTH_MAR = "Marz";
+const char *MONTH_APR = "April";
+const char *MONTH_MAY = "Mai";
+const char *MONTH_JUN = "June";
+const char *MONTH_JUL = "July";
+const char *MONTH_AUG = "August";
+const char *MONTH_SEP = "September";
+const char *MONTH_OCT = "Oktober";
+const char *MONTH_NOV = "November";
+const char *MONTH_DEC = "Dezember";

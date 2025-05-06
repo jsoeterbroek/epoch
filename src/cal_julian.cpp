@@ -8,13 +8,6 @@
                 This program is in the public domain.
 */
 
-/*  You may notice that a variety of array variables logically local
-    to functions are declared globally here.  In JavaScript, construction
-    of an array variable from source code occurs as the code is
-    interpreted.  Making these variables pseudo-globals permits us
-    to avoid overhead constructing and disposing of them in each
-    call on the function in which whey are used.  */
-
 #include "calendar.h"
 #include <cmath>
 #include <array>
@@ -27,6 +20,10 @@
 const char* julian_weekday_names[7] = {
     WEEKDAY_MONDAY, WEEKDAY_TUESDAY, WEEKDAY_WEDNESDAY, WEEKDAY_THURSDAY, WEEKDAY_FRIDAY, WEEKDAY_SATURDAY, WEEKDAY_SUNDAY
 };
+
+bool leap_julian(int year) {
+    return astro::mod(year, 4) == ((year > 0) ? 0 : 3);
+}
 
 double julian_to_jd(int year, int month, int day) {
     if (year < 1) {

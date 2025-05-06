@@ -287,4 +287,19 @@ extern const char *WEEKDAY_THURSDAY;
 extern const char *WEEKDAY_FRIDAY;
 extern const char *WEEKDAY_SATURDAY;
 extern const char *WEEKDAY_SUNDAY;
+
+// MONTHS
+extern const char *MONTH_JAN;
+extern const char *MONTH_FEB;
+extern const char *MONTH_MAR;
+extern const char *MONTH_APR;
+extern const char *MONTH_MAY;
+extern const char *MONTH_JUN;
+extern const char *MONTH_JUL;
+extern const char *MONTH_AUG;
+extern const char *MONTH_SEP;
+extern const char *MONTH_OCT;
+extern const char *MONTH_NOV;
+extern const char *MONTH_DEC;
+
 #endif

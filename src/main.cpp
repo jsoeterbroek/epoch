@@ -55,32 +55,40 @@ void drawMain() {
     char timeStrbuff[44];
     sprintf(timeStrbuff, "%02d:%02d", RTCtime.hour, RTCtime.min);
     canvas.drawString(timeStrbuff, 100, 20);
-
     M5.RTC.getDate(&RTCdate);
-    double jd = gregorian_to_jd(RTCdate.day, RTCdate.mon, RTCdate.year);
+    char dateStrbuff[44];
+    canvas.setFreeFont(&Orbitron_Medium_25);
+    sprintf(dateStrbuff, "(%02d/%02d/%02d)", RTCdate.day, RTCdate.mon, RTCdate.year);
+    canvas.drawString(dateStrbuff, 300, 58);
+
+    double jd = gregorian_to_jd(RTCdate.year, RTCdate.mon, RTCdate.day);
+    //double jd = gregorian_to_jd(2025, 5, 2);  // friday, 2th may, 2025 (= 2460797.5)
+    //Serial.print("Calculated JD (should be '2460797.5'): ");
+    //Serial.println(jd);
+    //Serial.println(calendar::format_iso_date(jd).c_str());
 
     int c = get_pspref_calendar();
     String calendar = calendar::calendar_name(c);
     Serial.print("DEBUG: draw main screen with calendar: "); // FIXME, remove later
-    Serial.println(calendar); // FIXME, remove later
+    Serial.print(calendar); // FIXME, remove later
 
-    String weekday;
+    String format_weekday;
+    String format_month;
     switch (c) {
         case 0:
-            weekday = format_julian_date_weekday(jd).c_str();
-            break;
-        case 1:
-            weekday = format_gregorian_date_weekday(jd).c_str();
+            format_weekday = format_gregorian_date_weekday(jd).c_str();
+            format_month = format_gregorian_date_month(jd).c_str();
             break;
         default:
-            weekday = "unknown";
+            format_weekday = "unknown";
     }
 
+    canvas.setFreeFont(&Orbitron_Bold_66);
+    canvas.drawString(format_weekday, 100, 140);
+    canvas.drawString(format_month, 100, 240);
 
-    canvas.drawString(weekday, 100, 120);
-
-    canvas.drawString(String(temHere).substring(0, 4), 100, 200);
-    canvas.drawString(String((int)humHere), 100, 290);
+    canvas.drawString(String(temHere).substring(0, 4), 100, 340);
+    canvas.drawString(String((int)humHere), 100, 410);
     canvas.pushCanvas(0, 0, UPDATE_MODE_A2);
 }
 
@@ -105,7 +113,7 @@ void setup() {
     M5.SHT30.Begin();
 
     // Set Calendar to Preferences
-    // set gregorian as default
+    // set gregorian (0) as default
     set_pspref_calendar(0);
 
     canvas.createCanvas(960, 540);
@@ -166,9 +174,6 @@ void setup() {
     RTCdate.mon = atoi(DATE_MONTH);
     RTCdate.year = atoi(DATE_YEAR);
     M5.RTC.setDate(&RTCdate);
-
-
-
 
     canvas.useFreetypeFont(false);
     canvas.setFreeFont(&Orbitron_Medium_25);
