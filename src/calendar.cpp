@@ -53,7 +53,8 @@ const char* calendar_name(int index) {
         "ethiopian",    // 19
         "norse",        // 20
         "anglo-saxon",  // 21
-        "zoroastrian"   // 22
+        "zoroastrian",  // 22
+        "darian"        // 23
     };
     return calendar_names[index % 9];
 };

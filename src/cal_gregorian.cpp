@@ -97,6 +97,11 @@ std::string format_gregorian_date_weekday(double jd) {
     return std::string(buffer);
 }
 
+std::string format_gregorian_date_day(double jd) {
+    auto date = jd_to_gregorian(jd);
+    return std::to_string(date[2]);
+}
+ 
 std::string format_gregorian_date_month(double jd) {
     auto date = jd_to_gregorian(jd);
     int month = date[1];
@@ -104,4 +109,9 @@ std::string format_gregorian_date_month(double jd) {
     char buffer[20];
     snprintf(buffer, sizeof(buffer), "%s", month_str);
     return std::string(buffer);
+}
+
+std::string format_gregorian_date_year(double jd) {
+    auto date = jd_to_gregorian(jd);
+    return std::to_string(date[0]) + " ad.";
 }

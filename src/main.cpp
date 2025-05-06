@@ -35,8 +35,8 @@ M5EPD_Canvas canvas(&M5.EPD);
 char temStr[10];
 char humStr[10];
 
-float temHere;
-float humHere;
+float temp;
+float hum;
 
 rtc_time_t RTCtime;
 rtc_date_t RTCdate;
@@ -45,8 +45,8 @@ void drawMain() {
 
     M5.EPD.Clear(true);
     M5.SHT30.UpdateData();
-    temHere = M5.SHT30.GetTemperature();
-    humHere = M5.SHT30.GetRelHumidity();
+    temp = M5.SHT30.GetTemperature();
+    hum = M5.SHT30.GetRelHumidity();
     canvas.createCanvas(960, 540);
     canvas.fillCanvas(0);
     canvas.setFreeFont(&Orbitron_Bold_66);
@@ -59,7 +59,7 @@ void drawMain() {
     char dateStrbuff[44];
     canvas.setFreeFont(&Orbitron_Medium_25);
     sprintf(dateStrbuff, "(%02d/%02d/%02d)", RTCdate.day, RTCdate.mon, RTCdate.year);
-    canvas.drawString(dateStrbuff, 300, 58);
+    canvas.drawString(dateStrbuff, 360, 58);
 
     double jd = gregorian_to_jd(RTCdate.year, RTCdate.mon, RTCdate.day);
     //double jd = gregorian_to_jd(2025, 5, 2);  // friday, 2th may, 2025 (= 2460797.5)
@@ -73,22 +73,33 @@ void drawMain() {
     Serial.print(calendar); // FIXME, remove later
 
     String format_weekday;
+    String format_day;
     String format_month;
+    String format_year;
+    String format_day_month_year;
     switch (c) {
         case 0:
             format_weekday = format_gregorian_date_weekday(jd).c_str();
+            format_day = format_gregorian_date_day(jd).c_str();
             format_month = format_gregorian_date_month(jd).c_str();
+            format_year = format_gregorian_date_year(jd).c_str();
             break;
         default:
             format_weekday = "unknown";
+            format_day = "unknown";
+            format_month = "unknown";
+            format_year = "unknown";
+            break;
     }
 
+
+    format_day_month_year = format_day + " " + format_month + " " + format_year;
     canvas.setFreeFont(&Orbitron_Bold_66);
     canvas.drawString(format_weekday, 100, 140);
-    canvas.drawString(format_month, 100, 240);
+    canvas.drawString(format_day_month_year, 100, 240);
 
-    canvas.drawString(String(temHere).substring(0, 4), 100, 340);
-    canvas.drawString(String((int)humHere), 100, 410);
+    canvas.drawString(String(temp).substring(0, 4), 100, 340);
+    canvas.drawString(String((int)hum), 100, 410);
     canvas.pushCanvas(0, 0, UPDATE_MODE_A2);
 }
 
