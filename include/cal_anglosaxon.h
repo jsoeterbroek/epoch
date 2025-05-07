@@ -9,8 +9,6 @@
 
 // Function declarations
 std::string format_anglosaxon_date_weekday(double jd);
-std::string format_anglosaxon_date_day(double jd);
-std::string format_anglosaxon_date_month(double jd);
-std::string format_anglosaxon_date_year(double jd);
+std::string format_anglosaxon_date_local(double jd);
 
 #endif

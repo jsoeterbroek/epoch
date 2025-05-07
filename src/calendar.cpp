@@ -31,29 +31,29 @@ int jd_to_weekday(double jd) {
 
 const char* calendar_name(int index) {
     static const char* calendar_names[] = {
-        "gregorian",    //  0
-        "babylonian",   //  1
-        "julian",       //  2
-        "hebrew",       //  3
-        "islamic",      //  4
-        "egyptian",     //  5
-        "coptic",       //  6
-        "mayan",        //  7
-        "persian",      //  8
-        "french_rev",   //  9
-        "saka",         // 10
-        "icelandic",    // 11
-        "anglosaxon",   // 12
-        "oldhighgerman",// 13
-        "armenian",     // 14
-        "georgian",     // 15
-        "mandaean",     // 16
-        "chinese",      // 17
-        "buddhist",     // 18
-        "mongolian",    // 19
-        "ethiopian",    // 20
-        "zoroastrian",  // 21
-        "darian"        // 22
+        "Babylonian",   //  0
+        "Gregorian",    //  1
+        "Julian",       //  2
+        "Hebrew",       //  3
+        "Islamic",      //  4
+        "Old Egyptian", //  5
+        "Coptic",       //  6
+        "Mayan",        //  7
+        "Persian",      //  8
+        "French (rev.)",//  9
+        "Saka",         // 10
+        "Icelandic",    // 11
+        "Anglo-Saxon",  // 12
+        "Old High German",// 13
+        "Armenian",     // 14
+        "Georgian",     // 15
+        "Mandaean",     // 16
+        "Chinese Zodiac",// 17
+        "Buddhist",     // 18
+        "Mongolian",    // 19
+        "Ethiopian",    // 20
+        "Zoroastrian",  // 21
+        "Mars (darian)" // 22
     };
     return calendar_names[index % 23];
 };

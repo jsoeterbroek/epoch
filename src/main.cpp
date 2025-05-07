@@ -37,12 +37,26 @@
 
 M5EPD_Canvas canvas(&M5.EPD);
 
+// touch
+uint16_t rotation = 180;
+int point[2][2];
+
+// Time intervals for buttons, screens
+//
+// set INTERVAL to 0 if you want it to fire 
+// immediately the first time
+#define INTERVAL_BTN 100 // 1/10 of a second
+uint32_t _timeoutBTN = millis(); 
+#define INTERVAL_MS 30000 // seconds
+uint32_t _timeoutMS = millis(); 
+
+
 char temStr[10];
 char humStr[10];
-
 float temp;
 float hum;
 
+// time
 rtc_time_t RTCtime;
 rtc_date_t RTCdate;
 
@@ -64,7 +78,6 @@ void drawMain() {
     char dateStrbuff[44];
     canvas.setFreeFont(&Orbitron_Medium_25);
     sprintf(dateStrbuff, "(%02d/%02d/%02d)", RTCdate.day, RTCdate.mon, RTCdate.year);
-    canvas.drawString(dateStrbuff, 250, 58);
 
     // get JD from RTC
     double jd = gregorian_to_jd(RTCdate.year, RTCdate.mon, RTCdate.day);
@@ -81,14 +94,16 @@ void drawMain() {
     String format_year;
     String format_day_month_year;
     switch (c) {
-        case 0: // 0 - gregorian
+        case 0: // 0 - babylonian
+            format_weekday = "Babylonian Calendar";
+            format_day_month_year = "Not yet implemented";
+            break;
+        case 1: // 1 - gregorian
             format_weekday = format_gregorian_date_weekday(jd).c_str();
             format_day = format_gregorian_date_day(jd).c_str();
             format_month = format_gregorian_date_month(jd).c_str();
             format_year = format_gregorian_date_year(jd).c_str();
             format_day_month_year = format_day + " " + format_month + " " + format_year;
-            break;
-        case 1: // 1 - babylonian
             break;
         case 2: // 2 - julian
             format_weekday = format_julian_date_weekday(jd).c_str();
@@ -98,56 +113,84 @@ void drawMain() {
             format_day_month_year = format_day + " " + format_month + " " + format_year;
             break;
         case 3: // 3 - hebrew
+            format_weekday = "Hebrew Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 4: // 4 - islamic
             format_weekday = format_islamic_date_weekday(jd, false).c_str();
             format_day_month_year = format_islamic_date_local(jd, false).c_str();
             break;
         case 5: // 5 - egyptian 
+            format_weekday = "Old Egyptian Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 6: // coptic       //  6
+            format_weekday = "Coptic Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 7: // mayan        //  7
+            format_weekday = "Mayan Long Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 8: // persian      //  8
+            format_weekday = "Persian Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 9: // french_rev   //  9
+            format_weekday = "French (Rev) Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 10: // saka        // 10
+            format_weekday = "Saka Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 11: // icelandic   // 11
+            format_weekday = "Icelandic Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 12: // 12 - Julian Anglosaxon
             format_weekday = format_anglosaxon_date_weekday(jd).c_str();
-            format_day = format_anglosaxon_date_day(jd).c_str();
-            format_month = format_anglosaxon_date_month(jd).c_str();
-            format_year = format_anglosaxon_date_year(jd).c_str();
-            format_day_month_year = format_day + " " + format_month + " " + format_year;
+            format_day_month_year = format_anglosaxon_date_local(jd).c_str();
             break;
         case 13: // old high german // 13
             format_weekday = format_oldhighgerman_date_weekday(jd).c_str();
-            format_day = format_oldhighgerman_date_day(jd).c_str();
-            format_month = format_oldhighgerman_date_month(jd).c_str();
-            format_year = format_oldhighgerman_date_year(jd).c_str();
-            format_day_month_year = format_day + " " + format_month + " " + format_year;
+            format_day_month_year = format_oldhighgerman_date_local(jd).c_str();
             break;
         case 14: // armenian    // 14
+            format_weekday = "Armenian Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 15: // georgian    // 15
+            format_weekday = "Georgian Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 16: // mandaean    // 16
+            format_weekday = "Mandaean Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 17: // chinese     // 17
+            format_weekday = "Chinese Zodiac Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 18: // buddhist"   // 18
+            format_weekday = "Buddhist Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 19: // mongolian   // 19
+            format_weekday = "Mongolian Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 20: // ethiopian   // 20
+            format_weekday = "Ethiopian Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 21: // zoroastrian // 21
+            format_weekday = "Zoroastrian Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         case 22: // darian  // 22
+            format_weekday = "Mars (Darian) Calendar";
+            format_day_month_year = "Not yet implemented";
             break;
         default:
             format_weekday = "unknown";
@@ -157,6 +200,8 @@ void drawMain() {
             break;
     }
 
+    String cur_calendar = calendar::calendar_name(c);
+    canvas.drawString(cur_calendar, 250, 58);
     canvas.setFreeFont(&Orbitron_Bold_66);
     canvas.drawString(format_weekday, 10, 140);
     canvas.drawString(format_day_month_year, 10, 240);
@@ -164,7 +209,7 @@ void drawMain() {
     canvas.drawString(String(temp).substring(0, 4), 10, 386);
     canvas.drawString(String((int)hum), 10, 460);
     canvas.pushCanvas(0, 0, UPDATE_MODE_GL16);
-    delay(300000);
+    //delay(20000); // every 20 seconds
 }
 
 void configModeCallback(WiFiManager *myWiFiManager) {
@@ -181,16 +226,17 @@ void configModeCallback(WiFiManager *myWiFiManager) {
 
 void setup() {
 
+    // M5EPD::begin(touchEnable, SDEnable, SerialEnable, BatteryADCEnable, I2CEnable)
     M5.begin(false, true, true, true, false);
-    M5.EPD.SetRotation(180);
+    M5.EPD.SetRotation(rotation);
     M5.EPD.Clear(true);
     M5.RTC.begin();
     M5.SHT30.Begin();
 
     // Set Calendar to Preferences
-    // set gregorian (0) as default
+    // set gregorian (1) as default
     // set_pspref_calendar(0);
-    set_pspref_calendar(13);
+    set_pspref_calendar(1);
 
     canvas.createCanvas(960, 540);
     Serial.begin(115200);
@@ -208,11 +254,11 @@ void setup() {
     res = wm.autoConnect(wifi_mngr_networkname, wifi_mngr_password);
 
     if (!res) {
-        Serial.println("Failed to connect");
+        Serial.println("WiFi failed to connect");
         // ESP.restart();
     } else {
         //if you get here you have connected to the WiFi    
-        Serial.println("connected...yeey :)");
+        Serial.println("WiFi connected");
     }
 
     // set NTP time
@@ -263,28 +309,42 @@ void setup() {
 
 void loop() {
     
-    M5.update(); // Need to add M5.update() to read the state of the button
-    delay(10);
-    if (M5.BtnL.wasPressed()) {
-        int c = get_pspref_calendar();
-        c = c - 1;
-        set_pspref_calendar(c);
-        Serial.println("Btn L Pressed");
-    }
-    if (M5.BtnP.wasPressed()) {
-        Serial.println("Btn P Pressed");
-    }
-    if (M5.BtnR.wasPressed()) {
-        int c = get_pspref_calendar();
-        c = c + 1;
-        set_pspref_calendar(c);
-        Serial.println("Btn R Pressed");
+    if(millis()-_timeoutBTN > INTERVAL_BTN) {
+        _timeoutBTN = millis();
+
+        // buttons
+        M5.update(); // Need to add M5.update() to read the state of the button
+        if (M5.BtnR.wasPressed()) {
+            int c = get_pspref_calendar();
+            c = c - 1;
+            if (c < 0) c = 22;
+            set_pspref_calendar(c);
+            c = get_pspref_calendar();
+            String calendar = calendar::calendar_name(c);
+            Serial.print("calendar is now: ");
+            Serial.println(calendar);
+            drawMain();
+        }
+        if (M5.BtnP.wasPressed()) {
+            Serial.println("Btn P Pressed; to be used for config screen");
+        }
+        if (M5.BtnL.wasPressed()) {
+            int c = get_pspref_calendar();
+            c = c + 1;
+            if (c > 22) c = 0;
+            set_pspref_calendar(c);
+            c = get_pspref_calendar();
+            String calendar = calendar::calendar_name(c);
+            Serial.print("calendar is now: ");
+            Serial.println(calendar);
+            drawMain();
+        }
     }
 
-    //M5.update();
-    drawMain();
-
-    //M5.shutdown(600);
+    if(millis()-_timeoutMS > INTERVAL_MS) {
+        _timeoutMS = millis();
+        drawMain();
+    }
 
     //serialTest();
 }

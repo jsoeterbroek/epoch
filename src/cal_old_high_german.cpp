@@ -51,21 +51,11 @@ std::string format_oldhighgerman_date_weekday(double jd) {
     return std::string(buffer);
 }
 
-std::string format_oldhighgerman_date_day(double jd) {
-    auto date = jd_to_julian(jd);
-    return std::to_string(date[2]);
-}
-
-std::string format_oldhighgerman_date_month(double jd) {
+std::string format_oldhighgerman_date_local(double jd) {
     auto date = jd_to_julian(jd);
     int month = date[1];
     const char* month_str = oldhighgerman_month_name(month);
     char buffer[20];
-    snprintf(buffer, sizeof(buffer), "%s", month_str);
+    snprintf(buffer, sizeof(buffer), "%i %s %i", date[2], month_str, date[0]);
     return std::string(buffer);
-}
-
-std::string format_oldhighgerman_date_year(double jd) {
-    auto date = jd_to_julian(jd);
-    return std::to_string(date[0]);
 }
