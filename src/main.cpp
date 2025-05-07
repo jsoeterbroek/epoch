@@ -71,17 +71,16 @@ void drawSplash() {
     software += String("v") + epoch_version_major() + "." + epoch_version_minor() + "." + epoch_version_patch();
     String maker = "Copyright (C) 2025 Joost Soeterbroek";
     String maker_email = "<joost.soeterbroek@gmail.com>";
-    String code = "github.com/jsoeterbroek/epoch";
+    String code = "https://github.com/jsoeterbroek/epoch";
     String aknowledgements = "Aknowledgements: see file AKNOWLEDGEMENTS.txt";
     String license = "GNU GENERAL PUBLIC LICENSE, Version 3";
 
     canvas.drawString(software ,20, 20);
     canvas.setFreeFont(&Orbitron_Medium_25);
-    canvas.drawString(maker ,20, 100);
-    canvas.drawString(maker_email, 20, 150);
+    canvas.drawString(maker ,20, 120);
+    canvas.drawString(maker_email, 20, 160);
     canvas.drawString(code, 20, 200);
-    canvas.drawString(aknowledgements, 20, 250);
-    canvas.drawString(license, 20, 300);
+    canvas.drawString(license, 20, 240);
     canvas.pushCanvas(0, 0, UPDATE_MODE_GL16);
     delay(20000);
 }
@@ -211,8 +210,10 @@ void drawMain() {
             format_day_month_year = "Not yet implemented";
             break;
         case 22: // darian  // 22
-            format_weekday = "Mars (Darian) Calendar";
-            format_day_month_year = "Not yet implemented";
+            int darian_year, darian_month, sol;
+            jd_to_darian(jd, darian_year, darian_month, sol);
+            format_weekday = darian_weekday_string(darian_year, darian_month, sol, DarianWeekStyle::Latin).c_str();
+            format_day_month_year = darian_date_string(darian_year, darian_month, sol, DarianMonthStyle::Mythological).c_str();
             break;
         default:
             format_weekday = "unknown";
@@ -261,7 +262,6 @@ void setup() {
     set_pspref_calendar(1);
 
     drawSplash();
-    M5.EPD.Clear(true);
     canvas.createCanvas(960, 540);
     canvas.fillCanvas(0);
     Serial.begin(115200);

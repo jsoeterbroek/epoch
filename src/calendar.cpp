@@ -53,7 +53,7 @@ const char* calendar_name(int index) {
         "Mongolian",    // 19
         "Ethiopian",    // 20
         "Zoroastrian",  // 21
-        "Mars (darian)" // 22
+        "Mars"          // 22
     };
     return calendar_names[index % 23];
 };
