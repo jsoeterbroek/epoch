@@ -99,7 +99,6 @@ void drawMain() {
     M5.RTC.getTime(&RTCtime);
     char timeStrbuff[44];
     sprintf(timeStrbuff, "%02d:%02d", RTCtime.hour, RTCtime.min);
-    canvas.drawString(timeStrbuff, 10, 20);
 
     // get JD from RTC
     double jd = gregorian_to_jd(RTCdate.year, RTCdate.mon, RTCdate.day);
@@ -119,6 +118,7 @@ void drawMain() {
         case 0: // 0 - babylonian
             format_weekday = "Babylonian Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_babylonian.jpg");
             break;
         case 1: // 1 - gregorian
             format_weekday = format_gregorian_date_weekday(jd).c_str();
@@ -126,6 +126,7 @@ void drawMain() {
             format_month = format_gregorian_date_month(jd).c_str();
             format_year = format_gregorian_date_year(jd).c_str();
             format_day_month_year = format_day + " " + format_month + " " + format_year;
+            canvas.drawJpgFile(SD, "/back_gregorian.jpg");
             break;
         case 2: // 2 - julian
             format_weekday = format_julian_date_weekday(jd).c_str();
@@ -133,88 +134,109 @@ void drawMain() {
             format_month = format_julian_date_month(jd).c_str();
             format_year = format_julian_date_year(jd).c_str();
             format_day_month_year = format_day + " " + format_month + " " + format_year;
+            canvas.drawJpgFile(SD, "/back_julian.jpg");
             break;
         case 3: // 3 - hebrew
             format_weekday = "Hebrew Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_hebrew.jpg");
             break;
         case 4: // 4 - islamic
             format_weekday = format_islamic_date_weekday(jd, false).c_str();
             format_day_month_year = format_islamic_date_local(jd, false).c_str();
+            canvas.drawJpgFile(SD, "/back_islamic.jpg");
             break;
         case 5: // 5 - egyptian 
             format_weekday = "Old Egyptian Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_egyptian.jpg");
             break;
         case 6: // coptic       //  6
             format_weekday = "Coptic Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_coptic.jpg");
             break;
         case 7: // mayan        //  7
             format_weekday = "Mayan Long Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_mayan.jpg");
             break;
         case 8: // persian      //  8
             format_weekday = "Persian Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_persian.jpg");
             break;
         case 9: // french_rev   //  9
             format_weekday = "French (Rev) Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_french.jpg");
             break;
         case 10: // saka        // 10
             format_weekday = "Saka Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_saka.jpg");
             break;
         case 11: // icelandic   // 11
             format_weekday = "Icelandic Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_icelandic.jpg");
             break;
         case 12: // 12 - Julian Anglosaxon
             format_weekday = format_anglosaxon_date_weekday(jd).c_str();
             format_day_month_year = format_anglosaxon_date_local(jd).c_str();
+            canvas.drawJpgFile(SD, "/back_anglosaxon.jpg");
             break;
         case 13: // old high german // 13
             format_weekday = format_oldhighgerman_date_weekday(jd).c_str();
             format_day_month_year = format_oldhighgerman_date_local(jd).c_str();
+            canvas.drawJpgFile(SD, "/back_german.jpg");
             break;
         case 14: // armenian    // 14
             format_weekday = "Armenian Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_armenian.jpg");
             break;
         case 15: // georgian    // 15
             format_weekday = "Georgian Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_georgian.jpg");
             break;
         case 16: // mandaean    // 16
             format_weekday = "Mandaean Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_mandaean.jpg");
             break;
         case 17: // chinese     // 17
             format_weekday = "Chinese Zodiac Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_chinese.jpg");
             break;
         case 18: // buddhist"   // 18
             format_weekday = "Buddhist Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_buddhist.jpg");
             break;
         case 19: // mongolian   // 19
             format_weekday = "Mongolian Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_mongolian.jpg");
             break;
         case 20: // ethiopian   // 20
             format_weekday = "Ethiopian Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_ethiopian.jpg");
             break;
         case 21: // zoroastrian // 21
             format_weekday = "Zoroastrian Calendar";
             format_day_month_year = "Not yet implemented";
+            canvas.drawJpgFile(SD, "/back_zoroastrian.jpg");
             break;
         case 22: // darian  // 22
             int darian_year, darian_month, sol;
             jd_to_darian(jd, darian_year, darian_month, sol);
             format_weekday = darian_weekday_string(darian_year, darian_month, sol, DarianWeekStyle::Latin).c_str();
             format_day_month_year = darian_date_string(darian_year, darian_month, sol, DarianMonthStyle::Mythological).c_str();
+            canvas.drawJpgFile(SD, "/back_mars.jpg");
             break;
         default:
             format_weekday = "unknown";
@@ -224,10 +246,13 @@ void drawMain() {
             break;
     }
 
+    // main screen
     canvas.setFreeFont(&Orbitron_Bold_66);
-    canvas.drawString(format_weekday, 10, 140);
-    canvas.drawString(format_day_month_year, 10, 240);
-
+    canvas.drawString(timeStrbuff, 40, 80);
+    canvas.drawString(format_weekday, 40, 180);
+    canvas.drawString(format_day_month_year, 40, 280);
+    
+    // bottom screen
     canvas.setFreeFont(&Orbitron_Medium_20);
     String cur_calendar = calendar::calendar_name(c);
     String mycal = ("Calendar: ") + cur_calendar;
@@ -264,7 +289,8 @@ void setup() {
     // Set Calendar to Preferences
     // set gregorian (1) as default
     // set_pspref_calendar(0);
-    set_pspref_calendar(1);
+    //set_pspref_calendar(1);
+    set_pspref_calendar(13);  //test
 
     drawSplash();
     canvas.createCanvas(960, 540);
@@ -336,7 +362,7 @@ void setup() {
 
     canvas.useFreetypeFont(false);
     canvas.setFreeFont(&Orbitron_Medium_25);
-    //canvas.drawJpgFile(SD, "/back.jpg");
+    canvas.drawJpgFile(SD, "/back_blank.jpg");
     canvas.pushCanvas(0,0,UPDATE_MODE_GC16 );
 
     //WIFI_OFF
@@ -365,6 +391,7 @@ void loop() {
             drawMain();
         }
         if (M5.BtnP.wasPressed()) {
+            M5.shutdown(); // FIXME, remove later, needs to be chaged to config screen
             Serial.println("Btn P Pressed; to be used for config screen");
         }
         if (M5.BtnL.wasPressed()) {
