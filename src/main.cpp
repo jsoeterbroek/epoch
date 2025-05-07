@@ -28,6 +28,7 @@
 #include <HTTPClient.h>
 #include "Orbitron_Medium_20.h"
 #include "Orbitron44.h"
+#include "calibri22LatinFont.h"
 #include "serialTest.h"
 
 #include <Arduino.h>
@@ -223,15 +224,19 @@ void drawMain() {
             break;
     }
 
-    canvas.setFreeFont(&Orbitron_Medium_25);
-    String cur_calendar = calendar::calendar_name(c);
-    canvas.drawString(cur_calendar, 250, 58);
     canvas.setFreeFont(&Orbitron_Bold_66);
     canvas.drawString(format_weekday, 10, 140);
     canvas.drawString(format_day_month_year, 10, 240);
 
-    canvas.drawString(String(temp).substring(0, 4), 10, 386);
-    canvas.drawString(String((int)hum), 10, 460);
+    canvas.setFreeFont(&Orbitron_Medium_20);
+    String cur_calendar = calendar::calendar_name(c);
+    String mycal = ("Calendar: ") + cur_calendar;
+    String mytz = ("Timezone: ") + get_timezone();
+    canvas.drawString(mycal, 12, 508);
+    canvas.drawString(mytz, 300, 508);
+
+    //canvas.drawString(String(temp).substring(0, 4), 10, 386);
+    //canvas.drawString(String((int)hum), 10, 460);
     canvas.pushCanvas(0, 0, UPDATE_MODE_GL16);
 }
 

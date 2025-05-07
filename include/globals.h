@@ -2,6 +2,7 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 #include <Arduino.h>
+#include "config.h"
 
 #define EPOCH_VERSION_MAJOR 0
 #define EPOCH_VERSION_MINOR 0
@@ -16,5 +17,9 @@ static inline int epoch_version_minor(void) {
 static inline int epoch_version_patch(void) {
     return EPOCH_VERSION_PATCH;
 }
+static inline String get_timezone(void) {
+    return TIMEZONE;
+}
+
 
 #endif
