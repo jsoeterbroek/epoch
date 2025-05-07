@@ -157,8 +157,8 @@ void drawMain() {
             canvas.drawJpgFile(SD, "/back_coptic.jpg");
             break;
         case 7: // mayan        //  7
-            format_weekday = "Mayan Long Calendar";
-            format_day_month_year = "Not yet implemented";
+            format_weekday = format_mayan_date_long(jd).c_str();
+            //format_day_month_year = format_mayan_date_local(jd).c_str();  // FIXME, crashes
             canvas.drawJpgFile(SD, "/back_mayan.jpg");
             break;
         case 8: // persian      //  8
@@ -167,13 +167,13 @@ void drawMain() {
             canvas.drawJpgFile(SD, "/back_persian.jpg");
             break;
         case 9: // french_rev   //  9
-            format_weekday = "French (Rev) Calendar";
-            format_day_month_year = "Not yet implemented";
+            format_weekday = format_french_date_weekday(jd).c_str();
+            format_day_month_year = format_french_date_local(jd).c_str();
             canvas.drawJpgFile(SD, "/back_french.jpg");
             break;
         case 10: // saka        // 10
-            format_weekday = "Saka Calendar";
-            format_day_month_year = "Not yet implemented";
+            format_weekday = format_saka_date_weekday(jd, false).c_str();
+            format_day_month_year = format_saka_date_local(jd, false).c_str();
             canvas.drawJpgFile(SD, "/back_saka.jpg");
             break;
         case 11: // icelandic   // 11
@@ -289,8 +289,7 @@ void setup() {
     // Set Calendar to Preferences
     // set gregorian (1) as default
     // set_pspref_calendar(0);
-    //set_pspref_calendar(1);
-    set_pspref_calendar(13);  //test
+    set_pspref_calendar(1);
 
     drawSplash();
     canvas.createCanvas(960, 540);

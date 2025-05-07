@@ -49,10 +49,10 @@ double mayan_to_jd(int baktun, int katun, int tun, int uinal, int kin) {
 }
 
 const char* tzolkin_names[20] = {
-    "Imix", "Ik’", "Ak’b’al", "K’an", "Chikchan",
-    "Kimi", "Manik’", "Lamat", "Muluk", "Ok",
-    "Chuwen", "Eb", "B’en", "Ix", "Men",
-    "K’ib’", "Kaban", "Etz’nab’", "Kawak", "Ajaw"
+    "Imix", "Ik'", "Ak'b'al", "K'an", "Chikchan",
+    "Kimi", "Manik'", "Lamat", "Muluk", "Ok",
+    "Chuwen", "Eb", "B'en", "Ix", "Men",
+    "K'ib'", "Kaban", "Etz'nab'", "Kawak", "Ajaw"
 };
 
 std::pair<int, const char*> jd_to_tzolkin(double jd) {
@@ -63,9 +63,9 @@ std::pair<int, const char*> jd_to_tzolkin(double jd) {
 }
 
 const char* haab_months[19] = {
-    "Pop", "Wo", "Sip", "Sotz’", "Sek", "Xul",
-    "Yaxk’in", "Mol", "Ch’en", "Yax", "Sak’", "Keh",
-    "Mak", "K’ank’in", "Muwan", "Pax", "K’ayab", "Kumk’u", "Wayeb’"
+    "Pop", "Wo", "Sip", "Sotz'", "Sek", "Xul",
+    "Yaxk'in", "Mol", "Ch'en", "Yax", "Sak'", "Keh",
+    "Mak", "K'ank'in", "Muwan", "Pax", "K'ayab", "Kumk'u", "Wayeb'"
 };
 
 std::pair<int, const char*> jd_to_haab(double jd) {
@@ -77,21 +77,21 @@ std::pair<int, const char*> jd_to_haab(double jd) {
     return {day, haab_months[month]};
 }
 
-std::string format_mayan_date(double jd) {
+std::string format_mayan_date_long(double jd) {
     auto date = jd_to_mayan(jd);
     char buffer[40];
-    snprintf(buffer, sizeof(buffer), "Mayan Long Count: %d.%d.%d.%d.%d",
+    snprintf(buffer, sizeof(buffer), "%d.%d.%d.%d.%d",
              date[0], date[1], date[2], date[3], date[4]);
     return std::string(buffer);
 }
-std::string format_mayan_date_full(double jd) {
+std::string format_mayan_date_local(double jd) {
     auto lc = jd_to_mayan(jd);
     auto tz = jd_to_tzolkin(jd);
     auto haab = jd_to_haab(jd);
 
     char buffer[100];
     snprintf(buffer, sizeof(buffer),
-             "Mayan Long Count: %d.%d.%d.%d.%d\nTzolk’in: %d %s\nHaab’: %d %s",
+             "Tzolk'in: %d %s\nHaab': %d %s",
              lc[0], lc[1], lc[2], lc[3], lc[4],
              tz.first, tz.second,
              haab.first, haab.second);

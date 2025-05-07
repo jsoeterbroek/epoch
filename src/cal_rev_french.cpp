@@ -58,7 +58,7 @@ std::array<int, 3> jd_to_french(double jd) {
 const char* french_weekday_name(int day) {
     static const char* names[] = {
         "Primidi", "Duodi", "Tridi", "Quartidi", "Quintidi",
-        "Sextidi", "Septidi", "Octidi", "Nonidi", "Décadi"
+        "Sextidi", "Septidi", "Octidi", "Nonidi", "Decadi"
     };
     return names[day % 10];
 }
@@ -69,9 +69,9 @@ int french_jd_to_weekday(double jd) {
 
 const char* french_month_name(int month) {
     static const char* names[] = {
-        "Vendémiaire", "Brumaire", "Frimaire",      // Autumn
-        "Nivôse", "Pluviôse", "Ventôse",            // Winter
-        "Germinal", "Floréal", "Prairial",          // Spring
+        "Vendemiaire", "Brumaire", "Frimaire",      // Autumn
+        "Nivose", "Pluviose", "Ventose",            // Winter
+        "Germinal", "Floreal", "Prairial",          // Spring
         "Messidor", "Thermidor", "Fructidor",       // Summer
         "Sansculottides"                            // Complementary days
     };
@@ -84,6 +84,11 @@ const char* french_month_name(int month) {
 }
 
 // format functions
+std::string format_french_date_weekday(double jd) {
+    const char* weekday_str = french_weekday_name(french_jd_to_weekday(jd));
+    return std::string(weekday_str);
+}
+
 std::string format_french_date(double jd) {
     auto date = jd_to_french(jd);
     int year = date[0];
@@ -91,10 +96,21 @@ std::string format_french_date(double jd) {
     int day = date[2];
 
     const char* month_str = french_month_name(month);
-    const char* weekday_str = french_weekday_name(french_jd_to_weekday(jd));
 
-    return "Rev. French: " + std::string(weekday_str) + " " +
-           std::to_string(day) + " " +
-           month_str + ", Year " +
+    return std::to_string(day) + " " +
+           month_str + ", AN " +
+           std::to_string(year);
+}
+
+std::string format_french_date_local(double jd) {
+    auto date = jd_to_french(jd);
+    int year = date[0];
+    int month = date[1];
+    int day = date[2];
+
+    const char* month_str = french_month_name(month);
+
+    return std::to_string(day) + " " +
+           month_str + ", AN " +
            std::to_string(year);
 }

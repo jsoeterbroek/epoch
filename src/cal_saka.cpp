@@ -118,6 +118,17 @@ std::string format_saka_date(double jd) {
     return std::string(buffer);
 }
 
+std::string format_saka_date_weekday(double jd, bool use_hindi = true) {
+    auto saka = jd_to_saka(jd);
+    int weekday = calendar::iso_day_of_week(jd);  // ISO: Mon=1, Sun=7
+
+    const char* weekday_name = use_hindi ? weekday_names_hi[weekday - 1] : weekday_names_sa[weekday - 1];
+
+    char buffer[40];
+    snprintf(buffer, sizeof(buffer), "%s", weekday_name);
+    return std::string(buffer);
+}
+
 std::string format_saka_date_local(double jd, bool use_hindi = true) {
     auto saka = jd_to_saka(jd);
     int year = saka[0], month = saka[1], day = saka[2];
@@ -126,7 +137,7 @@ std::string format_saka_date_local(double jd, bool use_hindi = true) {
     const char* month_name = use_hindi ? saka_months_hi[month - 1] : saka_months_sa[month - 1];
     const char* weekday_name = use_hindi ? weekday_names_hi[weekday - 1] : weekday_names_sa[weekday - 1];
 
-    char buffer[80];
-    snprintf(buffer, sizeof(buffer), "साका %d %s, %d (%s)", day, month_name, year, weekday_name);
+    char buffer[60];
+    snprintf(buffer, sizeof(buffer), "%d %s, %d", day, month_name, year);
     return std::string(buffer);
 }

@@ -9,7 +9,7 @@
 constexpr double MAYAN_EPOCH = 584283.5;  // August 11, 3114 BCE (Gregorian)
 
 // Function declarations
-std::string format_mayan_date(double jd);
-std::string format_mayan_date_full(double jd);
+std::string format_mayan_date_long(double jd);
+std::string format_mayan_date_local(double jd);
 
 #endif // CAL_MAYAN_H
