@@ -15,6 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 #include <M5EPD.h>
+#include "globals.h"
 #include "config.h"
 #include "PSpref.h"
 #include "_strftime.h"
@@ -60,6 +61,31 @@ float hum;
 rtc_time_t RTCtime;
 rtc_date_t RTCdate;
 
+void drawSplash() {
+
+    M5.EPD.Clear(true);
+    canvas.createCanvas(960, 540);
+    canvas.fillCanvas(0);
+    canvas.setFreeFont(&Orbitron_Bold_66);
+    String software = "EPOCH ";
+    software += String("v") + epoch_version_major() + "." + epoch_version_minor() + "." + epoch_version_patch();
+    String maker = "Copyright (C) 2025 Joost Soeterbroek";
+    String maker_email = "<joost.soeterbroek@gmail.com>";
+    String code = "github.com/jsoeterbroek/epoch";
+    String aknowledgements = "Aknowledgements: see file AKNOWLEDGEMENTS.txt";
+    String license = "GNU GENERAL PUBLIC LICENSE, Version 3";
+
+    canvas.drawString(software ,20, 20);
+    canvas.setFreeFont(&Orbitron_Medium_25);
+    canvas.drawString(maker ,20, 100);
+    canvas.drawString(maker_email, 20, 150);
+    canvas.drawString(code, 20, 200);
+    canvas.drawString(aknowledgements, 20, 250);
+    canvas.drawString(license, 20, 300);
+    canvas.pushCanvas(0, 0, UPDATE_MODE_GL16);
+    delay(20000);
+}
+
 void drawMain() {
 
     M5.EPD.Clear(true);
@@ -74,10 +100,6 @@ void drawMain() {
     char timeStrbuff[44];
     sprintf(timeStrbuff, "%02d:%02d", RTCtime.hour, RTCtime.min);
     canvas.drawString(timeStrbuff, 10, 20);
-    M5.RTC.getDate(&RTCdate);
-    char dateStrbuff[44];
-    canvas.setFreeFont(&Orbitron_Medium_25);
-    sprintf(dateStrbuff, "(%02d/%02d/%02d)", RTCdate.day, RTCdate.mon, RTCdate.year);
 
     // get JD from RTC
     double jd = gregorian_to_jd(RTCdate.year, RTCdate.mon, RTCdate.day);
@@ -200,6 +222,7 @@ void drawMain() {
             break;
     }
 
+    canvas.setFreeFont(&Orbitron_Medium_25);
     String cur_calendar = calendar::calendar_name(c);
     canvas.drawString(cur_calendar, 250, 58);
     canvas.setFreeFont(&Orbitron_Bold_66);
@@ -209,7 +232,6 @@ void drawMain() {
     canvas.drawString(String(temp).substring(0, 4), 10, 386);
     canvas.drawString(String((int)hum), 10, 460);
     canvas.pushCanvas(0, 0, UPDATE_MODE_GL16);
-    //delay(20000); // every 20 seconds
 }
 
 void configModeCallback(WiFiManager *myWiFiManager) {
@@ -238,8 +260,14 @@ void setup() {
     // set_pspref_calendar(0);
     set_pspref_calendar(1);
 
+    drawSplash();
+    M5.EPD.Clear(true);
     canvas.createCanvas(960, 540);
+    canvas.fillCanvas(0);
     Serial.begin(115200);
+
+    canvas.setFreeFont(&Orbitron_Medium_25);
+    canvas.drawString("starting WiFiManager", 50, 50);
 
     //WiFiManager, Local intialization. Once its business is done, there is no need to keep it around
     WiFiManager wm;
@@ -255,13 +283,16 @@ void setup() {
 
     if (!res) {
         Serial.println("WiFi failed to connect");
+        canvas.drawString("WiFi failed to connect", 50, 90);
         // ESP.restart();
     } else {
         //if you get here you have connected to the WiFi    
         Serial.println("WiFi connected");
+        canvas.drawString("WiFi connected", 50, 90);
     }
 
     // set NTP time
+    canvas.drawString("Get time from Internet NTP", 50, 130);
     struct tm timeinfo;
     initTime(TIMEZONE);
     delay(100);
@@ -270,6 +301,7 @@ void setup() {
     };
     Serial.println("OK: obtained time");
     Serial.println(&timeinfo, " %A, %B %d %Y %H:%M:%S");
+    canvas.drawString("OK: obtained current time, date", 50, 170);
 
     Serial.println("set rtc clock from NTP");
     char UPDATE_TIME[50];  
@@ -303,8 +335,10 @@ void setup() {
     canvas.pushCanvas(0,0,UPDATE_MODE_GC16 );
 
     //WIFI_OFF
+    canvas.drawString("Turn WiFi off", 50, 210);
     WiFi.mode(WIFI_OFF);
     delay(1);
+    canvas.drawString("Setup finished.", 50, 250);
 }
 
 void loop() {
