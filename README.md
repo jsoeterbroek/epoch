@@ -16,6 +16,9 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 
   You will need to do this only once.
 
+* The device will require an SD card inserted with all the background jpg images. These can be found in the
+  data/ directory.
+
 ## Screenshots
 
 ### Currently implemented (V0.0.1 release) calendar systems
