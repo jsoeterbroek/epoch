@@ -5,7 +5,7 @@
 #include "config.h"
 
 #define EPOCH_VERSION_MAJOR 0
-#define EPOCH_VERSION_MINOR 0
+#define EPOCH_VERSION_MINOR 1
 #define EPOCH_VERSION_PATCH 1
 
 static inline int epoch_version_major(void) {
