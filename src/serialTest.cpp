@@ -97,7 +97,8 @@ void serialTest(void) {
     //Serial.println(" Zoroastrian (Shenshai)");
     //Serial.println(format_zoroastrian_date(jd, ZoroastrianCalendarVariant::Shenshai));
     Serial.println(" Zoroastrian (Fasli)");
-    Serial.println(format_zoroastrian_date(jd, ZoroastrianCalendarVariant::Fasli));
+    Serial.println(format_zoroastrian_date_1(jd, ZoroastrianCalendarVariant::Fasli));
+    Serial.println(format_zoroastrian_date_2(jd, ZoroastrianCalendarVariant::Fasli));
     //Serial.println(" Zoroastrian (Kadmi)");
     //Serial.println(format_zoroastrian_date(jd, ZoroastrianCalendarVariant::Kadmi));
     delay(_delay);

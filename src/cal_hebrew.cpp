@@ -8,13 +8,6 @@
                 This program is in the public domain.
 */
 
-/*  You may notice that a variety of array variables logically local
-    to functions are declared globally here.  In JavaScript, construction
-    of an array variable from source code occurs as the code is
-    interpreted.  Making these variables pseudo-globals permits us
-    to avoid overhead constructing and disposing of them in each
-    call on the function in which whey are used.  */
-
 #include "calendar.h"
 #include <cmath>
 #include <array>
@@ -39,7 +32,6 @@ double hebrew_to_jd(int year, int month, int day) {
             jd += hebrew_month_days(year, m);
         }
     }
-
     return jd;
 }
 
@@ -105,7 +97,6 @@ int hebrew_month_days(int year, int month) {
     if (month == 9 && ((hebrew_year_days(year) % 10) == 3)) {
         return 29;
     }
-
     return 30;
 }
 

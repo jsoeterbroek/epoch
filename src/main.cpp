@@ -227,8 +227,8 @@ void drawMain() {
             canvas.drawJpgFile(SD, "/back_ethiopian.jpg");
             break;
         case 21: // zoroastrian // 21
-            format_weekday = "Zoroastrian Calendar";
-            format_day_month_year = "Not yet implemented";
+            format_weekday = format_zoroastrian_date_1(jd, ZoroastrianCalendarVariant::Fasli);
+            format_day_month_year = format_zoroastrian_date_2(jd, ZoroastrianCalendarVariant::Fasli);
             canvas.drawJpgFile(SD, "/back_zoroastrian.jpg");
             break;
         case 22: // darian  // 22

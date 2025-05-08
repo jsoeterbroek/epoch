@@ -9,7 +9,9 @@ enum class ZoroastrianCalendarVariant {
     Kadmi
 };
 
-std::array<int, 3> jd_to_zoroastrian(double jd, ZoroastrianCalendarVariant variant);
-const char* format_zoroastrian_date(double jd, ZoroastrianCalendarVariant variant);
+const char* format_zoroastrian_date_1(double jd, ZoroastrianCalendarVariant variant);
+const char* format_zoroastrian_date_2(double jd, ZoroastrianCalendarVariant variant);
+//const char* format_zoroastrian_date_weekday(double jd, ZoroastrianCalendarVariant variant);
+//const char* format_zoroastrian_date_local(double jd, ZoroastrianCalendarVariant variant);
 
 #endif

@@ -75,13 +75,18 @@ std::array<int, 3> jd_to_zoroastrian(double jd, ZoroastrianCalendarVariant varia
     return {year, month, day};
 }
 
-const char* format_zoroastrian_date(double jd, ZoroastrianCalendarVariant variant) {
-    static char buffer[64];
+const char* format_zoroastrian_date_1(double jd, ZoroastrianCalendarVariant variant) {
     auto date = jd_to_zoroastrian(jd, variant);
-
     const char* roj = ROJ_NAMES[date[2] - 1];
-    const char* month = MONTH_NAMES[date[1] - 1];
+    static char buffer[64];
+    snprintf(buffer, sizeof(buffer), "%s roj", roj);
+    return buffer;
+}
 
-    snprintf(buffer, sizeof(buffer), "%s roj, %s mah, %d YZ", roj, month, date[0]);
+const char* format_zoroastrian_date_2(double jd, ZoroastrianCalendarVariant variant) {
+    auto date = jd_to_zoroastrian(jd, variant);
+    const char* month = MONTH_NAMES[date[1] - 1];
+    static char buffer[64];
+    snprintf(buffer, sizeof(buffer), "%s mah, %d YZ", month, date[0]);
     return buffer;
 }
