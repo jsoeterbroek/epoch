@@ -4,6 +4,18 @@ A calendar application for M5 Stack ePaper device.
 
 Support for different historical and cultural calendar systems: Babylonian, Gregorian, Julian, Hebrew, Islamic, Old Egyptian, Coptic, Mayan, Persian, French (rev.), Saka, Icelandic, Anglo-Saxon, Germanic, Armenian, Georgian, Mandaean, Chinese Zodiac, Buddhist, Mongolian, Ethiopian, Zoroastrian, Mars.
 
+## Setup and configuration
+
+* Time and date are retrieved from NTP Internet server on every (re-)start and saved to Real-Time Clock (rtc).
+  Currently the NTP server address (europe.pool.ntp.org) is the default, but this needs to be user
+  configurable in next release(s).
+* During setup phase an Internet connection is needed in order to retrieve correct date and time via NTP.
+  In order to facilitate the WiFi configuration of the device for you local WiFi network, WiFiManager is 
+  started during setup phase (only once), and you should be able to connect with computer and/or phone to 
+  SSID Network name: "m5paper" and password: "password".
+
+  You will need to do this only once.
+
 ## Screenshots
 
 ### Currently implemented (V0.0.1 release) calendar systems
