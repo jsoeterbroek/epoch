@@ -78,9 +78,9 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 * bidi support (if possible)
 * unicode support (if possible)
 * more localization languages
-* configuration option to select your default calendar (now Gregorian)
-* configuration option to manually change time, date (now set by NTP)
-* configuration option to change timezone (Europe/Amsterdam now default)
+* configuration option to select your default calendar (now Gregorian) (Issue #1)
+* configuration option to manually change time, date (now set by NTP) (Issue #2)
+* configuration option to change timezone (Europe/Amsterdam now default) (Issue #3)
 
 ## Help needed
 If you want to help to further develop Epoch, your help is very welcome. Check the TODO items in this README.
