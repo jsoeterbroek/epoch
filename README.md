@@ -58,7 +58,6 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 #### Ethiopian
 ![ethiopoian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/ethiopian.jpg)
 
-
 ## TODO
 * remaining calendar systems
 * bidi support (if possible)
@@ -68,6 +67,9 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 * configuration option to manually change time, date (now set by NTP)
 * configuration option to change timezone (Europe/Amsterdam now default)
 
+## Binary releases
+TBA
+
 ## Help needed
 If you want to help to further develop Epoch, your help is very welcome. Check the TODO items in this README.
 
@@ -76,3 +78,9 @@ cultural or religious background, if the calculations, localisations etc. are co
 
 I try to test as best I can with all kinds of calendar conversion apps or websites, but this is very complicated
 in practice.
+
+## License
+See file LICENSE
+
+## Aknowledgements
+See file Aknowledgements
