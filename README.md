@@ -10,8 +10,8 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
   Currently the NTP server address (europe.pool.ntp.org) is the default, but this needs to be user
   configurable in next release(s).
 * During setup phase an Internet connection is needed in order to retrieve correct date and time via NTP.
-  In order to facilitate the WiFi configuration of the device for you local WiFi network, WiFiManager is 
-  started during setup phase (only once), and you should be able to connect with computer and/or phone to 
+  In order to facilitate the WiFi configuration of the device for you local WiFi network, WiFiManager is
+  started during setup phase (only once), and you should be able to connect with computer and/or phone to
   SSID Network name: "m5paper" and password: "password".
 
   You will need to do this only once.
@@ -24,15 +24,15 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 ![Gregorian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/gregorian.jpg)
 #### Julian
 ![Julian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/julian.jpg)
-#### Islamic 
+#### Islamic
 ![Islamic](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/islamic.jpg)
 #### Mayan Long
 ![Mayan](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/mayan.jpg)
-#### Revolutionary France 
+#### Revolutionary France
 ![France](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/rev_french.jpg)
 #### Indian National Calendar (Saka)
 ![Saka](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/saka.jpg)
-#### Anglo-Saxon English 
+#### Anglo-Saxon English
 ![anglosaxon](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/anglosaxon.jpg)
 #### Germanic (Old High German)
 ![germanic](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/germanic.jpg)
@@ -45,15 +45,15 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 
 #### Babylonian
 ![Babylonian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/babylonian.jpg)
-#### Hebrew 
+#### Hebrew
 ![Hebrew](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/hebrew.jpg)
-#### Old Egyptian 
+#### Old Egyptian
 ![Egyptian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/egyptian.jpg)
-#### Coptic 
+#### Coptic
 ![Coptic](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/coptic.jpg)
 #### Persian
 ![Persian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/persian.jpg)
-#### Norse (Icelandic) 
+#### Norse (Icelandic)
 ![icelandic](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/icelandic.jpg)
 #### Armenian
 ![armenian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/armenian.jpg)
@@ -65,7 +65,7 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 ![chinese](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/chin_zodiac.jpg)
 #### Buddhist
 ![buddhist](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/buddhist.jpg)
-#### Mongolian 
+#### Mongolian
 ![Mongolian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/mongolian.jpg)
 #### Ethiopian
 ![ethiopoian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/ethiopian.jpg)
@@ -79,14 +79,11 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 * configuration option to manually change time, date (now set by NTP)
 * configuration option to change timezone (Europe/Amsterdam now default)
 
-## Binary releases
-TBA
-
 ## Help needed
 If you want to help to further develop Epoch, your help is very welcome. Check the TODO items in this README.
 
 I would especially welcome help or assistance if you would test the relevant calendar for your
-cultural or religious background, if the calculations, localisations etc. are correct or we are missing something. 
+cultural or religious background, if the calculations, localisations etc. are correct or we are missing something.
 
 I try to test as best I can with all kinds of calendar conversion apps or websites, but this is very complicated
 in practice.
