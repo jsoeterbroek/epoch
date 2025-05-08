@@ -18,7 +18,7 @@ static inline int epoch_version_patch(void) {
     return EPOCH_VERSION_PATCH;
 }
 static inline String get_timezone(void) {
-    return TIMEZONE;
+    return TIMEZONE_LOC;
 }
 
 

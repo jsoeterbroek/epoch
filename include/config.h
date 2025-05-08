@@ -69,7 +69,7 @@
 //   French (France)                 fr_FR
 //   Italiano (Italia)               it_IT
 //   Dutch (Nederland)               nl_NL
-#define LOCALE nl_NL
+#define LOCALE en_GB
 
 // UNITS
 // Define exactly one macro for each measurement type below.
@@ -78,8 +78,8 @@
 //   Metric   : Celsius
 //   Imperial : Fahrenheit
 // #define UNITS_TEMP_KELVIN
-// #define UNITS_TEMP_CELSIUS
-#define UNITS_TEMP_FAHRENHEIT
+#define UNITS_TEMP_CELSIUS
+//#define UNITS_TEMP_FAHRENHEIT
 
 // UNITS - WIND SPEED
 //   Metric   : Kilometers per Hour
@@ -292,6 +292,7 @@ extern const String LAT;
 extern const String LON;
 extern const String CITY_STRING;
 extern const char *TIMEZONE;
+extern const char *TIMEZONE_LOC;
 extern const char *TIME_FORMAT;
 extern const char *HOUR_FORMAT;
 extern const char *DATE_FORMAT;
@@ -311,6 +312,8 @@ extern const unsigned long LOW_BATTERY_SLEEP_INTERVAL;
 extern const unsigned long VERY_LOW_BATTERY_SLEEP_INTERVAL;
 extern const uint32_t MAX_BATTERY_VOLTAGE;
 extern const uint32_t MIN_BATTERY_VOLTAGE;
+
+extern const uint8_t PIN_BAT_ADC;
 
 // CONFIG VALIDATION - DO NOT MODIFY
 #if !(  defined(DISP_BW_V2)  \

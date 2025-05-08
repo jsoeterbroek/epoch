@@ -23,6 +23,7 @@
 #include "datetime.h"
 #include "astro.h"
 #include "calendar.h"
+#include "display_utils.h"
 #include <WiFi.h>
 #include <WiFiManager.h>
 #include <HTTPClient.h>
@@ -36,6 +37,7 @@
 #include <FS.h>
 #include <SPI.h>
 #include <JPEGDecoder.h>
+
 
 M5EPD_Canvas canvas(&M5.EPD);
 
@@ -255,13 +257,18 @@ void drawMain() {
     // bottom screen
     canvas.setFreeFont(&Orbitron_Medium_20);
     String cur_calendar = calendar::calendar_name(c);
-    String mycal = ("Calendar: ") + cur_calendar;
+    String mycal = cur_calendar + " calendar";
     String mytz = ("Timezone: ") + get_timezone();
     canvas.drawString(mycal, 12, 508);
-    canvas.drawString(mytz, 300, 508);
-
-    //canvas.drawString(String(temp).substring(0, 4), 10, 386);
-    //canvas.drawString(String((int)hum), 10, 460);
+    canvas.drawString(mytz, 320, 508);
+    uint32_t batVoltage = readBatteryVoltage();
+    uint32_t batPercent = calcBatPercent(batVoltage,
+        MIN_BATTERY_VOLTAGE, MAX_BATTERY_VOLTAGE);
+    char buffer[16];
+    sprintf(buffer, "%d", batPercent);
+    String mybatP = String(buffer);
+    String mybat = "Battery: " + mybatP + "%";
+    canvas.drawString(mybat, 780, 508);
     canvas.pushCanvas(0, 0, UPDATE_MODE_GL16);
 }
 

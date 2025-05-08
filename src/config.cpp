@@ -26,7 +26,7 @@
 //       board's pinout to ensure you avoid using a pin with this shared 
 //       functionality.
 //
-// // ADC pin used to measure battery voltage
+// ADC pin used to measure battery voltage
 // const uint8_t PIN_BAT_ADC  = A2; // A0 for micro-usb firebeetle
 // // Pins for E-Paper Driver Board
 // const uint8_t PIN_EPD_BUSY = 14; // 5 for micro-usb firebeetle
@@ -89,6 +89,7 @@ const String CITY_STRING = "Amsterdam";
 // https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
 // const char *TIMEZONE = "EST5EDT,M3.2.0,M11.1.0";
 const char *TIMEZONE = "CET-1CEST,M3.5.0,M10.5.0/3";
+const char *TIMEZONE_LOC = "Europe/Amsterdam";
 // Time format used when displaying sunrise/set times. (Max 11 characters)
 // For more information about formatting see
 // https://man7.org/linux/man-pages/man3/strftime.3.html
