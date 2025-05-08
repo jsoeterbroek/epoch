@@ -11,3 +11,11 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 * ![Gregorian](https://github.com/jsoeterbroek/epoch/blob/main/assets/gregorian.jpg)
 
 ### To be implemented calendar systems
+
+
+
+## TODO
+* remaining calendar systems
+* bidi support (if possible)
+* unicode support (if possible)
+* more localization languages
