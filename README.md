@@ -8,7 +8,7 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 
 ### Currently implemented (V0.0.1 release) calendar systems
 
-* ![Gregorian](https://github.com/jsoeterbroek/epoch/blob/main/assets/gregorian.jpg)
+* ![Gregorian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/gregorian.jpg)
 
 ### To be implemented calendar systems
 
