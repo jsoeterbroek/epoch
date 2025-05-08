@@ -54,7 +54,7 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 #### Buddhist
 ![buddhist](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/buddhist.jpg)
 #### Mongolian 
-![Mongolian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/buddhist.jpg)
+![Mongolian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/mongolian.jpg)
 #### Ethiopian
 ![ethiopoian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/ethiopian.jpg)
 
