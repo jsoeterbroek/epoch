@@ -5,6 +5,7 @@
 #include <string>
 #include "astro.h"
 #include "_locale.h"
+#include "cal_babylonian.h"
 #include "cal_gregorian.h"
 #include "cal_julian.h"
 #include "cal_rev_french.h"

@@ -115,12 +115,14 @@ void drawMain() {
     String format_weekday;
     String format_day;
     String format_month;
+    String format_date;
     String format_year;
-    String format_day_month_year;
+    String format_day_month_year = "none";
     switch (c) {
         case 0: // 0 - babylonian
-            format_weekday = "Babylonian Calendar";
-            format_day_month_year = "Not yet implemented";
+            format_weekday = format_babylonian_date_weekday(jd).c_str();
+            format_date = format_babylonian_date(jd).c_str(); 
+            format_year = format_babylonian_date_year(jd).c_str(); 
             canvas.drawJpgFile(SD, "/back_babylonian.jpg");
             break;
         case 1: // 1 - gregorian
@@ -146,7 +148,9 @@ void drawMain() {
             break;
         case 4: // 4 - islamic
             format_weekday = format_islamic_date_weekday(jd, false).c_str();
-            format_day_month_year = format_islamic_date_local(jd, false).c_str();
+            format_month = format_islamic_date_month(jd, false).c_str();
+            format_year = format_islamic_date_year(jd, false).c_str();
+            //format_day_month_year = format_islamic_date_local(jd, false).c_str();
             canvas.drawJpgFile(SD, "/back_islamic.jpg");
             break;
         case 5: // 5 - egyptian 
@@ -251,9 +255,15 @@ void drawMain() {
 
     // main screen
     canvas.setFreeFont(&Orbitron_Bold_66);
-    canvas.drawString(timeStrbuff, 40, 80);
-    canvas.drawString(format_weekday, 40, 180);
-    canvas.drawString(format_day_month_year, 40, 280);
+    canvas.drawString(timeStrbuff, 36, 80);
+    canvas.drawString(format_weekday, 36, 180);
+    if (format_day_month_year != "none") {
+        canvas.drawString(format_day_month_year, 36, 280);
+    } else {
+        canvas.drawString(format_day, 36, 230);
+        canvas.drawString(format_month, 36, 280);
+        canvas.drawString(format_year, 36, 380);
+    }
     
     // bottom screen
     canvas.setFreeFont(&Orbitron_Medium_20);

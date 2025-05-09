@@ -130,3 +130,22 @@ std::string format_islamic_date_weekday(double jd, bool use_arabic = false) {
     snprintf(buffer, sizeof(buffer), "%s", weekday_name);
     return std::string(buffer);
 }
+std::string format_islamic_date_month(double jd, bool use_arabic = false) {
+    auto islamic = jd_to_islamic(jd);
+    int month = islamic[1];
+
+    const char* month_name = islamic_months[month - 1];
+
+    char buffer[80];
+    snprintf(buffer, sizeof(buffer), "%s", month_name);
+    return std::string(buffer);
+}
+
+std::string format_islamic_date_year(double jd, bool use_arabic = false) {
+    auto islamic = jd_to_islamic(jd);
+    int year = islamic[0];
+
+    char buffer[80];
+    snprintf(buffer, sizeof(buffer), "%d AH", year);
+    return std::string(buffer);
+}
