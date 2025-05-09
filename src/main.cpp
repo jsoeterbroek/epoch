@@ -102,7 +102,8 @@ void drawMain() {
     char timeStrbuff[44];
     sprintf(timeStrbuff, "%02d:%02d", RTCtime.hour, RTCtime.min);
 
-    // get JD from RTC
+    // get current JD date from RTC
+    M5.RTC.getDate(&RTCdate);
     double jd = gregorian_to_jd(RTCdate.year, RTCdate.mon, RTCdate.day);
 
     // get desired calendar to display from Preferences storage
