@@ -37,7 +37,6 @@ bool is_darian_leap_year(int year) {
 double darian_to_jd(int year, int month, int sol) {
     const double JD_EPOCH = 2405522.0028779;
     const double SOL_TO_EARTH_DAYS = 1.0274912517;
-
     int total_sols = 0;
     for (int y = 0; y < year; ++y) {
         total_sols += is_darian_leap_year(y) ? 669 : 668;
@@ -46,7 +45,6 @@ double darian_to_jd(int year, int month, int sol) {
         total_sols += (m % 2 == 1) ? 28 : 27;
     }
     total_sols += (sol - 1);
-
     double msd = static_cast<double>(total_sols);
     return msd * SOL_TO_EARTH_DAYS + JD_EPOCH;
 }
@@ -54,7 +52,6 @@ double darian_to_jd(int year, int month, int sol) {
 void jd_to_darian(double jd, int& year, int& month, int& sol) {
     const double JD_EPOCH = 2405522.0028779;
     const double SOL_TO_EARTH_DAYS = 1.0274912517;
-
     int total_sols = static_cast<int>((jd - JD_EPOCH) / SOL_TO_EARTH_DAYS);
 
     year = 0;
@@ -72,13 +69,12 @@ void jd_to_darian(double jd, int& year, int& month, int& sol) {
         total_sols -= sols_in_month;
         month++;
     }
-
     sol = total_sols + 1;
 }
 
 const char* darian_month_name(int month, DarianMonthStyle style) {
     static const char* mythological[24] = {
-        "Aurora", "Boötes", "Caelum", "Diana", "Eurus", "Faunus",
+        "Aurora", "Bootes", "Caelum", "Diana", "Eurus", "Faunus",
         "Gaia", "Hercules", "Icarus", "Juno", "Kratos", "Luna",
         "Mars", "Neptune", "Ops", "Phobos", "Quirinus", "Rhea",
         "Saturn", "Terra", "Urania", "Vesta", "Wotan", "Xanthus"
@@ -90,7 +86,6 @@ const char* darian_month_name(int month, DarianMonthStyle style) {
         "Gemini", "Mithuna", "Cancer", "Karka", "Leo", "Simha",
         "Virgo", "Kanya", "Libra", "Tula", "Scorpius", "Vrishika"
     };
-
     if (month < 1 || month > 24) return "Invalid";
     return (style == DarianMonthStyle::Mythological) ? mythological[month - 1] : zodiac[month - 1];
 }
@@ -102,23 +97,21 @@ const char* darian_weekday_name(int weekday, DarianWeekStyle style) {
     };
 
     static const char* vedic[7] = {
-        "Ravi-vāra", "Soma-vāra", "Mangala-vāra", "Budha-vāra",
-        "Guru-vāra", "Shukra-vāra", "Shani-vāra"
+        "Ravi-vara", "Soma-vara", "Mangala-vara", "Budha-vara",
+        "Guru-vara", "Shukra-vara", "Shani-vara"
     };
-
     if (weekday < 0 || weekday > 6) return "Invalid";
     return (style == DarianWeekStyle::Latin) ? latin[weekday] : vedic[weekday];
 }
 
-std::string darian_date_string(int year, int month, int sol, DarianMonthStyle style) {
+std::string format_darian_date(int year, int month, int sol, DarianMonthStyle style) {
     const char* month_name = darian_month_name(month, style);
-
     char buffer[40];
     snprintf(buffer, sizeof(buffer), "%s %d, %d ME", month_name, sol, year);
     return std::string(buffer);
 }
 
-std::string darian_weekday_string(int year, int month, int sol, DarianWeekStyle style) {
+std::string format_darian_date_weekday(int year, int month, int sol, DarianWeekStyle style) {
     int total_sols = 0;
     for (int y = 0; y < year; ++y) {
         total_sols += is_darian_leap_year(y) ? 669 : 668;
@@ -127,13 +120,12 @@ std::string darian_weekday_string(int year, int month, int sol, DarianWeekStyle 
         total_sols += (m % 2 == 1) ? 28 : 27;
     }
     total_sols += (sol - 1);
-
     int weekday_index = total_sols % 7;
     return std::string(darian_weekday_name(weekday_index, style));
 }
 
-std::string format_darian_full_date(int year, int month, int sol, DarianWeekStyle week_style, DarianMonthStyle month_style) {
-    std::string date = darian_date_string(year, month, sol, month_style);
-    std::string weekday = darian_weekday_string(year, month, sol, week_style);
+std::string format_darian_date_full(int year, int month, int sol, DarianWeekStyle week_style, DarianMonthStyle month_style) {
+    std::string date = format_darian_date(year, month, sol, month_style);
+    std::string weekday = format_darian_date_weekday(year, month, sol, week_style);
     return date + ", " + weekday;
 }

@@ -249,8 +249,8 @@ void drawMain() {
         case 22: // darian  // 22
             int darian_year, darian_month, sol;
             jd_to_darian(jd, darian_year, darian_month, sol);
-            format_weekday = darian_weekday_string(darian_year, darian_month, sol, DarianWeekStyle::Latin).c_str();
-            format_day_month_year = darian_date_string(darian_year, darian_month, sol, DarianMonthStyle::Mythological).c_str();
+            format_weekday = format_darian_date_weekday(darian_year, darian_month, sol, DarianWeekStyle::Latin).c_str();
+            format_day_month_year = format_darian_date(darian_year, darian_month, sol, DarianMonthStyle::Mythological).c_str();
             canvas.drawJpgFile(SD, "/back_mars.jpg");
             break;
         default:

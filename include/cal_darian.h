@@ -37,8 +37,8 @@ enum class DarianMonthStyle {
     Zodiac
 };
 
-std::string darian_weekday_string(int year, int month, int sol, DarianWeekStyle style);
-std::string format_darian_full_date(int year, int month, int sol, DarianWeekStyle week_style, DarianMonthStyle month_style);
-std::string darian_date_string(int year, int month, int sol, DarianMonthStyle style);
+std::string format_darian_date_weekday(int year, int month, int sol, DarianWeekStyle style);
+std::string format_darian_date_full(int year, int month, int sol, DarianWeekStyle week_style, DarianMonthStyle month_style);
+std::string format_darian_date(int year, int month, int sol, DarianMonthStyle style);
 
 #endif // CAL_DARIAN_H
