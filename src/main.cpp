@@ -222,8 +222,15 @@ void drawMain() {
             canvas.drawJpgFile(SD, "/back_mandaean.jpg");
             break;
         case 17: // chinese     // 17
-            format_weekday = "Chinese Zodiac Calendar";
-            format_day_month_year = "Not yet implemented";
+            // format_chinese_zodiac_date_year(jd);      // Yi-Si (2025)
+            // chinese_lunar_month_name(jd);             // e.g. "Wuyue"
+            // chinese_day_stem_branch(jd);              // e.g. "Jia-Zi"
+            // format_chinese_zodiac_date_weekday(jd);   // e.g. "Snake"
+            format_weekday = format_chinese_zodiac_date_weekday(jd).c_str();
+            format_day = chinese_day_stem_branch(jd).c_str();
+            format_month = chinese_lunar_month_name(jd).c_str();
+            format_year = format_chinese_zodiac_date_year(jd).c_str();
+            format_day_month = format_day + " " + format_month;
             canvas.drawJpgFile(SD, "/back_chinese.jpg");
             break;
         case 18: // buddhist"   // 18
