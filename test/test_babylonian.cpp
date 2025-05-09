@@ -1,7 +1,7 @@
 // test/test_babylonian.cpp
 // test/test_babylonian.cpp
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include <doctest/doctest.h>
+#include <doctest.h>
 #include "cal_babylonian.h"
 
 TEST_CASE("Babylonian calendar date conversion") {
