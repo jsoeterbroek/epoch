@@ -41,6 +41,15 @@ int anglosaxon_jd_to_weekday(double jd) {
     return static_cast<int>(std::fmod(std::floor(jd + 1.5), 7.0));
 }
 
+std::string format_anglosaxon_date(double jd) {
+    auto date = jd_to_julian(jd);
+    int month = date[1];
+    const char* month_str = anglosaxon_month_name(month);
+    char buffer[20];
+    snprintf(buffer, sizeof(buffer), "%i %s %i", date[2], month_str, date[0]);
+    return std::string(buffer);
+}
+
 std::string format_anglosaxon_date_weekday(double jd) {
     auto date = jd_to_julian(jd);
     int weekday = calendar::iso_day_of_week(jd);  // ISO: Mon=1, Sun=7
@@ -52,11 +61,24 @@ std::string format_anglosaxon_date_weekday(double jd) {
     return std::string(buffer);
 }
 
-std::string format_anglosaxon_date_local(double jd) {
+std::string format_anglosaxon_date_day(double jd) {
     auto date = jd_to_julian(jd);
-    int month = date[1];
-    const char* month_str = anglosaxon_month_name(month);
     char buffer[20];
-    snprintf(buffer, sizeof(buffer), "%i %s %i", date[2], month_str, date[0]);
+    snprintf(buffer, sizeof(buffer), "%i", date[2]);
+    return std::string(buffer);
+}
+
+std::string format_anglosaxon_date_month(double jd) {
+    auto date = jd_to_julian(jd);
+    const char* month_str = anglosaxon_month_name(date[1]);
+    char buffer[20];
+    snprintf(buffer, sizeof(buffer), "%s", month_str);
+    return std::string(buffer);
+}
+
+std::string format_anglosaxon_date_year(double jd) {
+    auto date = jd_to_julian(jd);
+    char buffer[20];
+    snprintf(buffer, sizeof(buffer), "%i AD", date[0]);
     return std::string(buffer);
 }

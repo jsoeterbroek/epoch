@@ -111,41 +111,43 @@ std::string format_islamic_date(double jd) {
 std::string format_islamic_date_local(double jd, bool use_arabic = true) {
     auto islamic = jd_to_islamic(jd);
     int year = islamic[0], month = islamic[1], day = islamic[2];
-
     const char* month_name = use_arabic ? islamic_months_ar[month - 1] : islamic_months[month - 1];
-
     char buffer[80];
     snprintf(buffer, sizeof(buffer), "%s %d, %d AH", month_name, day, year);
     return std::string(buffer);
 }
 
 // TODO: bidi, proper display arabic
-std::string format_islamic_date_weekday(double jd, bool use_arabic = false) {
+std::string format_islamic_date_weekday_local(double jd, bool use_arabic = false) {
     auto islamic = jd_to_islamic(jd);
     int weekday = islamic_day_of_week(jd);
-
     const char* weekday_name = use_arabic ? islamic_weekday_names_ar[weekday - 1] : islamic_weekday_names[weekday - 1];
-
-    char buffer[80];
+    char buffer[50];
     snprintf(buffer, sizeof(buffer), "%s", weekday_name);
     return std::string(buffer);
 }
-std::string format_islamic_date_month(double jd, bool use_arabic = false) {
+
+std::string format_islamic_date_day_local(double jd, bool use_arabic = false) {
+    auto islamic = jd_to_islamic(jd);
+    int day = islamic[2];
+    char buffer[40];
+    snprintf(buffer, sizeof(buffer), "%d", day);
+    return std::string(buffer);
+}
+
+std::string format_islamic_date_month_local(double jd, bool use_arabic = false) {
     auto islamic = jd_to_islamic(jd);
     int month = islamic[1];
-
     const char* month_name = islamic_months[month - 1];
-
-    char buffer[80];
+    char buffer[40];
     snprintf(buffer, sizeof(buffer), "%s", month_name);
     return std::string(buffer);
 }
 
-std::string format_islamic_date_year(double jd, bool use_arabic = false) {
+std::string format_islamic_date_year_local(double jd, bool use_arabic = false) {
     auto islamic = jd_to_islamic(jd);
     int year = islamic[0];
-
-    char buffer[80];
+    char buffer[40];
     snprintf(buffer, sizeof(buffer), "%d AH", year);
     return std::string(buffer);
 }

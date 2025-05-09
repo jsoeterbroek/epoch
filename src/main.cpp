@@ -117,6 +117,7 @@ void drawMain() {
     String format_month;
     String format_date;
     String format_year;
+    String format_day_month = "none";
     String format_day_month_year = "none";
     switch (c) {
         case 0: // 0 - babylonian
@@ -130,7 +131,7 @@ void drawMain() {
             format_day = format_gregorian_date_day(jd).c_str();
             format_month = format_gregorian_date_month(jd).c_str();
             format_year = format_gregorian_date_year(jd).c_str();
-            format_day_month_year = format_day + " " + format_month + " " + format_year;
+            format_day_month = format_day + " " + format_month;
             canvas.drawJpgFile(SD, "/back_gregorian.jpg");
             break;
         case 2: // 2 - julian
@@ -138,7 +139,7 @@ void drawMain() {
             format_day = format_julian_date_day(jd).c_str();
             format_month = format_julian_date_month(jd).c_str();
             format_year = format_julian_date_year(jd).c_str();
-            format_day_month_year = format_day + " " + format_month + " " + format_year;
+            format_day_month = format_day + " " + format_month;
             canvas.drawJpgFile(SD, "/back_julian.jpg");
             break;
         case 3: // 3 - hebrew
@@ -147,10 +148,11 @@ void drawMain() {
             canvas.drawJpgFile(SD, "/back_hebrew.jpg");
             break;
         case 4: // 4 - islamic
-            format_weekday = format_islamic_date_weekday(jd, false).c_str();
-            format_month = format_islamic_date_month(jd, false).c_str();
-            format_year = format_islamic_date_year(jd, false).c_str();
-            //format_day_month_year = format_islamic_date_local(jd, false).c_str();
+            format_weekday = format_islamic_date_weekday_local(jd, false).c_str();
+            format_day = format_islamic_date_day_local(jd, false).c_str();
+            format_month = format_islamic_date_month_local(jd, false).c_str();
+            format_year = format_islamic_date_year_local(jd, false).c_str();
+            format_day_month = format_day + " " + format_month;
             canvas.drawJpgFile(SD, "/back_islamic.jpg");
             break;
         case 5: // 5 - egyptian 
@@ -190,12 +192,18 @@ void drawMain() {
             break;
         case 12: // 12 - Julian Anglosaxon
             format_weekday = format_anglosaxon_date_weekday(jd).c_str();
-            format_day_month_year = format_anglosaxon_date_local(jd).c_str();
+            format_day = format_anglosaxon_date_day(jd).c_str();
+            format_month = format_anglosaxon_date_month(jd).c_str();
+            format_year = format_anglosaxon_date_year(jd).c_str();
+            format_day_month = format_day + " " + format_month;
             canvas.drawJpgFile(SD, "/back_anglosaxon.jpg");
             break;
         case 13: // old high german // 13
             format_weekday = format_oldhighgerman_date_weekday(jd).c_str();
-            format_day_month_year = format_oldhighgerman_date_local(jd).c_str();
+            format_day = format_oldhighgerman_date_day(jd).c_str();
+            format_month = format_oldhighgerman_date_month(jd).c_str();
+            format_year = format_oldhighgerman_date_year(jd).c_str();
+            format_day_month = format_day + " " + format_month;
             canvas.drawJpgFile(SD, "/back_german.jpg");
             break;
         case 14: // armenian    // 14
@@ -255,14 +263,20 @@ void drawMain() {
 
     // main screen
     canvas.setFreeFont(&Orbitron_Bold_66);
-    canvas.drawString(timeStrbuff, 36, 80);
-    canvas.drawString(format_weekday, 36, 180);
+    canvas.drawString(timeStrbuff, 36, 50);
+    canvas.drawString(format_weekday, 36, 150);
     if (format_day_month_year != "none") {
-        canvas.drawString(format_day_month_year, 36, 280);
+        canvas.drawString(format_day_month_year, 36, 250);
     } else {
-        canvas.drawString(format_day, 36, 230);
-        canvas.drawString(format_month, 36, 280);
-        canvas.drawString(format_year, 36, 380);
+        if (format_day_month != "none") {
+            canvas.drawString(format_day_month, 36, 250);
+            canvas.drawString(format_year, 36, 350);
+        } else {
+            canvas.drawString(format_day, 36, 250);
+            canvas.drawString(format_month, 66, 250);
+            canvas.drawString(format_year, 36, 350);
+        }
+
     }
     
     // bottom screen
