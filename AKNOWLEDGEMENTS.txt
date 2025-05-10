@@ -11,3 +11,5 @@ Ideas, (parts of) code taken from:
 2. https://github.com/lmarzen/esp32-weather-epd
 
 3. https://github.com/VolosR/WeatherM5Paper
+
+4. Parker, R. A. (1950). The Calendars of Ancient Egypt. Studies in Ancient Oriental Civilization, No. 26. University of Chicago Press.

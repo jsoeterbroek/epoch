@@ -156,8 +156,11 @@ void drawMain() {
             canvas.drawJpgFile(SD, "/back_islamic.jpg");
             break;
         case 5: // 5 - egyptian 
-            format_weekday = "Old Egyptian Calendar";
-            format_day_month_year = "Not yet implemented";
+            format_weekday = format_egyptian_date_weekday(jd).c_str();
+            format_day = format_egyptian_date_day(jd).c_str();
+            format_month = format_egyptian_date_month(jd).c_str();
+            format_year = format_egyptian_date_year(jd).c_str();
+            //format_day_month = format_day + " " + format_month;
             canvas.drawJpgFile(SD, "/back_egyptian.jpg");
             break;
         case 6: // coptic       //  6
@@ -279,9 +282,9 @@ void drawMain() {
             canvas.drawString(format_day_month, 36, 250);
             canvas.drawString(format_year, 36, 350);
         } else {
-            canvas.drawString(format_day, 36, 250);
-            canvas.drawString(format_month, 66, 250);
-            canvas.drawString(format_year, 36, 350);
+            canvas.drawString(format_day, 36, 230);
+            canvas.drawString(format_month, 36, 310);
+            canvas.drawString(format_year, 36, 390);
         }
 
     }

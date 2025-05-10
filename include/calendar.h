@@ -8,6 +8,7 @@
 #include "cal_babylonian.h"
 #include "cal_gregorian.h"
 #include "cal_julian.h"
+#include "cal_egyptian.h"
 #include "cal_rev_french.h"
 #include "cal_islamic.h"
 #include "cal_hebrew.h"
@@ -33,7 +34,8 @@ std::array<int, 3> jd_to_iso(double jd);
 std::string format_iso_date(double jd);
 std::string format_iso_week(double jd);
 int iso_day_of_week(double jd);
-
+int calculate_lunar_day(double jd);
+ 
 enum Weekday {
     Sunday = 0,
     Monday,

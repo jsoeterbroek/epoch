@@ -150,4 +150,19 @@ std::string format_iso_date(double jd) {
     snprintf(buffer, sizeof(buffer), "ISO: %d-W%02d-%d (%s)", year, week, weekday, name);
     return std::string(buffer);
 }
+
+int calculate_lunar_day(double jd) {
+    constexpr double SYNODIC_MONTH = 29.53059;
+    constexpr double NEW_MOON_ANCHOR = 2451550.1; // 2000-01-06 new moon
+
+    // Days since anchor new moon
+    double days_since = jd - NEW_MOON_ANCHOR;
+
+    // Moon age in days
+    double moon_age = std::fmod(days_since, SYNODIC_MONTH);
+    if (moon_age < 0) moon_age += SYNODIC_MONTH;
+
+    // Lunar day is moon age rounded down + 1
+    return static_cast<int>(std::floor(moon_age)) + 1;
+}
 } // namespace calendar
