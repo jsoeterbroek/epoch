@@ -23,12 +23,16 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 
 ### Currently implemented (V0.0.1 release) calendar systems
 
+#### Babylonian
+![Babylonian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/babylonian.jpg)
 #### Gregorian
 ![Gregorian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/gregorian.jpg)
 #### Julian
 ![Julian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/julian.jpg)
 #### Islamic
 ![Islamic](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/islamic.jpg)
+#### Old Egyptian
+![Egyptian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/egyptian.jpg)
 #### Mayan Long
 ![Mayan](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/mayan.jpg)
 #### Revolutionary France
@@ -41,17 +45,15 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 ![germanic](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/germanic.jpg)
 #### Zoroastrian
 ![zoroastrian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/zoroastrian.jpg)
+#### Chinese (zodiac)
+![chinese](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/chin_zodiac.jpg)
 #### Mars (Darian)
 ![Mars](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/mars.jpg)
 
 ### To be implemented calendar systems
 
-#### Babylonian
-![Babylonian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/babylonian.jpg)
 #### Hebrew
 ![Hebrew](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/hebrew.jpg)
-#### Old Egyptian
-![Egyptian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/egyptian.jpg)
 #### Coptic
 ![Coptic](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/coptic.jpg)
 #### Persian
@@ -64,8 +66,6 @@ Support for different historical and cultural calendar systems: Babylonian, Greg
 ![georgian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/georgian.jpg)
 #### Mandaean
 ![mandaean](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/mandaean.jpg)
-#### Chinese (zodiac)
-![chinese](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/chin_zodiac.jpg)
 #### Buddhist
 ![buddhist](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/buddhist.jpg)
 #### Mongolian
