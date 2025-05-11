@@ -49,7 +49,6 @@ double julian_to_jd(int year, int month, int day) {
         year--;
         month += 12;
     }
-
     return std::floor(365.25 * (year + 4716)) +
            std::floor(30.6001 * (month + 1)) +
            day - 1524.5;
@@ -73,7 +72,6 @@ std::array<int, 3> jd_to_julian(double jd) {
     if (year < 1) {
         year--;
     }
-
     return {year, month, day};
 }
 
