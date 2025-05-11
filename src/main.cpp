@@ -54,12 +54,6 @@ uint32_t _timeoutBTN = millis();
 #define INTERVAL_MS 30000 // seconds
 uint32_t _timeoutMS = millis(); 
 
-
-char temStr[10];
-char humStr[10];
-float temp;
-float hum;
-
 // time
 rtc_time_t RTCtime;
 rtc_date_t RTCdate;
@@ -92,8 +86,8 @@ void drawMain() {
 
     M5.EPD.Clear(true);
     M5.SHT30.UpdateData();
-    temp = M5.SHT30.GetTemperature();
-    hum = M5.SHT30.GetRelHumidity();
+    //temp = M5.SHT30.GetTemperature();
+    //hum = M5.SHT30.GetRelHumidity();
     canvas.createCanvas(960, 540);
     canvas.fillCanvas(0);
     canvas.setFreeFont(&Orbitron_Bold_66);
