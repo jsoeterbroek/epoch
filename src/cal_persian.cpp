@@ -7,7 +7,6 @@
 
                 This program is in the public domain.
 */
-
 #include "calendar.h"
 #include <cmath>
 #include <array>
