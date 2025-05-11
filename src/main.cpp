@@ -112,11 +112,12 @@ void drawMain() {
     Serial.print("DEBUG: draw main screen with calendar: "); // FIXME, remove later
     Serial.println(calendar); // FIXME, remove later
 
-    String format_weekday;
-    String format_day;
-    String format_month;
-    String format_date;
-    String format_year;
+    String format_weekday = "none";
+    String format_weekday_name = "none";
+    String format_day  = "none";
+    String format_month = "none";
+    String format_date = "none";
+    String format_year = "none";
     String format_day_month = "none";
     String format_day_month_year = "none";
     switch (c) {
@@ -274,7 +275,9 @@ void drawMain() {
     // main screen
     canvas.setFreeFont(&Orbitron_Bold_66);
     canvas.drawString(timeStrbuff, 36, 50);
-    canvas.drawString(format_weekday, 36, 150);
+    if (format_weekday != "none") {
+        canvas.drawString(format_weekday, 36, 150);
+    }
     if (format_day_month_year != "none") {
         canvas.drawString(format_day_month_year, 36, 250);
     } else {

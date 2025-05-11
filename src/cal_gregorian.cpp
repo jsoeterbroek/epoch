@@ -19,15 +19,15 @@
 //
 const char* gregorian_weekday_name(int day) {
     static const char* names[] = {
-        WEEKDAY_MONDAY, WEEKDAY_TUESDAY, WEEKDAY_WEDNESDAY, WEEKDAY_THURSDAY, WEEKDAY_FRIDAY, WEEKDAY_SATURDAY, WEEKDAY_SUNDAY
+        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
     };
-    return names[day % 7 -1];
+    return names[day % 7];
 };
 
 const char* gregorian_month_name(int month) {
     static const char* names[] = {
-        MONTH_JAN, MONTH_FEB, MONTH_MAR, MONTH_APR, MONTH_MAY, MONTH_JUN,
-        MONTH_JUL, MONTH_AUG, MONTH_SEP, MONTH_OCT, MONTH_NOV, MONTH_DEC
+        "January", "February", "March", "April", "May", "June",
+        "July", "Augustus", "September", "October", "November", "December"
     };
     if (month < 1 || month > 12) return "Invalid";
     return names[month - 1];
@@ -39,7 +39,7 @@ bool leap_gregorian(int year) {
 }
 
 int gregorian_jd_to_weekday(double jd) {
-    return static_cast<int>(std::fmod(std::floor(jd + 1.5), 7.0));
+    return static_cast<int>(astro::mod(std::floor(jd + 1.5), 7.0));
 }
 
 double gregorian_to_jd(int year, int month, int day) {
@@ -92,7 +92,7 @@ std::string format_gregorian_date(double jd) {
 std::string format_gregorian_date_weekday(double jd) {
     auto date = jd_to_gregorian(jd);
     const char* weekday_name = gregorian_weekday_name(gregorian_jd_to_weekday(jd));
-    char buffer[20];
+    char buffer[30];
     snprintf(buffer, sizeof(buffer), "%s", weekday_name);
     return std::string(buffer);
 }
