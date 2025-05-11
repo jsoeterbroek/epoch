@@ -8,13 +8,6 @@
                 This program is in the public domain.
 */
 
-/*  You may notice that a variety of array variables logically local
-    to functions are declared globally here.  In JavaScript, construction
-    of an array variable from source code occurs as the code is
-    interpreted.  Making these variables pseudo-globals permits us
-    to avoid overhead constructing and disposing of them in each
-    call on the function in which whey are used.  */
-
 /*  https://en.wikipedia.org/wiki/Islamic_calendar */
 
 #include "calendar.h"
@@ -26,23 +19,15 @@
 //
 // Islamic
 //
-const char* islamic_months[12] = {
-    "al-Muḥarram", "Safar", "Rabi al-Awwal", "Rabi ath-Thani", "Jumada al-Ula", "Jumada ath-Thaniyah",
-    "Rajab", "Shaban", "Ramadan", "Shawwal", "Dhu al-Qidah", "Dhu al-Ḥijjah"
-};
+const char *islamic_months[12] = {"al-Muḥarram", "Safar",  "Rabi al-Awwal", "Rabi ath-Thani", "Jumada al-Ula", "Jumada ath-Thaniyah",
+                                  "Rajab",       "Shaban", "Ramadan",       "Shawwal",        "Dhu al-Qidah",  "Dhu al-Ḥijjah"};
 
-const char* islamic_months_ar[12] = {
-    "ٱلْمُحَرَّم", "صَفَر", "رَبِيع ٱلْأَوَّل", "رَبِيع ٱلثَّانِي", "جُمَادَىٰ ٱلْأُولَىٰ", "جُمَادَىٰ ٱلثَّانِيَة",
-    "رَجَب", "شَعْبَان", "رَمَضَان", "شَوَّال", "ذُو ٱلْقَعْدَة", "ذُو ٱلْحِجَّة"
-};
+const char *islamic_months_ar[12] = {"ٱلْمُحَرَّم", "صَفَر",   "رَبِيع ٱلْأَوَّل", "رَبِيع ٱلثَّانِي", "جُمَادَىٰ ٱلْأُولَىٰ", "جُمَادَىٰ ٱلثَّانِيَة",
+                                     "رَجَب",    "شَعْبَان", "رَمَضَان",      "شَوَّال",        "ذُو ٱلْقَعْدَة",    "ذُو ٱلْحِجَّة"};
 
-const char* islamic_weekday_names[7] = {
-    "al-Ahad", "al-Ithnayn", "ath-Thulatha", "al-Arbia", "al-Khamis", "al-Jumah", "as-Sabt"
-};
+const char *islamic_weekday_names[7] = {"al-Ahad", "al-Ithnayn", "ath-Thulatha", "al-Arbia", "al-Khamis", "al-Jumah", "as-Sabt"};
 
-const char* islamic_weekday_names_ar[7] = {
-    "ٱلْأَحَد", "الاِثْنَيْن", "ٱلثُّلَاثَاء", "ٱلْأَرْبِعَاء", "ٱلْخَمِيس", "ٱلْجُمْعَة", "ٱلسَّبْت"
-};
+const char *islamic_weekday_names_ar[7] = {"ٱلْأَحَد", "الاِثْنَيْن", "ٱلثُّلَاثَاء", "ٱلْأَرْبِعَاء", "ٱلْخَمِيس", "ٱلْجُمْعَة", "ٱلسَّبْت"};
 
 /*
 Traditionally, the Islamic day begins at sunset and ends at the next sunset. Each Islamic 
@@ -69,85 +54,80 @@ No. 	Name 	    Arabic 	  English equivalent
 7 	as-Sabt     	ٱلسَّبْت 	  Friday night and Saturday daytime 
 */
 int islamic_day_of_week(double jd) {
-    // Compute weekday: 0 = Sunday, ..., 6 = Saturday
-    int iso_day = static_cast<int>(std::floor(jd + 1.5)) % 7;
-    if (iso_day < 0) iso_day += 7;
-
-    // Convert ISO (0 = Sunday) to Islamic (1 = Sunday ... 7 = Saturday)
-    return iso_day + 1;
+  // Compute weekday: 0 = Sunday, ..., 6 = Saturday
+  int iso_day = static_cast<int>(std::floor(jd + 1.5)) % 7;
+  if (iso_day < 0) {
+    iso_day += 7;
+  }
+  // Convert ISO (0 = Sunday) to Islamic (1 = Sunday ... 7 = Saturday)
+  return iso_day + 1;
 }
 
 std::array<int, 3> jd_to_islamic(double jd) {
-    jd = std::floor(jd) + 0.5;
-    int year = static_cast<int>(
-        std::floor((30 * (jd - ISLAMIC_EPOCH) + 10646) / 10631.0));
-    int month = static_cast<int>(
-        std::min(12.0, std::ceil((jd - islamic_to_jd(year, 1, 1) + 1) / 29.5)));
-    int day = static_cast<int>(jd - islamic_to_jd(year, month, 1) + 1);
+  jd = std::floor(jd) + 0.5;
+  int year = static_cast<int>(std::floor((30 * (jd - ISLAMIC_EPOCH) + 10646) / 10631.0));
+  int month = static_cast<int>(std::min(12.0, std::ceil((jd - islamic_to_jd(year, 1, 1) + 1) / 29.5)));
+  int day = static_cast<int>(jd - islamic_to_jd(year, month, 1) + 1);
 
-    return {year, month, day};
+  return {year, month, day};
 }
 
 double islamic_to_jd(int year, int month, int day) {
-    return (day +
-           std::ceil(29.5 * (month - 1)) +
-           (year - 1) * 354 +
-           std::floor((3 + (11 * year)) / 30.0) +
-           ISLAMIC_EPOCH - 1);
+  return (day + std::ceil(29.5 * (month - 1)) + (year - 1) * 354 + std::floor((3 + (11 * year)) / 30.0) + ISLAMIC_EPOCH - 1);
 }
 
 std::string format_islamic_date(double jd) {
-    auto islamic = jd_to_islamic(jd);
-    int year = islamic[0], month = islamic[1], day = islamic[2];
-    
-    const char* month_name = islamic_months[month - 1];
+  auto islamic = jd_to_islamic(jd);
+  int year = islamic[0], month = islamic[1], day = islamic[2];
 
-    char buffer[40];
-    snprintf(buffer, sizeof(buffer), "%s %d, %d AH", month_name, day, year);
-    return std::string(buffer);
+  const char *month_name = islamic_months[month - 1];
+
+  char buffer[40];
+  snprintf(buffer, sizeof(buffer), "%s %d, %d AH", month_name, day, year);
+  return std::string(buffer);
 }
 
 // TODO: bidi, proper display arabic
 std::string format_islamic_date_local(double jd, bool use_arabic = true) {
-    auto islamic = jd_to_islamic(jd);
-    int year = islamic[0], month = islamic[1], day = islamic[2];
-    const char* month_name = use_arabic ? islamic_months_ar[month - 1] : islamic_months[month - 1];
-    char buffer[80];
-    snprintf(buffer, sizeof(buffer), "%s %d, %d AH", month_name, day, year);
-    return std::string(buffer);
+  auto islamic = jd_to_islamic(jd);
+  int year = islamic[0], month = islamic[1], day = islamic[2];
+  const char *month_name = use_arabic ? islamic_months_ar[month - 1] : islamic_months[month - 1];
+  char buffer[80];
+  snprintf(buffer, sizeof(buffer), "%s %d, %d AH", month_name, day, year);
+  return std::string(buffer);
 }
 
 // TODO: bidi, proper display arabic
 std::string format_islamic_date_weekday_local(double jd, bool use_arabic = false) {
-    auto islamic = jd_to_islamic(jd);
-    int weekday = islamic_day_of_week(jd);
-    const char* weekday_name = use_arabic ? islamic_weekday_names_ar[weekday - 1] : islamic_weekday_names[weekday - 1];
-    char buffer[50];
-    snprintf(buffer, sizeof(buffer), "%s", weekday_name);
-    return std::string(buffer);
+  auto islamic = jd_to_islamic(jd);
+  int weekday = islamic_day_of_week(jd);
+  const char *weekday_name = use_arabic ? islamic_weekday_names_ar[weekday - 1] : islamic_weekday_names[weekday - 1];
+  char buffer[50];
+  snprintf(buffer, sizeof(buffer), "%s", weekday_name);
+  return std::string(buffer);
 }
 
 std::string format_islamic_date_day_local(double jd, bool use_arabic = false) {
-    auto islamic = jd_to_islamic(jd);
-    int day = islamic[2];
-    char buffer[40];
-    snprintf(buffer, sizeof(buffer), "%d", day);
-    return std::string(buffer);
+  auto islamic = jd_to_islamic(jd);
+  int day = islamic[2];
+  char buffer[40];
+  snprintf(buffer, sizeof(buffer), "%d", day);
+  return std::string(buffer);
 }
 
 std::string format_islamic_date_month_local(double jd, bool use_arabic = false) {
-    auto islamic = jd_to_islamic(jd);
-    int month = islamic[1];
-    const char* month_name = islamic_months[month - 1];
-    char buffer[40];
-    snprintf(buffer, sizeof(buffer), "%s", month_name);
-    return std::string(buffer);
+  auto islamic = jd_to_islamic(jd);
+  int month = islamic[1];
+  const char *month_name = islamic_months[month - 1];
+  char buffer[40];
+  snprintf(buffer, sizeof(buffer), "%s", month_name);
+  return std::string(buffer);
 }
 
 std::string format_islamic_date_year_local(double jd, bool use_arabic = false) {
-    auto islamic = jd_to_islamic(jd);
-    int year = islamic[0];
-    char buffer[40];
-    snprintf(buffer, sizeof(buffer), "%d AH", year);
-    return std::string(buffer);
+  auto islamic = jd_to_islamic(jd);
+  int year = islamic[0];
+  char buffer[40];
+  snprintf(buffer, sizeof(buffer), "%d AH", year);
+  return std::string(buffer);
 }

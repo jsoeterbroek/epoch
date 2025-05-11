@@ -21,30 +21,28 @@
 #include "cal_chinese_zodiac.h"
 #include "cal_darian.h"
 
-
 namespace calendar {
 
 // Constants
 
-
 // Function declarations
-const char* calendar_name(int index);
+const char *calendar_name(int index);
 std::array<int, 3> jd_to_iso_week(double jd);
 std::array<int, 3> jd_to_iso(double jd);
 std::string format_iso_date(double jd);
 std::string format_iso_week(double jd);
 int iso_day_of_week(double jd);
 int calculate_lunar_day(double jd);
- 
+
 enum Weekday {
-    Sunday = 0,
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday
+  Sunday = 0,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday
 };
 
-} // namespace calendar
-#endif // CALENDAR_H
+}  // namespace calendar
+#endif  // CALENDAR_H
