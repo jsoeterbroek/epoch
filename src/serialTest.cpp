@@ -59,13 +59,10 @@ void serialTest(void) {
 
   // Mayan long
   Serial.println(format_mayan_date_long(jd).c_str());
+  Serial.println(format_mayan_date_day(jd).c_str());
+  Serial.println(format_mayan_date_month(jd).c_str());
   delay(_delay);
   Serial.println("-----------------------------------");
-
-  // Mayan local
-  //Serial.println(format_mayan_date_local(jd).c_str());
-  //delay(_delay);
-  //Serial.println("-----------------------------------");
 
   // Saka
   Serial.println(" - (Should be: 12 Vaisakha 1947)");

@@ -163,8 +163,9 @@ void drawMain() {
       canvas.drawJpgFile(SD, "/back_coptic.jpg");
       break;
     case 7:  // mayan        //  7
-      format_weekday = format_mayan_date_long(jd).c_str();
-      //format_day_month_year = format_mayan_date_local(jd).c_str();  // FIXME, crashes
+      format_day = format_mayan_date_day(jd).c_str();
+      format_month = format_mayan_date_month(jd).c_str();
+      format_year = format_mayan_date_long(jd).c_str();
       canvas.drawJpgFile(SD, "/back_mayan.jpg");
       break;
     case 8:  // persian      //  8
@@ -445,7 +446,6 @@ void loop() {
   if (millis() - _timeoutMS > INTERVAL_MS) {
     _timeoutMS = millis();
     drawMain();
+    //serialTest();
   }
-
-  //serialTest();
 }

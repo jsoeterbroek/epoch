@@ -7,7 +7,6 @@
 
                 This program is in the public domain.
 */
-
 #include "calendar.h"
 #include "cal_gregorian.h"
 #include <cmath>
@@ -65,13 +64,17 @@ std::string format_mayan_date_long(double jd) {
   snprintf(buffer, sizeof(buffer), "%d.%d.%d.%d.%d", date[0], date[1], date[2], date[3], date[4]);
   return std::string(buffer);
 }
-std::string format_mayan_date_local(double jd) {
-  auto lc = jd_to_mayan(jd);
-  auto tz = jd_to_tzolkin(jd);
+
+std::string format_mayan_date_month(double jd) {
   auto haab = jd_to_haab(jd);
+  char buffer[60];
+  snprintf(buffer, sizeof(buffer), "%d %s", haab.first, haab.second);
+  return std::string(buffer);
+}
 
-  char buffer[100];
-  snprintf(buffer, sizeof(buffer), "Tzolk'in: %d %s\nHaab': %d %s", lc[0], lc[1], lc[2], lc[3], lc[4], tz.first, tz.second, haab.first, haab.second);
-
+std::string format_mayan_date_day(double jd) {
+  auto tz = jd_to_tzolkin(jd);
+  char buffer[60];
+  snprintf(buffer, sizeof(buffer), "%d %s", tz.first, tz.second);
   return std::string(buffer);
 }
