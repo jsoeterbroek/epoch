@@ -247,7 +247,15 @@ void drawMain() {
       format_day_month_year = format_zoroastrian_date_2(jd, ZoroastrianCalendarVariant::Fasli);
       canvas.drawJpgFile(SD, "/back_zoroastrian.jpg");
       break;
-    case 22:  // darian  // 22
+    case 22:  // hindu  // 22
+      format_weekday = format_hindu_date_weekday(jd).c_str();
+      format_day = format_hindu_date_day(jd).c_str();
+      format_month = format_hindu_date_month(jd).c_str();
+      format_year = format_hindu_date_year(jd).c_str();
+      //format_day_month = format_day + " " + format_month;
+      canvas.drawJpgFile(SD, "/back_hindu.jpg");
+      break;
+    case 23:  // darian  // 23
       int darian_year, darian_month, sol;
       jd_to_darian(jd, darian_year, darian_month, sol);
       format_weekday = format_darian_date_weekday(darian_year, darian_month, sol, DarianWeekStyle::Latin).c_str();
@@ -415,7 +423,7 @@ void loop() {
       int c = get_pspref_calendar();
       c = c - 1;
       if (c < 0) {
-        c = 22;
+        c = 23;
       }
       set_pspref_calendar(c);
       c = get_pspref_calendar();
@@ -431,7 +439,7 @@ void loop() {
     if (M5.BtnL.wasPressed()) {
       int c = get_pspref_calendar();
       c = c + 1;
-      if (c > 22) {
+      if (c > 23) {
         c = 0;
       }
       set_pspref_calendar(c);

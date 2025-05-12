@@ -19,6 +19,7 @@
 #include "cal_anglosaxon.h"
 #include "cal_old_high_german.h"
 #include "cal_chinese_zodiac.h"
+#include "cal_hindu.h"
 #include "cal_darian.h"
 
 namespace calendar {

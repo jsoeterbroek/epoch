@@ -7,7 +7,6 @@
 
                 This program is in the public domain.
 */
-
 #include "calendar.h"
 #include "cal_gregorian.h"
 #include <cmath>
@@ -46,9 +45,10 @@ const char *calendar_name(int index) {
     "Mongolian",        // 19
     "Ethiopian",        // 20
     "Zoroastrian",      // 21
-    "Mars"              // 22
+    "Hindu",            // 22
+    "Mars"              // 23
   };
-  return calendar_names[index % 23];
+  return calendar_names[index % 24];
 };
 
 const char *day_of_week_name(int weekday) {
