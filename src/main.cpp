@@ -137,8 +137,11 @@ void drawMain() {
       canvas.drawJpgFile(SD, "/back_julian.jpg");
       break;
     case 3:  // 3 - hebrew
-      format_weekday = "Hebrew Calendar";
-      format_day_month_year = "Not yet implemented";
+      format_weekday = format_hebrew_date_weekday(jd).c_str();
+      format_day = format_hebrew_date_day(jd).c_str();
+      format_month = format_hebrew_date_month(jd).c_str();
+      format_year = format_hebrew_date_year(jd).c_str();
+      format_day_month = format_day + " " + format_month;
       canvas.drawJpgFile(SD, "/back_hebrew.jpg");
       break;
     case 4:  // 4 - islamic
