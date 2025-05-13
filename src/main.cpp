@@ -48,6 +48,8 @@ int point[2][2];
 //
 // set INTERVAL to 0 if you want it to fire
 // immediately the first time
+#define INTERVAL_SETUP 30000
+uint32_t _timeoutSETUP = millis();
 #define INTERVAL_BTN 100  // 1/10 of a second
 uint32_t _timeoutBTN = millis();
 #define INTERVAL_MS 30000  // seconds
@@ -56,6 +58,43 @@ uint32_t _timeoutMS = millis();
 // time
 rtc_time_t RTCtime;
 rtc_date_t RTCdate;
+
+void drawPrefCal(int _cursor) {
+
+  M5.EPD.Clear(true);
+  canvas.createCanvas(960, 540);
+  canvas.fillCanvas(0);
+  canvas.setFreeFont(&Orbitron_Medium_25);
+
+  // Rectangle/grid layout parameters
+  const int cols = 3;
+  const int rows = 8;
+  const int rect_w = 296;
+  const int rect_h = 56;
+  const int x0 = 30;
+  const int y0 = 30;
+  const int xgap = 0;
+  const int ygap = 0;
+
+  for (int i = 0; i < 24; ++i) {
+    int col = i / rows;
+    int row = i % rows;
+    int x = x0 + col * (rect_w + xgap);
+    int y = y0 + row * (rect_h + ygap);
+
+    if (_cursor == i) {
+      canvas.setTextColor(TFT_LIGHTGREY);
+      canvas.fillRect(x, y, rect_w, rect_h, TFT_DARKGREY);
+    } else {
+      canvas.setTextColor(TFT_DARKGREY);
+      canvas.fillRect(x, y, rect_w, rect_h, TFT_LIGHTGREY);
+    }
+    canvas.drawString(calendar::calendar_name(i), x + 14, y + 14);
+  }
+
+  // push canvas
+  canvas.pushCanvas(0, 0, UPDATE_MODE_DU);
+}
 
 void drawSplash() {
 
@@ -342,6 +381,7 @@ void configModeCallback(WiFiManager *myWiFiManager) {
 
 void setup() {
 
+  int drawMode = 0;
   // M5EPD::begin(touchEnable, SDEnable, SerialEnable, BatteryADCEnable, I2CEnable)
   M5.begin(false, true, true, true, false);
   M5.EPD.SetRotation(rotation);
@@ -352,9 +392,50 @@ void setup() {
   // Set Calendar to Preferences
   // set gregorian (1) as default
   // set_pspref_calendar(0);
-  set_pspref_calendar(1);
+  //set_pspref_calendar(1);
 
   drawSplash();
+
+  while (drawMode == 0) {
+    if (drawMode == 0) {
+      int cursor = get_pspref_calendar();
+      if (millis() - _timeoutSETUP > INTERVAL_SETUP) {
+        _timeoutSETUP = millis();
+        drawPrefCal(cursor);
+      }
+
+      // buttons
+      M5.update();  // Need to add M5.update() to read the state of the button
+      if (M5.BtnR.wasPressed()) {
+        cursor = get_pspref_calendar();
+        cursor = cursor - 1;
+        if (cursor < 0) {
+          cursor = 23;
+        }
+        set_pspref_calendar(cursor);
+        drawPrefCal(cursor);
+        Serial.print("DEBUG: cursor: ");
+        Serial.println(cursor);
+      }
+      if (M5.BtnP.wasPressed()) {
+        Serial.println("Btn P Pressed, drawMode = 1");
+        drawMode = 1;
+      }
+      if (M5.BtnL.wasPressed()) {
+        cursor = get_pspref_calendar();
+        cursor = cursor + 1;
+        if (cursor > 23) {
+          cursor = 0;
+        }
+        set_pspref_calendar(cursor);
+        drawPrefCal(cursor);
+        Serial.print("DEBUG: cursor: ");
+        Serial.println(cursor);
+      }
+    }
+  }
+
+  M5.EPD.Clear(true);
   canvas.createCanvas(960, 540);
   canvas.fillCanvas(0);
   Serial.begin(115200);
@@ -425,13 +506,13 @@ void setup() {
   canvas.useFreetypeFont(false);
   canvas.setFreeFont(&Orbitron_Medium_25);
   canvas.drawJpgFile(SD, "/back_blank.jpg");
-  canvas.pushCanvas(0, 0, UPDATE_MODE_GC16);
 
   //WIFI_OFF
   canvas.drawString("Turn WiFi off", 50, 210);
   WiFi.mode(WIFI_OFF);
   delay(1);
   canvas.drawString("Setup finished.", 50, 250);
+  canvas.pushCanvas(0, 0, UPDATE_MODE_GC16);
 }
 
 void loop() {
