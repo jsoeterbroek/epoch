@@ -8,15 +8,7 @@
 // Anglosaxon (Julian)
 //
 const char *anglosaxon_weekday_name(int day) {
-  static const char *names[] = {
-    "Monandag",      // Monandæg → Monandaeg
-    "Tiwesdag",      // Tiwesdæg → Tiwesdaeg
-    "Wodnesdag",     // Wodnesdæg → Wodnesdaeg
-    "Dunresdag",     // Ðunresdæg → Dunresdaeg
-    "Frigedag",      // Frigedæg → Frigedaeg
-    "Saeternesdag",  // Sæternesdæg → Saeternesdaeg
-    "Sunnandag"      // Sunnandæg → Sunnandaeg
-  };
+  static const char *names[] = {"Monandag", "Tiwesdag", "Wodnesdag", "Dunresdag", "Frigedag", "Saeternesdag", "Sunnandag"};
   return names[(day + 6) % 7];  // Wrap 1 (Mon) to 7 (Sun) → 0–6
 }
 
@@ -68,6 +60,14 @@ std::string format_anglosaxon_date_month(double jd) {
   const char *month_str = anglosaxon_month_name(date[1]);
   char buffer[20];
   snprintf(buffer, sizeof(buffer), "%s", month_str);
+  return std::string(buffer);
+}
+
+std::string format_anglosaxon_date_month_description(double jd) {
+  auto date = jd_to_julian(jd);
+  const char *month_desc_str = anglosaxon_month_desc(date[1]);
+  char buffer[40];
+  snprintf(buffer, sizeof(buffer), "%s", month_desc_str);
   return std::string(buffer);
 }
 

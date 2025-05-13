@@ -15,6 +15,7 @@
 #include "cal_persian.h"
 #include "cal_mayan.h"
 #include "cal_saka.h"
+#include "cal_icelandic.h"
 #include "cal_zoroastrian.h"
 #include "cal_anglosaxon.h"
 #include "cal_old_high_german.h"

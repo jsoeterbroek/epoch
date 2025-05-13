@@ -109,6 +109,7 @@ void drawMain() {
   String format_weekday_name = "none";
   String format_day = "none";
   String format_month = "none";
+  String format_month_description = "none";
   String format_date = "none";
   String format_year = "none";
   String format_day_month = "none";
@@ -187,15 +188,20 @@ void drawMain() {
       canvas.drawJpgFile(SD, "/back_saka.jpg");
       break;
     case 11:  // icelandic   // 11
-      format_weekday = "Icelandic Calendar";
-      format_day_month_year = "Not yet implemented";
+      format_weekday = format_icelandic_date_weekday(jd).c_str();
+      format_day = format_icelandic_date_day(jd).c_str();
+      format_month = format_icelandic_date_month(jd).c_str();
+      format_month_description = format_icelandic_date_month_description(jd).c_str();
+      //format_year = format_icelandic_date_year(jd).c_str();
+      format_day_month = format_day + " " + format_month;
       canvas.drawJpgFile(SD, "/back_icelandic.jpg");
       break;
     case 12:  // 12 - Julian Anglosaxon
       format_weekday = format_anglosaxon_date_weekday(jd).c_str();
       format_day = format_anglosaxon_date_day(jd).c_str();
       format_month = format_anglosaxon_date_month(jd).c_str();
-      format_year = format_anglosaxon_date_year(jd).c_str();
+      format_month_description = format_anglosaxon_date_month_description(jd).c_str();
+      //format_year = format_anglosaxon_date_year(jd).c_str();
       format_day_month = format_day + " " + format_month;
       canvas.drawJpgFile(SD, "/back_anglosaxon.jpg");
       break;
@@ -203,7 +209,8 @@ void drawMain() {
       format_weekday = format_oldhighgerman_date_weekday(jd).c_str();
       format_day = format_oldhighgerman_date_day(jd).c_str();
       format_month = format_oldhighgerman_date_month(jd).c_str();
-      format_year = format_oldhighgerman_date_year(jd).c_str();
+      format_month_description = format_oldhighgerman_date_month_description(jd).c_str();
+      //format_year = format_oldhighgerman_date_year(jd).c_str();
       format_day_month = format_day + " " + format_month;
       canvas.drawJpgFile(SD, "/back_german.jpg");
       break;
@@ -280,15 +287,27 @@ void drawMain() {
     canvas.drawString(format_weekday, 36, 150);
   }
   if (format_day_month_year != "none") {
-    canvas.drawString(format_day_month_year, 36, 250);
+    canvas.drawString(format_day_month_year, 36, 230);
   } else {
     if (format_day_month != "none") {
-      canvas.drawString(format_day_month, 36, 250);
-      canvas.drawString(format_year, 36, 350);
+      canvas.drawString(format_day_month, 36, 230);
+      if (format_year != "none") {
+        canvas.drawString(format_year, 36, 310);
+      }
+      if (format_month_description != "none") {
+        canvas.setFreeFont(&Orbitron_Medium_25);
+        canvas.drawString(format_month_description, 36, 400);
+      }
     } else {
       canvas.drawString(format_day, 36, 230);
       canvas.drawString(format_month, 36, 310);
-      canvas.drawString(format_year, 36, 390);
+      if (format_year != "none") {
+        canvas.drawString(format_year, 36, 390);
+      }
+      if (format_month_description != "none") {
+        canvas.setFreeFont(&Orbitron_Medium_25);
+        canvas.drawString(format_month_description, 36, 400);
+      }
     }
   }
 

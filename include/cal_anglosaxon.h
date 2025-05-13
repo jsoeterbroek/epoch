@@ -12,6 +12,7 @@ std::string format_anglosaxon_date(double jd);
 std::string format_anglosaxon_date_weekday(double jd);
 std::string format_anglosaxon_date_day(double jd);
 std::string format_anglosaxon_date_month(double jd);
+std::string format_anglosaxon_date_month_description(double jd);
 std::string format_anglosaxon_date_year(double jd);
 
 #endif

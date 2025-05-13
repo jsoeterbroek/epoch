@@ -71,6 +71,14 @@ std::string format_oldhighgerman_date_month(double jd) {
   return std::string(buffer);
 }
 
+std::string format_oldhighgerman_date_month_description(double jd) {
+  auto date = jd_to_julian(jd);
+  const char *month_desc_str = oldhighgerman_month_desc(date[1]);
+  char buffer[40];
+  snprintf(buffer, sizeof(buffer), "%s", month_desc_str);
+  return std::string(buffer);
+}
+
 std::string format_oldhighgerman_date_year(double jd) {
   auto date = jd_to_julian(jd);
   char buffer[20];
