@@ -1,3 +1,12 @@
+/* converted from */
+/*
+       JavaScript functions for the Fourmilab Calendar Converter
+
+                  by John Walker  --  September, MIM
+              http://www.fourmilab.ch/documents/calendar/
+
+                This program is in the public domain. 
+*/
 #include "calendar.h"
 #include <cmath>
 #include <array>

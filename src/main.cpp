@@ -48,11 +48,11 @@ int point[2][2];
 //
 // set INTERVAL to 0 if you want it to fire
 // immediately the first time
-#define INTERVAL_SETUP 30000
+#define INTERVAL_SETUP 40000
 uint32_t _timeoutSETUP = millis();
 #define INTERVAL_BTN 100  // 1/10 of a second
 uint32_t _timeoutBTN = millis();
-#define INTERVAL_MS 30000  // seconds
+#define INTERVAL_MS 60000  // seconds
 uint32_t _timeoutMS = millis();
 
 // time

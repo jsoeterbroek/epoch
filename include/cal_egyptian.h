@@ -3,6 +3,8 @@
 
 #include <array>
 #include <string>
+#include <astro.h>
+#include <calendar.h>
 
 // Core conversion
 std::array<int, 3> jd_to_egyptian(double jd);
@@ -11,7 +13,7 @@ std::array<int, 3> jd_to_egyptian(double jd);
 std::string format_egyptian_date_day(double jd);
 std::string format_egyptian_date_month(double jd);
 std::string format_egyptian_date_year(double jd);
-std::string format_egyptian_date_weekday(double jd); // optional/custom
-std::string egyptian_day_fortune(double jd);         // lucky/unlucky
+std::string format_egyptian_date_weekday(double jd);  // optional/custom
+std::string egyptian_day_fortune(double jd);          // lucky/unlucky
 
 #endif
