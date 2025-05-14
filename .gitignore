@@ -22,3 +22,6 @@ TestResults.xml
 
 .pio/
 epoch.code-workspace
+build/
+test/Testing/
+
