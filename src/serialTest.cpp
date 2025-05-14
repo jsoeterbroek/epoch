@@ -53,7 +53,7 @@ void serialTest(void) {
   Serial.println("-----------------------------------");
 
   // French Rev
-  Serial.println(format_french_date(jd).c_str());
+  Serial.println(format_french_date_month(jd).c_str());
   delay(_delay);
   Serial.println("-----------------------------------");
 

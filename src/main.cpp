@@ -206,7 +206,10 @@ void drawMain() {
       break;
     case 9:  // french_rev   //  9
       format_weekday = format_french_date_weekday(jd).c_str();
-      format_day_month_year = format_french_date_local(jd).c_str();
+      format_day = format_french_date_day(jd).c_str();
+      format_month = format_french_date_month(jd).c_str();
+      format_year = format_french_date_year(jd).c_str();
+      format_day_month = format_day + " " + format_month;
       break;
     case 10:  // saka        // 10
       format_weekday = format_saka_date_weekday(jd, false).c_str();
@@ -293,8 +296,17 @@ void drawMain() {
   }
 
   // main screen
+  // time
+  canvas.drawRoundRect(28, 30, 220, 100, 20, TFT_DARKGREY);
+  canvas.fillRoundRect(30, 32, 216, 96, 20, TFT_BLACK);  // FIXME, invert colors
+  canvas.setTextDatum(0);
   canvas.setFreeFont(&Orbitron_Bold_66);
-  canvas.drawString(timeStrbuff, 36, 50);
+  canvas.setTextColor(TFT_DARKGREY);
+  canvas.drawString(timeStrbuff, 36, 40);
+
+  // weekday, day, month, year
+  canvas.drawRoundRect(28, 140, 520, 340, 20, TFT_DARKGREY);
+  canvas.fillRoundRect(30, 142, 516, 336, 20, TFT_BLACK);  // FIXME, invert colors
   if (format_weekday != "none") {
     canvas.drawString(format_weekday, 36, 150);
   }

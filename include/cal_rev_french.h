@@ -5,14 +5,13 @@
 #include <string>
 #include <astro.h>
 
-
 // Constants
 constexpr double FRENCH_REV_EPOCH = 2375839.5;  // 22 September 1792 (Gregorian)
 
 // Function declarations
-std::string format_french_date(double jd);
-std::string format_french_date_local(double jd);
 std::string format_french_date_weekday(double jd);
+std::string format_french_date_day(double jd);
+std::string format_french_date_month(double jd);
+std::string format_french_date_year(double jd);
 
 #endif
-

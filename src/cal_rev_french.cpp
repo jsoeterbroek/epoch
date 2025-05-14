@@ -84,22 +84,21 @@ std::string format_french_date_weekday(double jd) {
   return std::string(weekday_str);
 }
 
-std::string format_french_date(double jd) {
+std::string format_french_date_day(double jd) {
   auto date = jd_to_french(jd);
-  int year = date[0];
-  int month = date[1];
   int day = date[2];
-  const char *month_str = french_month_name(month);
-  return std::to_string(day) + " " + month_str + ", AN " + std::to_string(year);
+  return std::to_string(day);
 }
 
-std::string format_french_date_local(double jd) {
+std::string format_french_date_month(double jd) {
+  auto date = jd_to_french(jd);
+  int month = date[1];
+  const char *month_str = french_month_name(month);
+  return month_str;
+}
+
+std::string format_french_date_year(double jd) {
   auto date = jd_to_french(jd);
   int year = date[0];
-  int month = date[1];
-  int day = date[2];
-
-  const char *month_str = french_month_name(month);
-
-  return std::to_string(day) + " " + month_str + ", AN " + std::to_string(year);
+  return std::to_string(year) + " AN";
 }
