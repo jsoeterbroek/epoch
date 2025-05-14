@@ -1,38 +1,33 @@
 // test/test_babylonian.cpp
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include <doctest.h>
+#include "unity.h"
 #include "cal_babylonian.h"
 
-TEST_CASE("Babylonian calendar date conversion") {
-  // JD for April 1, 2024
-  double jd = 2460402.5;
-
+void test_babylonian_calendar_date_conversion(void) {
+  double jd = 2460402.5;  // April 1, 2024
   auto date = jd_to_babylonian(jd);
-  CHECK(date[0] >= 2334);  // Babylonian year
-  CHECK(date[1] >= 1);
-  CHECK(date[2] >= 1);
+  TEST_ASSERT_TRUE(date[0] >= 2334);
+  TEST_ASSERT_TRUE(date[1] >= 1);
+  TEST_ASSERT_TRUE(date[2] >= 1);
 
-  std::string date_str = babylonian_date_string(jd);
-  std::string weekday_str = babylonian_weekday_string(jd);
+  std::string date_str = format_babylonian_date(jd);
+  std::string weekday_str = format_babylonian_date_weekday(jd);
 
-  CHECK(date_str.find("Nisannu") != std::string::npos);
-  CHECK(!weekday_str.empty());
+  TEST_ASSERT_NOT_EQUAL(-1, (int)date_str.find("Nisannu"));
+  TEST_ASSERT_FALSE(weekday_str.empty());
 }
 
-TEST_CASE("Babylonian intercalary year with Addaru II") {
-  // JD ~ March 1, 2027 — year 2338 SE (Metonic year 19, should have Addaru II)
-  double jd = 2461450.5;
+void test_babylonian_intercalary_year_addaru_ii(void) {
+  double jd = 2461450.5;  // ~ March 1, 2027
   auto date = jd_to_babylonian(jd);
 
-  std::string month_name = babylonian_date_string(jd);
-  CHECK((month_name.find("Addaru II") != std::string::npos || month_name.find("Addaru") != std::string::npos));
+  std::string month_name = format_babylonian_date_month(jd);
+  TEST_ASSERT_TRUE(month_name.find("Addaru II") != std::string::npos || month_name.find("Addaru") != std::string::npos);
 }
 
-TEST_CASE("Babylonian intercalary year with Ululu II") {
-  // JD ~ September 10, 2026 — year 2337 SE (Metonic year 17, should have Ululu II)
-  double jd = 2461278.5;
+void test_babylonian_intercalary_year_ululu_ii(void) {
+  double jd = 2461278.5;  // ~ September 10, 2026
   auto date = jd_to_babylonian(jd);
 
-  std::string month_name = babylonian_date_string(jd);
-  CHECK((month_name.find("Ululu II") != std::string::npos || month_name.find("Ululu") != std::string::npos));
+  std::string month_name = format_babylonian_date_month(jd);
+  TEST_ASSERT_TRUE(month_name.find("Ululu II") != std::string::npos || month_name.find("Ululu") != std::string::npos);
 }

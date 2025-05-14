@@ -109,6 +109,15 @@ std::string format_babylonian_date_weekday(double jd) {
   return BABYLONIAN_WEEKDAYS[weekday];
 }
 
+std::string format_babylonian_date_month(double jd) {
+  auto date = jd_to_babylonian(jd);
+  int month = date[1];
+  const char *month_name = BABYLONIAN_MONTHS[month - 1];
+  char buffer[60];
+  snprintf(buffer, sizeof(buffer), "%s", month_name);
+  return std::string(buffer);
+}
+
 std::string format_babylonian_date_year(double jd) {
   auto date = jd_to_babylonian(jd);
   int year = date[0];

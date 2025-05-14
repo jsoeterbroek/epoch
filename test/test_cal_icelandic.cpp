@@ -1,27 +1,26 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "doctest.h"
+#include "unity.h"
 #include "cal_icelandic.h"
 
-TEST_CASE("Icelandic calendar formatting for May 12, 2025") {
+void test_year_format(void) {
   double jd = 2460807.5;  // May 12, 2025
+  std::string year = format_icelandic_date_year(jd);
+  TEST_ASSERT_NOT_EQUAL(-1, (int)year.find("Year"));
+}
 
-  SUBCASE("Year format") {
-    std::string year = format_icelandic_date_year(jd);
-    CHECK(year.find("Year") != std::string::npos);
-  }
+void test_month_format(void) {
+  double jd = 2460807.5;  // May 12, 2025
+  std::string month = format_icelandic_date_month(jd);
+  TEST_ASSERT_EQUAL_STRING("Solmanuthur", month.c_str());
+}
 
-  SUBCASE("Month format") {
-    std::string month = format_icelandic_date_month(jd);
-    CHECK(month == "Sólmánuður");
-  }
+void test_day_format(void) {
+  double jd = 2460807.5;  // May 12, 2025
+  std::string day = format_icelandic_date_day(jd);
+  TEST_ASSERT_NOT_EQUAL(-1, (int)day.find("Day"));
+}
 
-  SUBCASE("Day format") {
-    std::string day = format_icelandic_date_day(jd);
-    CHECK(day.find("Day") != std::string::npos);
-  }
-
-  SUBCASE("Weekday format") {
-    std::string weekday = format_icelandic_date_weekday(jd);
-    CHECK(weekday == "Mánudagur");
-  }
+void test_weekday_format(void) {
+  double jd = 2460807.5;  // May 12, 2025
+  std::string weekday = format_icelandic_date_weekday(jd);
+  TEST_ASSERT_EQUAL_STRING("Manudagur", weekday.c_str());
 }
