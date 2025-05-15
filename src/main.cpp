@@ -297,16 +297,17 @@ void drawMain() {
 
   // main screen
   // time
-  canvas.drawRoundRect(28, 30, 220, 100, 20, TFT_DARKGREY);
-  canvas.fillRoundRect(30, 32, 216, 96, 20, TFT_BLACK);  // FIXME, invert colors
+  canvas.drawRoundRect(28, 30, 250, 100, 20, TFT_DARKGREY);
+  canvas.fillRoundRect(30, 32, 246, 96, 20, TFT_BLACK);  // FIXME, invert colors
   canvas.setTextDatum(0);
   canvas.setFreeFont(&Orbitron_Bold_66);
   canvas.setTextColor(TFT_DARKGREY);
   canvas.drawString(timeStrbuff, 36, 40);
 
   // weekday, day, month, year
-  canvas.drawRoundRect(28, 140, 520, 340, 20, TFT_DARKGREY);
-  canvas.fillRoundRect(30, 142, 516, 336, 20, TFT_BLACK);  // FIXME, invert colors
+  canvas.drawRoundRect(28, 140, 570, 340, 20, TFT_DARKGREY);
+  canvas.fillRoundRect(30, 142, 566, 336, 20, TFT_BLACK);  // FIXME, invert colors
+  canvas.setTextDatum(0);
   if (format_weekday != "none") {
     canvas.drawString(format_weekday, 36, 150);
   }
@@ -371,6 +372,7 @@ void setup() {
   M5.begin(false, true, true, true, false);
   M5.EPD.SetRotation(rotation);
   M5.EPD.Clear(true);
+  M5.EPD.SetColorReverse(false);  // reverse color also affects the background image
   M5.RTC.begin();
 
   drawSplash();
