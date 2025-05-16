@@ -123,15 +123,15 @@ std::string format_hebrew_date_month(double jd) {
   return hebrew_month_name(date[0], date[1]);
 }
 
-std::string format_hebrew_date_year(double jd) {
-  auto date = jd_to_hebrew(jd);
-  return std::to_string(date[0]) + " AM";
-}
-
 std::string format_hebrew_date_weekday(double jd) {
   static const char *weekdays[] = {"Yom Rishon", "Yom Sheni", "Yom Shlishi", "Yom Revi'i", "Yom Chamishi", "Yom Shishi", "Shabbat"};
   int weekday = static_cast<int>(astro::mod(std::floor(jd + 1.5), 7.0));
   return weekdays[weekday];
+}
+
+std::string format_hebrew_date_year(double jd) {
+  auto date = jd_to_hebrew(jd);
+  return std::to_string(date[0]) + " AM";
 }
 
 std::string format_hebrew_full_date(double jd) {
