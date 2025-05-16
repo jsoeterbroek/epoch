@@ -41,7 +41,7 @@ std::array<int, 3> jd_to_ethiopian(double jd) {
 // Formatters
 std::string format_ethiopian_date_day(double jd) {
   auto date = jd_to_ethiopian(jd);
-  return "Day " + std::to_string(date[2]);
+  return std::to_string(date[2]);
 }
 
 std::string format_ethiopian_date_month(double jd) {
@@ -51,7 +51,7 @@ std::string format_ethiopian_date_month(double jd) {
 
 std::string format_ethiopian_date_year(double jd) {
   auto date = jd_to_ethiopian(jd);
-  return "Year " + std::to_string(date[0]);
+  return std::to_string(date[0]);
 }
 
 std::string format_ethiopian_date_weekday(double jd) {

@@ -274,6 +274,7 @@ void drawMain() {
       format_day = format_ethiopian_date_day(jd).c_str();
       format_month = format_ethiopian_date_month(jd).c_str();
       format_year = format_ethiopian_date_year(jd).c_str();
+      format_day_month = format_day + " " + format_month;
       break;
     case 21:  // zoroastrian // 21
       format_weekday = format_zoroastrian_date_1(jd, ZoroastrianCalendarVariant::Fasli);
