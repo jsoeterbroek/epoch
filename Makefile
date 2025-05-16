@@ -1,30 +1,62 @@
-# g++ -std=c++17 test/test_cal_ethiopian.cpp src/cal_ethiopian.cpp -o ethiopian_test ./ethiopian_test
 CXX := g++
-#CXXFLAGS := -std=c++17 -Wall -Iinclude -Itest
-CXXFLAGS := -std=c++17 -Wall -Wno-unused-variable -Iinclude -Itest
-CXXFLAGS += -I.pio/libdeps/m5paper/doctest/doctest
-CXXFLAGS += -I.pio/libdeps/m5paper/M5EPD/src
-CXXFLAGS += -I$(HOME)/.platformio/packages/framework-arduinoespressif32/libraries/Preferences/src
+CXXFLAGS := -std=c++17 -Wall -Wno-unused-variable \
+            -Iinclude -Itest -I.pio/libdeps/m5paper/doctest/doctest
 
-SRC := $(wildcard src/cal*.cpp)
-SRC += src/astro.cpp
+# Source and test file detection
+SRC := $(wildcard src/cal*.cpp) src/astro.cpp
 TESTS := $(wildcard test/test_*.cpp)
 OBJS := $(patsubst test/%.cpp, build/%, $(TESTS))
 
-.PHONY: all clean run
+# Set default goal
+.DEFAULT_GOAL := run
 
-all: $(OBJS)
+.PHONY: all clean run build \
+        ethiopian hebrew babylonian darian calendar icelandic chinese coptic
 
-build/%: test/%.cpp $(SRC)
+# Build everything
+all: | build $(OBJS)
+
+# Ensure build directory exists
+build:
 	@mkdir -p build
+
+# Pattern rule to compile each test into build/
+build/%: test/%.cpp $(SRC)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
+# Run all tests
 run: all
 	@for test in $(OBJS); do \
 		echo "Running $$test"; \
 		./$$test || exit 1; \
 	done
 
+# Manual test targets for individual calendars
+ethiopian: build/test_cal_ethiopian
+	./$<
+
+hebrew: build/test_cal_hebrew
+	./$<
+
+babylonian: build/test_cal_babylonian
+	./$<
+
+darian: build/test_cal_darian
+	./$<
+
+calendar: build/test_calendar
+	./$<
+
+icelandic: build/test_cal_icelandic
+	./$<
+
+chinese: build/test_cal_chinese_zodiac
+	./$<
+
+coptic: build/test_cal_coptic
+	./$<
+
+# Clean build artifacts
 clean:
 	rm -rf build
 

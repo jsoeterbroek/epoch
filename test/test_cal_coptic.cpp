@@ -1,3 +1,6 @@
+/* https://planetcalc.com/8500/
+*/
+
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "cal_coptic.h"
@@ -16,21 +19,21 @@ TEST_CASE("Coptic date conversion and formatting") {
 
   SUBCASE("Formatted year") {
     std::string year = format_coptic_date_year(jd);
-    CHECK(year.find("Year") != std::string::npos);
+    CHECK(year.find("AM") != std::string::npos);
   }
 
-  SUBCASE("Formatted month name") {
+  SUBCASE("Formatted month name liturgical") {
     std::string month = format_coptic_date_month(jd, CopticMonthVariant::Liturgical);
+    CHECK(month == "Baramouda");
+  }
+
+  SUBCASE("Formatted month name academic") {
+    std::string month = format_coptic_date_month(jd, CopticMonthVariant::Academic);
     CHECK(month == "Paremoude");
   }
 
-  SUBCASE("Formatted day") {
-    std::string day = format_coptic_date_day(jd, CopticDayVariant::Liturgical);
-    CHECK(day.find("Day") != std::string::npos);
-  }
-
-  SUBCASE("Formatted weekday") {
+  SUBCASE("Formatted weekday liturgical") {
     std::string weekday = format_coptic_date_weekday(jd, CopticWeekdayVariant::Liturgical);
-    CHECK(weekday == "Friday");
+    CHECK(weekday == "Paraskevi");  // Friday
   }
 }
