@@ -81,7 +81,7 @@ std::string format_coptic_date_day(double jd, CopticDayVariant variant) {
     }
     // More fixed feast dates can be added here
   }
-  return "Day " + std::to_string(day);
+  return std::to_string(day);
 }
 
 std::string format_coptic_date_month(double jd, CopticMonthVariant variant) {

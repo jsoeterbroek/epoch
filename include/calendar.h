@@ -9,6 +9,7 @@
 #include "cal_gregorian.h"
 #include "cal_julian.h"
 #include "cal_egyptian.h"
+#include "cal_ethiopian.h"
 #include "cal_rev_french.h"
 #include "cal_islamic.h"
 #include "cal_coptic.h"
