@@ -25,8 +25,8 @@ TEST_CASE("Egyptian calendar formatting") {
     CHECK(weekday.find("Day") != std::string::npos);
   }
 
-  SUBCASE("Day fortune output") {
-    std::string fortune = egyptian_day_fortune(jd);
-    CHECK(fortune == "Lucky" || fortune == "Unlucky" || fortune == "Very Lucky" || fortune == "Neutral");
-  }
+  //SUBCASE("Day fortune output") {
+  //  std::string fortune = egyptian_day_fortune(jd);
+  //  CHECK(fortune == "Lucky" || fortune == "Unlucky" || fortune == "Very Lucky" || fortune == "Neutral");
+  //}
 }

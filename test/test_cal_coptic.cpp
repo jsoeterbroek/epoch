@@ -20,17 +20,17 @@ TEST_CASE("Coptic date conversion and formatting") {
   }
 
   SUBCASE("Formatted month name") {
-    std::string month = format_coptic_date_month(jd);
+    std::string month = format_coptic_date_month(jd, CopticMonthVariant::Liturgical);
     CHECK(month == "Paremoude");
   }
 
   SUBCASE("Formatted day") {
-    std::string day = format_coptic_date_day(jd);
+    std::string day = format_coptic_date_day(jd, CopticDayVariant::Liturgical);
     CHECK(day.find("Day") != std::string::npos);
   }
 
   SUBCASE("Formatted weekday") {
-    std::string weekday = format_coptic_date_weekday(jd);
+    std::string weekday = format_coptic_date_weekday(jd, CopticWeekdayVariant::Liturgical);
     CHECK(weekday == "Friday");
   }
 }
