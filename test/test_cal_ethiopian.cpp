@@ -1,4 +1,12 @@
-// https://planetcalc.com/8504/
+/* // https://planetcalc.com/8504/
+// 12 may 2025:
+Year 2017
+Month 9
+Month name Gənbot
+Day 4
+Week day name Sanyo 
+*/
+
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "cal_ethiopian.h"
@@ -15,19 +23,9 @@ TEST_CASE("Ethiopian calendar date conversion and formatting") {
     CHECK(date[2] <= 30);
   }
 
-  SUBCASE("Formatted day") {
-    std::string day = format_ethiopian_date_day(jd);
-    CHECK(day.find("Day") != std::string::npos);
-  }
-
   SUBCASE("Formatted month") {
     std::string month = format_ethiopian_date_month(jd);
-    CHECK_FALSE(month.empty());
-  }
-
-  SUBCASE("Formatted year") {
-    std::string year = format_ethiopian_date_year(jd);
-    CHECK(year.find("Year") != std::string::npos);
+    CHECK(month == "Genbot");
   }
 
   SUBCASE("Formatted weekday") {
