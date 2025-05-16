@@ -99,7 +99,6 @@ std::string format_islamic_date_local(double jd, bool use_arabic = true) {
 
 // TODO: bidi, proper display arabic
 std::string format_islamic_date_weekday_local(double jd, bool use_arabic = false) {
-  auto islamic = jd_to_islamic(jd);
   int weekday = islamic_day_of_week(jd);
   const char *weekday_name = use_arabic ? islamic_weekday_names_ar[weekday - 1] : islamic_weekday_names[weekday - 1];
   char buffer[50];

@@ -24,7 +24,7 @@
 
 #include "_locale.h"
 #include <vector>
-#include <Arduino.h>
+#include "compat.h"
 
 // LC_TIME
 // locale-based information,

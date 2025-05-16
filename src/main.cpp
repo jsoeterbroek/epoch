@@ -18,22 +18,18 @@
 #include "globals.h"
 #include "config.h"
 #include "PSpref.h"
-#include "_strftime.h"
 #include "_locale.h"
 #include "datetime.h"
+#include "display_utils.h"
 #include "astro.h"
 #include "calendar.h"
-#include "display_utils.h"
 #include <WiFi.h>
 #include <WiFiManager.h>
 #include <HTTPClient.h>
 #include "Orbitron_Medium_20.h"
 #include "Orbitron44.h"
 #include "calibri22LatinFont.h"
-#include "serialTest.h"
-
 #include <Arduino.h>
-
 #include <FS.h>
 #include <SPI.h>
 #include <JPEGDecoder.h>

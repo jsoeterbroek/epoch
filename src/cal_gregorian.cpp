@@ -79,7 +79,6 @@ std::string format_gregorian_date(double jd) {
 }
 
 std::string format_gregorian_date_weekday(double jd) {
-  auto date = jd_to_gregorian(jd);
   const char *weekday_name = gregorian_weekday_name(gregorian_jd_to_weekday(jd));
   char buffer[30];
   snprintf(buffer, sizeof(buffer), "%s", weekday_name);

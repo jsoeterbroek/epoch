@@ -19,7 +19,7 @@
 #define ___LOCALE_H__
 
 #include <vector>
-#include <Arduino.h>
+#include <compat.h>
 //#include <aqi.h>
 
 // LC_TIME
@@ -117,7 +117,7 @@ extern const char *TXT_UNKNOWN;
 // All Lowercase
 extern const char *TXT_NOT_FOUND;
 extern const char *TXT_READ_FAILED;
-// Complete 
+// Complete
 extern const char *TXT_FAILED_TO_GET_TIME;
 extern const char *TXT_HIBERNATING_INDEFINITELY_NOTICE;
 extern const char *TXT_REFERENCING_OLDER_TIME_NOTICE;

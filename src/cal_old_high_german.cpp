@@ -48,7 +48,6 @@ std::string format_oldhighgerman_date(double jd) {
 }
 
 std::string format_oldhighgerman_date_weekday(double jd) {
-  auto date = jd_to_julian(jd);
   int weekday = calendar::iso_day_of_week(jd);  // ISO: Mon=1, Sun=7
   const char *weekday_name = oldhighgerman_weekday_name(oldhighgerman_jd_to_weekday(jd));
   char buffer[20];

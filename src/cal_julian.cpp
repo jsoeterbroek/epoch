@@ -75,7 +75,6 @@ std::string format_julian_date(double jd) {
 }
 
 std::string format_julian_date_weekday(double jd) {
-  auto julian = jd_to_julian(jd);
   const char *weekday_name = julian_weekday_name(julian_jd_to_weekday(jd));
   char buffer[30];
   snprintf(buffer, sizeof(buffer), "%s", weekday_name);

@@ -1,5 +1,6 @@
 #include "cal_zoroastrian.h"
-#include <Arduino.h>
+
+#include <cstdio>
 
 struct NowruzEntry {
   int year;

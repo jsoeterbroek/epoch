@@ -97,7 +97,6 @@ std::string format_saka_date(double jd) {
 }
 
 std::string format_saka_date_weekday(double jd, bool use_hindi = true) {
-  auto saka = jd_to_saka(jd);
   int weekday = calendar::iso_day_of_week(jd);  // ISO: Mon=1, Sun=7
   const char *weekday_name = use_hindi ? weekday_names_hi[weekday - 1] : weekday_names_sa[weekday - 1];
   char buffer[40];

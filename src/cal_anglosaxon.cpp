@@ -49,7 +49,6 @@ std::string format_anglosaxon_date(double jd) {
 }
 
 std::string format_anglosaxon_date_weekday(double jd) {
-  auto date = jd_to_julian(jd);
   int weekday = calendar::iso_day_of_week(jd);  // ISO: Mon=1, Sun=7
   const char *weekday_name = anglosaxon_weekday_name(anglosaxon_jd_to_weekday(jd));
   char buffer[20];

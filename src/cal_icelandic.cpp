@@ -84,7 +84,6 @@ std::array<int, 3> jd_to_icelandic(double jd) {
 }
 
 std::string format_icelandic_date_weekday(double jd) {
-  auto date = jd_to_julian(jd);
   const char *weekday_name = icelandic_weekday_name(icelandic_jd_to_weekday(jd));
   char buffer[20];
   snprintf(buffer, sizeof(buffer), "%s", weekday_name);
