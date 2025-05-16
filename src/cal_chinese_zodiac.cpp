@@ -20,9 +20,7 @@
 
 static const std::array<const char *, 12> ZODIAC_ANIMALS = {"Rat",   "Ox",   "Tiger",  "Rabbit",  "Dragon", "Snake",
                                                             "Horse", "Goat", "Monkey", "Rooster", "Dog",    "Pig"};
-
 static const std::array<const char *, 10> HEAVENLY_STEMS = {"Jia", "Yi", "Bing", "Ding", "Wu", "Ji", "Geng", "Xin", "Ren", "Gui"};
-
 static const std::array<const char *, 12> EARTHLY_BRANCHES = {"Zi", "Chou", "Yin", "Mao", "Chen", "Si", "Wu", "Wei", "Shen", "You", "Xu", "Hai"};
 
 // Convert JD → Gregorian year
@@ -94,7 +92,7 @@ std::string format_chinese_zodiac_date_month(double jd) {
 std::string format_chinese_zodiac_date_year(double jd) {
   int year = jd_to_gregorian_year(jd);
   std::string stem_branch = chinese_zodiac_stem_branch(jd);
-  return stem_branch + " (" + std::to_string(year) + ")";
+  return stem_branch;
 }
 
 std::string format_chinese_zodiac_full_date(double jd) {
