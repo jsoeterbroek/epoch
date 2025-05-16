@@ -24,4 +24,4 @@ TestResults.xml
 epoch.code-workspace
 build/
 test/Testing/
-
+compile_commands.json

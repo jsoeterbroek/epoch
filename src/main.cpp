@@ -192,8 +192,11 @@ void drawMain() {
       //format_day_month = format_day + " " + format_month;
       break;
     case 6:  // coptic       //  6
-      format_weekday = "Coptic Calendar";
-      format_day_month_year = "Not yet implemented";
+      format_weekday = format_coptic_date_weekday(jd, CopticWeekdayVariant::Liturgical).c_str();
+      format_day = format_coptic_date_day(jd, CopticDayVariant::Liturgical).c_str();
+      format_month = format_coptic_date_month(jd, CopticMonthVariant::Liturgical).c_str();
+      format_year = format_coptic_date_year(jd).c_str();
+      format_day_month = format_day + " " + format_month;
       break;
     case 7:  // mayan        //  7
       format_day = format_mayan_date_day(jd).c_str();
@@ -569,7 +572,6 @@ void setup() {
 }
 
 void loop() {
-
   if (millis() - _timeoutMS > INTERVAL_MS) {
     _timeoutMS = millis();
     drawMain();

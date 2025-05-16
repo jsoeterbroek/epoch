@@ -11,6 +11,7 @@
 #include "cal_egyptian.h"
 #include "cal_rev_french.h"
 #include "cal_islamic.h"
+#include "cal_coptic.h"
 #include "cal_hebrew.h"
 #include "cal_persian.h"
 #include "cal_mayan.h"
