@@ -4,6 +4,9 @@ A calendar application for M5 Stack ePaper device.
 
 Support for different historical and cultural calendar systems: Babylonian, Gregorian, Julian, Hebrew, Islamic, Old Egyptian, Coptic, Mayan, Persian, French (rev.), Saka, Icelandic, Anglo-Saxon, Germanic, Armenian, Georgian, Mandaean, Chinese Zodiac, Buddhist, Mongolian, Ethiopian, Zoroastrian, Mars.
 
+## WIP
+Note this project is currently very much a Work in Progress, and by no means ready. Your mileage may vary.
+
 ## Setup and configuration
 
 * Time and date are retrieved from NTP Internet server on every (re-)start and saved to Real-Time Clock (rtc).
