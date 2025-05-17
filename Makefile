@@ -11,6 +11,7 @@ OBJS := $(patsubst test/%.cpp, build/%, $(TESTS))
 .DEFAULT_GOAL := run
 
 .PHONY: all clean run build \
+				egyptian \
         ethiopian hebrew babylonian darian calendar icelandic chinese coptic
 
 # Build everything
@@ -32,6 +33,9 @@ run: all
 	done
 
 # Manual test targets for individual calendars
+egyptian: build/test_cal_egyptian
+	./$<
+
 ethiopian: build/test_cal_ethiopian
 	./$<
 

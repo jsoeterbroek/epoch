@@ -1,15 +1,20 @@
 Aknowledgements
 ===============
 
-Ideas, (parts of) code taken from:
-----------------------------------
 
-1. JavaScript functions for the Fourmilab Calendar Converter
+Ideas, parts of code taken from:
+--------------------------------
+
+* JavaScript functions for the Fourmilab Calendar Converter
    by John Walker  --  September, MIM
    http://www.fourmilab.ch/documents/calendar/
+* https://github.com/lmarzen/esp32-weather-epd
+* https://github.com/VolosR/WeatherM5Paper
+* https://planetcalc.com/
+* Parker, R. A. (1950). The Calendars of Ancient Egypt. Studies in Ancient Oriental Civilization, No. 26. University of Chicago Press.
+* Wikipedia
+* https://time-meddler.co.uk/the-old-icelandic-calendar/
 
-2. https://github.com/lmarzen/esp32-weather-epd
-
-3. https://github.com/VolosR/WeatherM5Paper
-
-4. Parker, R. A. (1950). The Calendars of Ancient Egypt. Studies in Ancient Oriental Civilization, No. 26. University of Chicago Press.
+A.I. assist
+-----------
+Extensive use was made of AI to assist with the more complacted calenderial C functions, model GPT-4o.

@@ -2,31 +2,47 @@
 #include "doctest.h"
 #include "cal_egyptian.h"
 
-TEST_CASE("Egyptian calendar formatting") {
-  double jd = 2460797.5;  // May 2, 2025
+TEST_CASE("Egyptian civil calendar from Nabonassar epoch") {
+  double epoch_jd = 1448638.5;  // Nabonassar accession
 
-  SUBCASE("Day format") {
-    std::string day = format_egyptian_date_day(jd);
-    CHECK(day.find("Day") != std::string::npos);
+  SUBCASE("Epoch = Year 1, Month 1, Day 1") {
+    auto date = jd_to_egyptian(epoch_jd);
+    CHECK(date[0] == 1);
+    CHECK(date[1] == 1);
+    CHECK(date[2] == 1);
   }
 
-  SUBCASE("Month format") {
-    std::string month = format_egyptian_date_month(jd);
-    CHECK(month == "Phaophi");
+  SUBCASE("1 year after epoch") {
+    auto date = jd_to_egyptian(epoch_jd + 365);
+    CHECK(date[0] == 2);
+    CHECK(date[1] == 1);
+    CHECK(date[2] == 1);
   }
 
-  SUBCASE("Year format") {
-    std::string year = format_egyptian_date_year(jd);
-    CHECK(year.find("Year") != std::string::npos);
+  SUBCASE("Formatted date") {
+    double jd = epoch_jd + (3 * 365) + (5 * 30) + 9;  // Year 4, Month 6, Day 10
+    CHECK(format_egyptian_date_weekday(jd) == "Day 3");
+    CHECK(format_egyptian_date_day(jd) == "hmnw-hry");
+    CHECK(format_egyptian_date_month(jd) == "Month 6");
+    CHECK(format_egyptian_date_year(jd) == "Year 4");
   }
-
-  SUBCASE("Weekday (Decan) format") {
-    std::string weekday = format_egyptian_date_weekday(jd);
-    CHECK(weekday.find("Day") != std::string::npos);
-  }
-
-  //SUBCASE("Day fortune output") {
-  //  std::string fortune = egyptian_day_fortune(jd);
-  //  CHECK(fortune == "Lucky" || fortune == "Unlucky" || fortune == "Very Lucky" || fortune == "Neutral");
-  //}
 }
+
+//TEST_CASE("Regnal year formatting") {
+//  SUBCASE("Ramses II start") {
+//    double jd = 1202673.5;  // Approx. accession of Ramses II
+//    std::string regnal = format_egyptian_regnal_year(jd);
+//    CHECK(regnal.find("Year 1 of Ramses II") != std::string::npos);
+//  }
+
+//  SUBCASE("Ramses II later date") {
+//    double jd = 1202673.5 + 10 * 365;
+//    std::string regnal = format_egyptian_regnal_year(jd);
+//    CHECK(regnal.find("Year 11 of Ramses II") != std::string::npos);
+//  }
+
+//  SUBCASE("Unknown regnal period") {
+//    double jd = 1000000.5;
+//    CHECK(format_egyptian_regnal_year(jd) == "Unknown regnal year");
+//  }
+//}

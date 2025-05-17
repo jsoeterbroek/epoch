@@ -181,11 +181,8 @@ void drawMain() {
       format_day_month = format_day + " " + format_month;
       break;
     case 5:  // 5 - egyptian
-      format_weekday = format_egyptian_date_weekday(jd).c_str();
-      format_day = format_egyptian_date_day(jd).c_str();
-      format_month = format_egyptian_date_month(jd).c_str();
-      format_year = format_egyptian_date_year(jd).c_str();
-      //format_day_month = format_day + " " + format_month;
+      format_weekday = "Egyptian Calendar";
+      format_day_month_year = "Not yet implemented";
       break;
     case 6:  // coptic       //  6
       format_weekday = format_coptic_date_weekday(jd, CopticWeekdayVariant::Liturgical).c_str();

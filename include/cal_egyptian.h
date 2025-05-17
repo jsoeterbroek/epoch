@@ -15,5 +15,12 @@ std::string format_egyptian_date_month(double jd);
 std::string format_egyptian_date_year(double jd);
 std::string format_egyptian_date_weekday(double jd);  // optional/custom
 std::string egyptian_day_fortune(double jd);          // lucky/unlucky
+std::string format_egyptian_regnal_year(double jd);
+
+struct PharaohReign {
+  const char *name;
+  double jd_start;
+  double jd_end;
+};
 
 #endif
