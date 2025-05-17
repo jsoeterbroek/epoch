@@ -205,6 +205,7 @@ void drawMain() {
       format_day = format_french_date_day(jd).c_str();
       format_month = format_french_date_month(jd).c_str();
       format_year = format_french_date_year(jd).c_str();
+      format_month_description = format_french_date_month_description(jd).c_str();
       format_day_month = format_day + " " + format_month;
       break;
     case 10:  // saka        // 10
