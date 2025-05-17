@@ -3,7 +3,7 @@ CXXFLAGS := -std=c++17 -Wall -Wno-unused-variable \
             -Iinclude -Itest -I.pio/libdeps/m5paper/doctest/doctest
 
 # Source and test file detection
-SRC := $(wildcard src/cal*.cpp) src/astro.cpp
+SRC := $(wildcard src/cal*.cpp) src/astro.cpp src/roman.cpp
 TESTS := $(wildcard test/test_*.cpp)
 OBJS := $(patsubst test/%.cpp, build/%, $(TESTS))
 
@@ -11,7 +11,7 @@ OBJS := $(patsubst test/%.cpp, build/%, $(TESTS))
 .DEFAULT_GOAL := run
 
 .PHONY: all clean run build \
-				egyptian \
+				french egyptian \
         ethiopian hebrew babylonian darian calendar icelandic chinese coptic
 
 # Build everything
@@ -33,6 +33,9 @@ run: all
 	done
 
 # Manual test targets for individual calendars
+french: build/test_cal_french
+	./$<
+
 egyptian: build/test_cal_egyptian
 	./$<
 

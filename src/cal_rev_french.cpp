@@ -16,6 +16,7 @@
     call on the function in which whey are used.  */
 
 #include "cal_rev_french.h"
+#include "roman.h"
 #include <cmath>
 #include <array>
 #include "astro.h"
@@ -78,6 +79,32 @@ const char *french_month_name(int month) {
   return names[month - 1];
 }
 
+const char *french_month_description(int month) {
+  static const char *names[] = {
+    "Month of vintage",         // Vendemiaire
+    "Month of fog",             // Brumaire
+    "Month of wintry weather",  // Frimaire
+    "Month of snow",            // Nivose
+    "Month of rain",            // Pluviose
+    "Month of wind",            // Ventose
+    "Month of sprouting buds",  // Germinal
+    "Month of flowering",       // Floreal
+    "Month of meadows",         // Prairial
+    "Month of harvest",         // Messidor
+    "Month of warmth",          // Thermidor
+    "Month of fruits",          // Fructidor
+    ""                          // Complementary days
+  };
+  // Clamp month to 1–13
+  if (month < 1) {
+    month = 1;
+  }
+  if (month > 13) {
+    month = 13;
+  }
+  return names[month - 1];
+}
+
 // format functions
 std::string format_french_date_weekday(double jd) {
   const char *weekday_str = french_weekday_name(french_jd_to_weekday(jd));
@@ -97,8 +124,16 @@ std::string format_french_date_month(double jd) {
   return month_str;
 }
 
+std::string format_french_date_month_description(double jd) {
+  auto date = jd_to_french(jd);
+  int month = date[1];
+  const char *month_description_str = french_month_description(month);
+  return month_description_str;
+}
+
 std::string format_french_date_year(double jd) {
   auto date = jd_to_french(jd);
   int year = date[0];
-  return std::to_string(year) + " AN";
+  return to_roman(year) + " AN";
+  //return std::to_string(year) + " AN";
 }
