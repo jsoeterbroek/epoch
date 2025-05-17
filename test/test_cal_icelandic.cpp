@@ -29,3 +29,9 @@ TEST_CASE("Icelandic calendar returns for known year within table 2") {
   CHECK(format_icelandic_date_month(jd) == "Gormanuthur");
   CHECK(format_icelandic_date_month_description(jd) == "Autumn month - gathering and storing begins");
 }
+
+//TEST_CASE("Detect Icelandic leap week years") {
+//  CHECK(is_icelandic_leap_week_year(2023) == true);
+//  CHECK(is_icelandic_leap_week_year(2024) == false);
+//  CHECK(is_icelandic_leap_week_year(2029) == true);
+//}

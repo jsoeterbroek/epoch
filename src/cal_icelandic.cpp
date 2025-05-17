@@ -38,6 +38,23 @@ static const std::map<int, std::array<double, 13>> icelandic_month_starts = {
   {2030, {2462621.5, 2462651.5, 2462681.5, 2462711.5, 2462721.5, 2462752.5, 2462782.5, 2462812.5, 2462842.5, 2462872.5, 2462902.5, 2462932.5, 2462962.5}}
 };
 
+bool is_icelandic_leap_week_year(int year) {
+  auto it = icelandic_month_starts.find(year);
+  if (it == icelandic_month_starts.end()) {
+    return false;
+  }
+
+  const auto &starts = it->second;
+
+  if (starts.size() < 5) {
+    return false;
+  }
+
+  // Leap week if Heyannir starts more than 31 days after Sumarauki
+  double days_between = starts[4] - starts[3];
+  return days_between > 31.0;
+}
+
 int get_icelandic_month_index(double jd) {
   auto gdate = jd_to_gregorian(jd);
   int year = gdate[0];

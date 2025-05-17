@@ -8,6 +8,9 @@
 // Returns [year, month (1–13), day] for a given Julian Day Number
 std::array<int, 3> jd_to_icelandic(double jd);
 
+// Returns true if the Icelandic year includes a leap week (Sumarauki)
+bool is_icelandic_leap_week_year(int year);
+
 // Returns the Icelandic weekday name (e.g. "Laugardagur")
 std::string format_icelandic_date_weekday(double jd);
 
