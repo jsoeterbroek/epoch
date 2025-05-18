@@ -37,12 +37,12 @@ const char *const ROJ_NAMES[30] = {"Hormazd",     "Bahman", "Ardibehesht", "Shah
 double find_nowruz_jd(int &out_year, double jd, const NowruzEntry *table, int size) {
   for (int i = size - 1; i >= 0; --i) {
     if (jd >= table[i].jd) {
-      out_year = table[i].year;
+      out_year = table[i].year - 586;  // Adjusting to Zoroastrian year
       return table[i].jd;
     }
   }
   // fallback to earliest
-  out_year = table[0].year;
+  out_year = table[0].year - 586;
   return table[0].jd;
 }
 
