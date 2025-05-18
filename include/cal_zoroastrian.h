@@ -4,14 +4,14 @@
 #include <array>
 
 enum class ZoroastrianCalendarVariant {
-    Shenshai,
-    Fasli,
-    Kadmi
+  Shenshai,
+  Fasli,
+  Kadmi
 };
 
-const char* format_zoroastrian_date_1(double jd, ZoroastrianCalendarVariant variant);
-const char* format_zoroastrian_date_2(double jd, ZoroastrianCalendarVariant variant);
-//const char* format_zoroastrian_date_weekday(double jd, ZoroastrianCalendarVariant variant);
-//const char* format_zoroastrian_date_local(double jd, ZoroastrianCalendarVariant variant);
+std::array<int, 3> jd_to_zoroastrian(double jd, ZoroastrianCalendarVariant variant);
+
+const char *format_zoroastrian_date_roj(double jd, ZoroastrianCalendarVariant variant);  // 'weekday'
+const char *format_zoroastrian_date_mah(double jd, ZoroastrianCalendarVariant variant);  // 'month'
 
 #endif

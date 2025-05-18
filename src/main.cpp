@@ -271,8 +271,8 @@ void drawMain() {
       format_day_month = format_day + " " + format_month;
       break;
     case 21:  // zoroastrian // 21
-      format_weekday = format_zoroastrian_date_1(jd, ZoroastrianCalendarVariant::Fasli);
-      format_day_month_year = format_zoroastrian_date_2(jd, ZoroastrianCalendarVariant::Fasli);
+      format_weekday = format_zoroastrian_date_mah(jd, ZoroastrianCalendarVariant::Fasli);
+      format_month = format_zoroastrian_date_roj(jd, ZoroastrianCalendarVariant::Fasli);
       break;
     case 22:  // hindu  // 22
       format_weekday = format_hindu_date_weekday(jd).c_str();

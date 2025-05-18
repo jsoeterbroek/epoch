@@ -26,8 +26,8 @@ constexpr NowruzEntry FASLI_NOWRUZ[] = {
   {2027, 2461457.5},  // March 21, 2027
 };
 
-const char *const MONTH_NAMES[12] = {"Farvardin", "Ardibehesht", "Khordad", "Tir", "Amardad", "Shahrevar",
-                                     "Meher",     "Avan",        "Adar",    "Dae", "Bahman",  "Aspandarmad"};
+const char *const MAH_NAMES[12] = {"Farvardin", "Ardibehesht", "Khordad", "Tir", "Amardad", "Shahrevar",
+                                   "Meher",     "Avan",        "Adar",    "Dae", "Bahman",  "Aspandarmad"};
 
 const char *const ROJ_NAMES[30] = {"Hormazd",     "Bahman", "Ardibehesht", "Shahrevar", "Spandarmad", "Khordad", "Amardad",      "Dae-pa-Adar",
                                    "Adar",        "Aban",   "Khorshed",    "Mah",       "Tir",        "Gosh",    "Dae-pa-Meher", "Meher",
@@ -68,18 +68,18 @@ std::array<int, 3> jd_to_zoroastrian(double jd, ZoroastrianCalendarVariant varia
   return {year, month, day};
 }
 
-const char *format_zoroastrian_date_1(double jd, ZoroastrianCalendarVariant variant) {
+const char *format_zoroastrian_date_roj(double jd, ZoroastrianCalendarVariant variant) {
   auto date = jd_to_zoroastrian(jd, variant);
   const char *roj = ROJ_NAMES[date[2] - 1];
   static char buffer[64];
-  snprintf(buffer, sizeof(buffer), "%s roj", roj);
+  snprintf(buffer, sizeof(buffer), "%s", roj);
   return buffer;
 }
 
-const char *format_zoroastrian_date_2(double jd, ZoroastrianCalendarVariant variant) {
+const char *format_zoroastrian_date_mah(double jd, ZoroastrianCalendarVariant variant) {
   auto date = jd_to_zoroastrian(jd, variant);
-  const char *month = MONTH_NAMES[date[1] - 1];
+  const char *mah = MAH_NAMES[date[1] - 1];
   static char buffer[64];
-  snprintf(buffer, sizeof(buffer), "%s mah, %d YZ", month, date[0]);
+  snprintf(buffer, sizeof(buffer), "%s", mah);
   return buffer;
 }
