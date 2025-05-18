@@ -11,7 +11,7 @@ Week day name Sanyo
 #include "doctest.h"
 #include "cal_ethiopian.h"
 
-TEST_CASE("Ethiopian calendar date conversion and formatting") {
+TEST_CASE("Ethiopian calendar date conversion and formatting for May 12, 2025") {
   double jd = 2460807.5;  // May 12, 2025
 
   SUBCASE("Date components are valid") {
@@ -31,5 +31,10 @@ TEST_CASE("Ethiopian calendar date conversion and formatting") {
   SUBCASE("Formatted weekday") {
     std::string weekday = format_ethiopian_date_weekday(jd);
     CHECK(weekday == "Monday");  // 2025-05-12 is a Monday
+  }
+
+  SUBCASE("Formatted year") {
+    std::string year = format_ethiopian_date_year(jd);
+    CHECK(year == "2017");  // 2017 is the year in Ethiopian calendar
   }
 }
