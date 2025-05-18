@@ -149,7 +149,7 @@ void drawMain() {
   switch (c) {
     case 0:  // 0 - babylonian
       format_weekday = format_babylonian_date_weekday(jd).c_str();
-      format_date = format_babylonian_date(jd).c_str();
+      format_day_month = format_babylonian_date_month(jd).c_str();
       format_year = format_babylonian_date_year(jd).c_str();
       break;
     case 1:  // 1 - gregorian
