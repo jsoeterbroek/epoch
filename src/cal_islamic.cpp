@@ -76,7 +76,6 @@ double islamic_to_jd(int year, int month, int day) {
   return (day + std::ceil(29.5 * (month - 1)) + (year - 1) * 354 + std::floor((3 + (11 * year)) / 30.0) + ISLAMIC_EPOCH - 1);
 }
 
-// TODO: is year leap year?
 int islamic_is_leap_year(int year) {
   return (
     year % 30 == 2 || year % 30 == 5 || year % 30 == 7 || year % 30 == 10 || year % 30 == 13 || year % 30 == 16 || year % 30 == 18 || year % 30 == 21
