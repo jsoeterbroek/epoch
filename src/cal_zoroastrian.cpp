@@ -1,85 +1,108 @@
 #include "cal_zoroastrian.h"
+#include <cmath>
+#include <array>
+#include <string>
 
-#include <cstdio>
+/* 
+Note: The Zoroastrian Fasli calendar in this code strictly follows a 365-day solar year with no leap years, 
+leading to cumulative drift compared to the Gregorian calendar. Test expectations reflect the resulting 
+historical offset. 
 
-struct NowruzEntry {
-  int year;
-  double jd;
-};
+Wikipedia https://en.wikipedia.org/wiki/Zoroastrian_calendar:
+Webster's online dictionary and various unreferenced sources state that the Fasli calendar follows the 
+Gregorian, and it is shown strictly following the Gregorian calendar in the period AD 2009–2031 in the tables 
+published by R. E. Kadva[1]. The Gregorian calendar itself, however, will not keep 21 March as the date of the 
+northern vernal equinox forever – it has a deviation of one day every 5025 years.
+[1]: "Compendium of Fasli Zoroastrian Monthly Calendars 1379 A.Y. (2009-2010 C.E.) through
+1400 A.Y. (2030-2031 C.E.)" https://zoroastrian.ru/files/eng/zoroastrian-calendars-1379-ay-1400-ay-fasli.pdf
+*/
 
-// Add more years as needed
-constexpr NowruzEntry SHENSHAI_NOWRUZ[] = {
-  {2025, 2460802.5},  // August 15, 2025
-  {2026, 2461167.5},  // August 15, 2026
-  {2027, 2461532.5},  // August 15, 2027
-};
+// Zoroastrian (Fasli) epoch: 632-03-19 Julian (JD 1948320.5)
+constexpr double ZOROASTRIAN_EPOCH = 1948320.5;
 
-constexpr NowruzEntry KADMI_NOWRUZ[] = {
-  {2025, 2460772.5},  // July 16, 2025
-  {2026, 2461137.5},  // July 16, 2026
-  {2027, 2461502.5},  // July 16, 2027
-};
+const char *zoroastrian_months[13] = {"Farvardin", "Ardibehesht", "Khordad", "Tir",    "Amordad", "Shahrivar", "Mehr",
+                                      "Aban",      "Adar",        "Dey",     "Bahman", "Esfand",  "Gatha"};
 
-constexpr NowruzEntry FASLI_NOWRUZ[] = {
-  {2025, 2460727.5},  // March 21, 2025
-  {2026, 2461092.5},  // March 21, 2026
-  {2027, 2461457.5},  // March 21, 2027
-};
+// Replace your day-name array in cal_zoroastrian.cpp
+const char *zoroastrian_days[30] = {"Hormazd",  "Bahman", "Ardibehesht", "Shahrevar", "Spandarmad", "Hordad", "Amurdad", "Day Bad", "Adar",       "Aban",
+                                    "Khorshed", "Mah",    "Tir",         "Gosh",      "Day Mihr",   "Mihr",   "Srosh",   "Rashn",   "Farvardin",  "Varahram",
+                                    "Ram",      "Govad",  "Day Din",     "Din",       "Ard",        "Ashtad", "Asman",   "Zamyad",  "Mahraspand", "Aniran"};
 
-const char *const MAH_NAMES[12] = {"Farvardin", "Ardibehesht", "Khordad", "Tir", "Amardad", "Shahrevar",
-                                   "Meher",     "Avan",        "Adar",    "Dae", "Bahman",  "Aspandarmad"};
-
-const char *const ROJ_NAMES[30] = {"Hormazd",     "Bahman", "Ardibehesht", "Shahrevar", "Spandarmad", "Khordad", "Amardad",      "Dae-pa-Adar",
-                                   "Adar",        "Aban",   "Khorshed",    "Mah",       "Tir",        "Gosh",    "Dae-pa-Meher", "Meher",
-                                   "Srosh",       "Rashne", "Fravardin",   "Behram",    "Ram",        "Govad",   "Dae-pa-Din",   "Din",
-                                   "Ashishvangh", "Ashtad", "Asman",       "Zamyad",    "Marespand",  "Aneran"};
-
-double find_nowruz_jd(int &out_year, double jd, const NowruzEntry *table, int size) {
-  for (int i = size - 1; i >= 0; --i) {
-    if (jd >= table[i].jd) {
-      out_year = table[i].year - 586;  // Adjusting to Zoroastrian year
-      return table[i].jd;
-    }
-  }
-  // fallback to earliest
-  out_year = table[0].year - 586;
-  return table[0].jd;
-}
-
-std::array<int, 3> jd_to_zoroastrian(double jd, ZoroastrianCalendarVariant variant) {
-  int year = 0;
-  double nowruz_jd = 0.0;
-
-  switch (variant) {
-    case ZoroastrianCalendarVariant::Shenshai: nowruz_jd = find_nowruz_jd(year, jd, SHENSHAI_NOWRUZ, sizeof(SHENSHAI_NOWRUZ) / sizeof(NowruzEntry)); break;
-    case ZoroastrianCalendarVariant::Kadmi:    nowruz_jd = find_nowruz_jd(year, jd, KADMI_NOWRUZ, sizeof(KADMI_NOWRUZ) / sizeof(NowruzEntry)); break;
-    case ZoroastrianCalendarVariant::Fasli:    nowruz_jd = find_nowruz_jd(year, jd, FASLI_NOWRUZ, sizeof(FASLI_NOWRUZ) / sizeof(NowruzEntry)); break;
-  }
-
-  int day_of_year = (int)(jd - nowruz_jd) + 1;
-  int month = 1 + (day_of_year - 1) / 30;
-  int day = 1 + (day_of_year - 1) % 30;
-  if (month > 12) {
-    month = 12;
-  }
-  if (day > 30) {
-    day = 30;
+std::array<int, 3> jd_to_zoroastrian(double jd) {
+  // Days since Zoroastrian epoch (both floored to handle noon start)
+  int days = static_cast<int>(std::floor(jd) - std::floor(ZOROASTRIAN_EPOCH));
+  int year = days / 365 + 1;
+  int day_of_year = (days % 365) + 1;
+  int month, day;
+  if (day_of_year > 360) {
+    // Epagomenal days: month 13 (Gatha)
+    month = 13;
+    day = day_of_year - 360;
+  } else {
+    month = (day_of_year - 1) / 30 + 1;
+    day = ((day_of_year - 1) % 30) + 1;
   }
   return {year, month, day};
 }
 
-const char *format_zoroastrian_date_roj(double jd, ZoroastrianCalendarVariant variant) {
-  auto date = jd_to_zoroastrian(jd, variant);
-  const char *roj = ROJ_NAMES[date[2] - 1];
-  static char buffer[64];
-  snprintf(buffer, sizeof(buffer), "%s", roj);
-  return buffer;
+double zoroastrian_to_jd(int year, int month, int day) {
+  // Each year = 365 days, months 1–12 = 30 days, 13th month = 5 epagomenal days
+  int y = year - 1;
+  int m = month - 1;
+  int d = day - 1;
+  int days = y * 365;
+  if (month == 13) {
+    days += 360 + d;  // 12 * 30 + epagomenal day
+  } else {
+    days += m * 30 + d;
+  }
+  // Return JD at start of day
+  return std::floor(ZOROASTRIAN_EPOCH) + days;
 }
 
-const char *format_zoroastrian_date_mah(double jd, ZoroastrianCalendarVariant variant) {
-  auto date = jd_to_zoroastrian(jd, variant);
-  const char *mah = MAH_NAMES[date[1] - 1];
-  static char buffer[64];
-  snprintf(buffer, sizeof(buffer), "%s", mah);
-  return buffer;
+std::string zoroastrian_month_name(int month) {
+  if (month >= 1 && month <= 13) {
+    return zoroastrian_months[month - 1];
+  }
+  return "";
+}
+
+std::string zoroastrian_day_name(int day) {
+  // Day names repeat every month; for Gatha days use their ordinal
+  if (day >= 1 && day <= 30) {
+    return zoroastrian_days[day - 1];
+  }
+  // Gatha days: 1–5 (could give custom names if desired)
+  if (day >= 1 && day <= 5) {
+    return "Gatha";
+  }
+  return "";
+}
+
+std::string format_zoroastrian_date(const std::array<int, 3> &date) {
+  int year = date[0], month = date[1], day = date[2];
+  std::string s = std::to_string(year) + "-" + std::to_string(month) + "-" + std::to_string(day) + " (";
+  s += zoroastrian_month_name(month) + " ";
+  s += zoroastrian_day_name(day) + ")";
+  return s;
+}
+
+std::string format_zoroastrian_date_weekday(double jd) {
+  auto date = jd_to_zoroastrian(jd);
+  // For days 1–30, return the Zoroastrian day name; for Gatha days, you can return "Gatha" or ordinal
+  if (date[1] == 13) {  // Gatha days (month 13)
+    return "Gatha";
+  }
+  return zoroastrian_day_name(date[2]);
+}
+
+std::string format_zoroastrian_date_month(double jd) {
+  auto date = jd_to_zoroastrian(jd);
+  return zoroastrian_month_name(date[1]);
+}
+
+std::string format_zoroastrian_date_year(double jd) {
+  auto date = jd_to_zoroastrian(jd);
+  int year = date[0];
+  return std::to_string(year) + " YZ";
 }

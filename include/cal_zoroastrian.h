@@ -1,17 +1,26 @@
-#ifndef CAL_ZOROASTRIAN_H
-#define CAL_ZOROASTRIAN_H
-
+#pragma once
 #include <array>
+#include <string>
 
-enum class ZoroastrianCalendarVariant {
-  Shenshai,
-  Fasli,
-  Kadmi
-};
+// Zoroastrian (Fasli) calendar module for Epoch Calendar Project
+// Conversion functions: JD <-> Zoroastrian (Fasli) calendar
+// Epoch: JD 1948320.5 (632-03-19 Julian)
 
-std::array<int, 3> jd_to_zoroastrian(double jd, ZoroastrianCalendarVariant variant);
+// Convert Julian Day to Zoroastrian (Fasli) calendar date [year, month, day]
+std::array<int, 3> jd_to_zoroastrian(double jd);
 
-const char *format_zoroastrian_date_roj(double jd, ZoroastrianCalendarVariant variant);  // 'weekday'
-const char *format_zoroastrian_date_mah(double jd, ZoroastrianCalendarVariant variant);  // 'month'
+// Convert Zoroastrian (Fasli) calendar date to Julian Day
+double zoroastrian_to_jd(int year, int month, int day);
 
-#endif
+// Get Zoroastrian month name (Fasli, 1-based)
+std::string zoroastrian_month_name(int month);
+
+// Get Zoroastrian day name (Fasli, 1-based)
+std::string zoroastrian_day_name(int day);
+
+// Format a full Zoroastrian (Fasli) date as a string (e.g., "1394-2-29 (Ardibehesht)")
+std::string format_zoroastrian_date(const std::array<int, 3> &date);
+
+std::string format_zoroastrian_date_weekday(double jd);
+std::string format_zoroastrian_date_month(double jd);
+std::string format_zoroastrian_date_year(double jd);

@@ -271,8 +271,9 @@ void drawMain() {
       format_day_month = format_day + " " + format_month;
       break;
     case 21:  // zoroastrian // 21
-      format_weekday = format_zoroastrian_date_mah(jd, ZoroastrianCalendarVariant::Fasli);
-      format_month = format_zoroastrian_date_roj(jd, ZoroastrianCalendarVariant::Fasli);
+      format_weekday = format_zoroastrian_date_weekday(jd).c_str();
+      format_month = format_zoroastrian_date_month(jd).c_str();
+      format_year = format_zoroastrian_date_year(jd).c_str();
       break;
     case 22:  // hindu  // 22
       format_weekday = format_hindu_date_weekday(jd).c_str();
@@ -324,8 +325,12 @@ void drawMain() {
         canvas.drawString(format_month_description, 36, 400);
       }
     } else {
-      canvas.drawString(format_day, 36, 230);
-      canvas.drawString(format_month, 36, 310);
+      if (format_day != "none") {
+        canvas.drawString(format_day, 36, 230);
+      }
+      if (format_month != "none") {
+        canvas.drawString(format_month, 36, 310);
+      }
       if (format_year != "none") {
         canvas.drawString(format_year, 36, 390);
       }
