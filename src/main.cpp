@@ -209,8 +209,15 @@ void drawMain() {
       format_day_month = format_day + " " + format_month;
       break;
     case 10:  // saka        // 10
-      format_weekday = format_saka_date_weekday(jd, false).c_str();
-      format_day_month_year = format_saka_date_local(jd, false).c_str();
+      //CHECK(format_saka_date_day(jd) == "29");
+      //CHECK(format_saka_date_weekday_local(jd, false) == "Somavara");
+      //CHECK(format_saka_date_month_local(jd, false) == "Vaishakha");
+      //CHECK(format_saka_date_year_local(jd, false) == "1947");
+      format_weekday = format_saka_date_weekday_local(jd, false).c_str();
+      format_day = format_saka_date_day(jd).c_str();
+      format_month = format_saka_date_month_local(jd, false).c_str();
+      format_year = format_saka_date_year_local(jd, false).c_str();
+      format_day_month = format_day + " " + format_month;
       break;
     case 11:  // icelandic   // 11
       format_weekday = format_icelandic_date_weekday(jd).c_str();

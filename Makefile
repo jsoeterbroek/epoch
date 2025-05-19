@@ -11,7 +11,7 @@ OBJS := $(patsubst test/%.cpp, build/%, $(TESTS))
 .DEFAULT_GOAL := run
 
 .PHONY: all clean run build \
-				french egyptian zoroastrian islamic \
+				french egyptian zoroastrian islamic saka \
         ethiopian hebrew babylonian darian calendar icelandic chinese coptic
 
 # Build everything
@@ -43,6 +43,9 @@ zoroastrian: build/test_cal_zoroastrian
 	./$<
 
 islamic: build/test_cal_islamic
+	./$<
+
+saka: build/test_cal_saka
 	./$<
 
 ethiopian: build/test_cal_ethiopian

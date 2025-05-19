@@ -16,7 +16,7 @@
 #include <string>
 
 //
-// Indian civil - saka
+// Indian civil - Saka
 //
 const char *saka_months[12] = {"Chaitra", "Vaisakha", "Jyeshtha",   "Ashadha", "Shravana", "Bhadra",
                                "Ashwin",  "Kartika",  "Agrahayana", "Pausha",  "Magha",    "Phalguna"};
@@ -89,14 +89,21 @@ double saka_to_jd(int year, int month, int day) {
 std::string format_saka_date(double jd) {
   auto saka = jd_to_saka(jd);
   int year = saka[0], month = saka[1], day = saka[2];
-
   const char *month_name = saka_months[month - 1];
   char buffer[40];
   snprintf(buffer, sizeof(buffer), "Saka: %d %s, %d", day, month_name, year);
   return std::string(buffer);
 }
 
-std::string format_saka_date_weekday(double jd, bool use_hindi = true) {
+std::string format_saka_date_day(double jd) {
+  auto saka = jd_to_saka(jd);
+  int day = saka[2];
+  char buffer[40];
+  snprintf(buffer, sizeof(buffer), "%d", day);
+  return std::string(buffer);
+}
+
+std::string format_saka_date_weekday_local(double jd, bool use_hindi = true) {
   int weekday = calendar::iso_day_of_week(jd);  // ISO: Mon=1, Sun=7
   const char *weekday_name = use_hindi ? weekday_names_hi[weekday - 1] : weekday_names_sa[weekday - 1];
   char buffer[40];
@@ -112,5 +119,22 @@ std::string format_saka_date_local(double jd, bool use_hindi = true) {
   const char *weekday_name = use_hindi ? weekday_names_hi[weekday - 1] : weekday_names_sa[weekday - 1];
   char buffer[60];
   snprintf(buffer, sizeof(buffer), "%d %s, %d", day, month_name, year);
+  return std::string(buffer);
+}
+
+std::string format_saka_date_month_local(double jd, bool use_hindi = true) {
+  auto saka = jd_to_saka(jd);
+  int month = saka[1];
+  const char *month_name = use_hindi ? saka_months_hi[month - 1] : saka_months_sa[month - 1];
+  char buffer[40];
+  snprintf(buffer, sizeof(buffer), "%s", month_name);
+  return std::string(buffer);
+}
+
+std::string format_saka_date_year_local(double jd, bool use_hindi = true) {
+  auto saka = jd_to_saka(jd);
+  int year = saka[0];
+  char buffer[40];
+  snprintf(buffer, sizeof(buffer), "%d", year);
   return std::string(buffer);
 }
