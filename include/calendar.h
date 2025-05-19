@@ -20,7 +20,7 @@
 #include "cal_icelandic.h"
 #include "cal_zoroastrian.h"
 #include "cal_anglosaxon.h"
-#include "cal_old_high_german.h"
+#include "cal_germanic.h"
 #include "cal_chinese_zodiac.h"
 #include "cal_hindu.h"
 #include "cal_darian.h"

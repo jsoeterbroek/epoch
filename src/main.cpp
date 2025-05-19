@@ -236,11 +236,11 @@ void drawMain() {
       format_day_month = format_day + " " + format_month;
       break;
     case 13:  // old high german // 13
-      format_weekday = format_oldhighgerman_date_weekday(jd).c_str();
-      format_day = format_oldhighgerman_date_day(jd).c_str();
-      format_month = format_oldhighgerman_date_month(jd).c_str();
-      format_month_description = format_oldhighgerman_date_month_description(jd).c_str();
-      //format_year = format_oldhighgerman_date_year(jd).c_str();
+      format_weekday = format_germanic_date_weekday(jd).c_str();
+      format_day = format_germanic_date_day(jd).c_str();
+      format_month = format_germanic_date_month(jd).c_str();
+      format_month_description = format_germanic_date_month_description(jd).c_str();
+      //format_year = format_germanic_date_year(jd).c_str();
       format_day_month = format_day + " " + format_month;
       break;
     case 14:  // armenian    // 14
@@ -313,8 +313,8 @@ void drawMain() {
   canvas.drawString(timeStrbuff, 36, 40);
 
   // weekday, day, month, year
-  canvas.drawRoundRect(28, 140, 570, 340, 20, TFT_DARKGREY);
-  canvas.fillRoundRect(30, 142, 566, 336, 20, TFT_BLACK);  // FIXME, invert colors
+  canvas.drawRoundRect(28, 140, 580, 340, 20, TFT_DARKGREY);
+  canvas.fillRoundRect(30, 142, 576, 336, 20, TFT_BLACK);  // FIXME, invert colors
   canvas.setTextDatum(0);
   if (format_weekday != "none") {
     canvas.drawString(format_weekday, 36, 150);
@@ -544,7 +544,7 @@ void setup() {
       canvas.drawJpgFile(SD, "/back_anglosaxon.jpg");
       break;
     case 13:  // old high german // 13
-      canvas.drawJpgFile(SD, "/back_german.jpg");
+      canvas.drawJpgFile(SD, "/back_germanic.jpg");
       break;
     case 14:  // armenian    // 14
       canvas.drawJpgFile(SD, "/back_armenian.jpg");
@@ -584,6 +584,5 @@ void loop() {
   if (millis() - _timeoutMS > INTERVAL_MS) {
     _timeoutMS = millis();
     drawMain();
-    //serialTest();
   }
 }
