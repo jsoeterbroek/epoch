@@ -263,8 +263,11 @@ void drawMain() {
       format_day_month = format_day + " " + format_month;
       break;
     case 18:  // buddhist"   // 18
-      format_weekday = "Buddhist Calendar";
-      format_day_month_year = "Not yet implemented";
+      format_weekday = format_buddhist_date_weekday(jd).c_str();
+      format_day = format_buddhist_date_day(jd).c_str();
+      format_month = format_buddhist_date_month(jd).c_str();
+      format_year = format_buddhist_date_year(jd).c_str();
+      format_day_month = format_day + " " + format_month;
       break;
     case 19:  // mongolian   // 19
       format_weekday = "Mongolian Calendar";
@@ -354,7 +357,7 @@ void drawMain() {
   String mycal = cur_calendar + " calendar";
   String mytz = ("Timezone: ") + get_timezone();
   canvas.drawString(mycal, 12, 508);
-  canvas.drawString(mytz, 320, 508);
+  canvas.drawString(mytz, 350, 508);
   uint32_t batVoltage = readBatteryVoltage();
   uint32_t batPercent = calcBatPercent(batVoltage, MIN_BATTERY_VOLTAGE, MAX_BATTERY_VOLTAGE);
   char buffer[16];
@@ -559,7 +562,7 @@ void setup() {
       canvas.drawJpgFile(SD, "/back_chinese.jpg");
       break;
     case 18:  // buddhist"   // 18
-      canvas.drawJpgFile(SD, "/back_buddhist.jpg");
+      canvas.drawJpgFile(SD, "/back_buddhist_thai.jpg");
       break;
     case 19:  // mongolian   // 19
       canvas.drawJpgFile(SD, "/back_mongolian.jpg");

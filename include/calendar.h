@@ -22,6 +22,7 @@
 #include "cal_anglosaxon.h"
 #include "cal_germanic.h"
 #include "cal_chinese_zodiac.h"
+#include "cal_buddhist.h"
 #include "cal_hindu.h"
 #include "cal_darian.h"
 
