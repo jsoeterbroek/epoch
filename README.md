@@ -24,7 +24,10 @@ Note this project is currently very much a Work in Progress, and by no means rea
 
 ## Screenshots
 
-### Currently implemented (V0.0.1 release) calendar systems
+#### All selections
+![All](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/all_calendars.jpg)
+
+### Currently implemented calendar systems
 
 #### Babylonian
 ![Babylonian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/babylonian.jpg)
@@ -52,29 +55,29 @@ Note this project is currently very much a Work in Progress, and by no means rea
 ![chinese](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/chin_zodiac.jpg)
 #### Mars (Darian)
 ![Mars](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/mars.jpg)
-
-### To be implemented calendar systems
-
 #### Hebrew
 ![Hebrew](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/hebrew.jpg)
 #### Coptic
 ![Coptic](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/coptic.jpg)
+#### Icelandic
+![icelandic](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/icelandic.jpg)
+#### Buddhist (Thai Solar)
+![buddhist](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/buddhist_thai.jpg)
+#### Ethiopian
+![ethiopoian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/ethiopian.jpg)
+
+### To be implemented calendar systems
+
 #### Persian
 ![Persian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/persian.jpg)
-#### Norse (Icelandic)
-![icelandic](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/icelandic.jpg)
 #### Armenian
 ![armenian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/armenian.jpg)
 #### Georgian
 ![georgian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/georgian.jpg)
 #### Mandaean
 ![mandaean](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/mandaean.jpg)
-#### Buddhist
-![buddhist](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/buddhist.jpg)
 #### Mongolian
 ![Mongolian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/mongolian.jpg)
-#### Ethiopian
-![ethiopoian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/ethiopian.jpg)
 
 ## TODO
 * remaining calendar systems
