@@ -3,7 +3,7 @@
 #include <cmath>
 #include <string>
 #include <array>
-
+#include <iostream>
 /* 
 | S.R. Year | Afteryule 1 | Gregorian Date | JD        |
 | --------- | ----------- | -------------- | --------- |
@@ -38,18 +38,29 @@ inline int days_since_shire_epoch(double jd) {
 }
 
 std::array<int, 4> jd_to_shire(double jd) {
-  int days = days_since_shire_epoch(jd);
+  int jd_int = static_cast<int>(std::floor(jd));
+  int days = jd_int - static_cast<int>(std::floor(SHIRE_EPOCH));
 
-  // Estimate year
+  // Estimate year, then adjust to ensure start_of_year <= jd_int
   int approx_year = static_cast<int>(days / 366.0) + 1;
-  int start_of_year =
-    static_cast<int>(std::floor(SHIRE_EPOCH)) + (approx_year - 1) * 365 + ((approx_year - 1) / 4 - (approx_year - 1) / 100 + (approx_year - 1) / 400);
-
-  // Count days into the Shire year
-  int day_of_year = static_cast<int>(std::floor(jd)) - start_of_year + 1;
   int year = approx_year;
+  int gregorian_year, years_since_epoch, start_of_year;
+
+  while (true) {
+    gregorian_year = year + 1600;
+    years_since_epoch = gregorian_year - 1601;
+    start_of_year =
+      static_cast<int>(std::floor(SHIRE_EPOCH)) + years_since_epoch * 365 + (years_since_epoch / 4 - years_since_epoch / 100 + years_since_epoch / 400);
+    if (start_of_year > jd_int) {
+      year--;
+    } else {
+      break;
+    }
+  }
 
   bool leap = is_shire_leap(year);
+
+  int day_of_year = jd_int - start_of_year + 1;
 
   // Map days to holidays and months
   // Shire New Year structure:
@@ -208,6 +219,7 @@ std::string format_shire_date_month(double jd) {
 
 std::string format_shire_date_day(double jd) {
   auto date = jd_to_shire(jd);
+  std::cerr << "DEBUG: jd=" << jd << " -> year=" << date[0] << " month=" << date[1] << " day=" << date[2] << " hol=" << date[3] << std::endl;
   if (date[1] == 0) {
     return shire_holiday_name(date[3]);
   }
