@@ -39,7 +39,7 @@ const char *calendar_name(int index) {
     "Germanic",               // 13
     "Armenian",               // 14
     "Georgian",               // 15
-    "Shire",                  // 16
+    "Mandaean",               // 16
     "Chinese Zodiac",         // 17
     "Buddhist (Thai solar)",  // 18
     "Mongolian",              // 19

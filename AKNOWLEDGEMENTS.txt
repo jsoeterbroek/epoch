@@ -12,8 +12,7 @@ Ideas, parts of code taken from:
 * https://github.com/VolosR/WeatherM5Paper
 * https://planetcalc.com/
 * Parker, R. A. (1950). The Calendars of Ancient Egypt. Studies in Ancient Oriental Civilization, No. 26. University of Chicago Press.
-* Wikipedia
-* https://time-meddler.co.uk/the-old-icelandic-calendar/
+* Mapping Time: The Calendar and Its History" British physics educator and programmer Edward Graham Richards
 
 A.I. assist
 -----------

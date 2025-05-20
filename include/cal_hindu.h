@@ -8,10 +8,11 @@
 // Constants
 
 // Function declarations
-std::array<int, 3> jd_to_hindu_lunar(double jd);   // [year, month_index, tithi]
-std::string format_hindu_date_year(double jd);     // e.g. "Vikrama Samvat 2082"
-std::string format_hindu_date_month(double jd);    // e.g. "Vaishakha, Shukla Paksha"
-std::string format_hindu_date_day(double jd);      // e.g. "Tithi 3 (Tritiya)"
-std::string format_hindu_date_weekday(double jd);  // e.g. "Guru-vāra"
+std::array<int, 3> jd_to_hindu_lunar(double jd);             // [year, month_index, tithi]
+bool is_hindu_festival(double jd, const std::string &name);  // e.g. "Apara Ekadashi"
+std::string format_hindu_date_year(double jd);
+std::string format_hindu_date_month(double jd);
+std::string format_hindu_date_day(double jd);
+std::string format_hindu_date_weekday(double jd);
 
 #endif
