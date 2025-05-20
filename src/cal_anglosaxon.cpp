@@ -22,14 +22,14 @@ const char *anglosaxon_weekday_name(int day) {
 }
 
 const char *anglosaxon_month_name(int month) {
-  static const char *names[] = {"Aefterra Geola", "Sol-monath",  "Hreth-monath", "Easter-monath", "Thrimilce-monath", "Aerra Litha",
-                                "Aeftera Litha",  "Weod-monath", "Halig-monath", "Winterfylleth", "Blot-monath",      "Aerra Geola"};
+  static const char *names[] = {"Aefterra Geola", "Solmonath",  "Hrethmonath", "Eosturmonath",  "Thrimilchi", "Aerra Litha",
+                                "Aeftera Litha",  "Weodmonath", "Helegmonath", "Winterfilleth", "Blodmonath", "Aerra Geola"};
   //	Þrilīþa "Third (Mid)summer" (leap month)
   return names[month - 1];
 }
 
 const char *anglosaxon_month_desc(int month) {
-  static const char *desc[] = {"After Yule",       "Mud month",       "Month of Wildness", "Month of Dawn", "Month of Three Milkings",
+  static const char *desc[] = {"After Yule",       "Month of cakes",  "Month of Wildness", "Month of Dawn", "Month of Three Milkings",
                                "Before Midsummer", "After Midsummer", "Weed month",        "Holy Month",    "Winter full moon",
                                "Blood Month",      "Before Yule"};
   return desc[month - 1];

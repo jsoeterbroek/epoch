@@ -16,5 +16,5 @@ TEST_CASE("Anglosaxon calendar date conversion and formatting for may 19, 2025")
   CHECK(date[2] == 6);
   CHECK(format_anglosaxon_date_day(jd) == "6");
   CHECK(format_anglosaxon_date_weekday(jd) == "Monandag");
-  CHECK(format_anglosaxon_date_month(jd) == "Thrimilce-monath");
+  CHECK(format_anglosaxon_date_month(jd) == "Thrimilchi");
 }
