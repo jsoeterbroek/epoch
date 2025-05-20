@@ -23,18 +23,18 @@ TEST_CASE("Shire calendar conversion table for shire years 1 and 1421") {
   CHECK(gdate_1421[0] == 2021);
 }
 
-// TEST_CASE("Shire calendar conversion with Afteryule 1, S.R. 1421") {
-//   // Afteryule 1, S.R. 1421 is Gregorian Jan 2, 2021
-//   double jd = shire_to_jd(1421, 1, 1);
-//   auto gdate = jd_to_gregorian(jd);
-//   std::cout << "Gregorian: " << gdate[0] << "-" << gdate[1] << "-" << gdate[2] << std::endl;
-//   auto sdate = jd_to_shire(jd);
-//   CHECK(gdate[0] == 2021);
-//   CHECK(sdate[0] == 1421);
-//   CHECK(sdate[1] == 1);
-//   CHECK(sdate[2] == 1);
-//   CHECK(format_shire_date_year(jd) == "1421 S.R.");
-//   CHECK(format_shire_date_month(jd) == "Afteryule");
-//   CHECK(format_shire_date_day(jd) == "1");
-//   CHECK(!format_shire_date_weekday(jd).empty());
-// }
+TEST_CASE("Shire calendar conversion with Afteryule 1, S.R. 1421") {
+  // Afteryule 1, S.R. 1421 is Gregorian Jan 2, 2021
+  double jd = shire_to_jd(1421, 1, 1);
+  //   auto gdate = jd_to_gregorian(jd);
+  //   std::cout << "Gregorian: " << gdate[0] << "-" << gdate[1] << "-" << gdate[2] << std::endl;
+  //   auto sdate = jd_to_shire(jd);
+  //   CHECK(gdate[0] == 2021);
+  //   CHECK(sdate[0] == 1421);
+  //   CHECK(sdate[1] == 1);
+  //   CHECK(sdate[2] == 1);
+  CHECK(format_shire_date_year(jd) == "1421 S.R.");
+  //   CHECK(format_shire_date_month(jd) == "Afteryule");
+  //   CHECK(format_shire_date_day(jd) == "1");
+  //   CHECK(!format_shire_date_weekday(jd).empty());
+}

@@ -1,4 +1,5 @@
 #include "cal_shire.h"
+#include "calendar.h"
 #include <cmath>
 #include <string>
 #include <array>
@@ -107,14 +108,17 @@ std::array<int, 4> jd_to_shire(double jd) {
 }
 
 inline bool is_shire_leap(int year) {
-  int gregorian_year = year + 1600;
+  int gregorian_year = year + 1600;  // S.R. 1 = 1601
   return (gregorian_year % 4 == 0 && (gregorian_year % 100 != 0 || gregorian_year % 400 == 0));
 }
 
 // Main function:
 double shire_to_jd(int year, int month, int day, int holiday_code) {
-  // Start of S.R. year (do not add 1600 here!)
-  double jd = SHIRE_EPOCH + (year - 1) * 365 + ((year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400);
+  // Start of S.R. year (S.R. 1 = 1601-01-02 Gregorian = JD 2305814.5)
+  // Each Shire year starts on Jan 2 of Gregorian year (year + 1600)
+  int gregorian_year = year + 1600;
+  int years_since_epoch = gregorian_year - 1601;
+  double jd = SHIRE_EPOCH + years_since_epoch * 365 + (years_since_epoch / 4 - years_since_epoch / 100 + years_since_epoch / 400);
 
   bool leap = is_shire_leap(year);
 
