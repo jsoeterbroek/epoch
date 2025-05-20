@@ -2,7 +2,7 @@
 
 A calendar application for M5 Stack ePaper device.
 
-Support for different historical and cultural calendar systems: Babylonian, Gregorian, Julian, Hebrew, Islamic, Old Egyptian, Coptic, Mayan, Persian, French (rev.), Saka, Icelandic, Anglo-Saxon, Germanic, Armenian, Georgian, Mandaean, Chinese Zodiac, Buddhist, Mongolian, Ethiopian, Zoroastrian, Mars.
+Support for different historical and cultural calendar systems: Babylonian, Gregorian, Julian, Hebrew, Islamic, Old Egyptian, Coptic, Mayan, Persian, Republican French, Saka, Icelandic, Anglo-Saxon, Germanic, Armenian, Georgian, Mandaean, Chinese Zodiac, Buddhist, Mongolian, Ethiopian, Zoroastrian, Hindu, Mars.
 
 ## WIP
 Note this project is currently very much a Work in Progress, and by no means ready. Your mileage may vary.
@@ -63,6 +63,8 @@ Note this project is currently very much a Work in Progress, and by no means rea
 ![icelandic](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/icelandic.jpg)
 #### Buddhist (Thai Solar)
 ![buddhist](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/buddhist_thai.jpg)
+#### Hindu
+![hindu](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/hindu.jpg)
 #### Ethiopian
 ![ethiopoian](https://github.com/jsoeterbroek/epoch/blob/main/assets/screens/ethiopian.jpg)
 
