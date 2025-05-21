@@ -1,251 +1,251 @@
 {
-  "apiversion": "4.0.1", 
-  "numphases": 49, 
+  "apiversion": "4.0.1",
+  "numphases": 49,
   "phasedata": [
     {
-      "day": 7, 
-      "month": 1, 
-      "phase": "New Moon", 
-    }, 
+      "day": 7,
+      "month": 1,
+      "phase": "New Moon"
+    },
     {
-      "day": 15, 
-      "month": 1, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 15,
+      "month": 1,
+      "phase": "First Quarter"
+    },
     {
-      "day": 22, 
-      "month": 1, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 22,
+      "month": 1,
+      "phase": "Full Moon"
+    },
     {
-      "day": 29, 
-      "month": 1, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 29,
+      "month": 1,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 6, 
-      "month": 2, 
-      "phase": "New Moon", 
-    }, 
+      "day": 6,
+      "month": 2,
+      "phase": "New Moon"
+    },
     {
-      "day": 14, 
-      "month": 2, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 14,
+      "month": 2,
+      "phase": "First Quarter"
+    },
     {
-      "day": 20, 
-      "month": 2, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 20,
+      "month": 2,
+      "phase": "Full Moon"
+    },
     {
-      "day": 28, 
-      "month": 2, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 28,
+      "month": 2,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 8, 
-      "month": 3, 
-      "phase": "New Moon", 
-    }, 
+      "day": 8,
+      "month": 3,
+      "phase": "New Moon"
+    },
     {
-      "day": 15, 
-      "month": 3, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 15,
+      "month": 3,
+      "phase": "First Quarter"
+    },
     {
-      "day": 22, 
-      "month": 3, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 22,
+      "month": 3,
+      "phase": "Full Moon"
+    },
     {
-      "day": 30, 
-      "month": 3, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 30,
+      "month": 3,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 6, 
-      "month": 4, 
-      "phase": "New Moon", 
-    }, 
+      "day": 6,
+      "month": 4,
+      "phase": "New Moon"
+    },
     {
-      "day": 13, 
-      "month": 4, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 13,
+      "month": 4,
+      "phase": "First Quarter"
+    },
     {
-      "day": 20, 
-      "month": 4, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 20,
+      "month": 4,
+      "phase": "Full Moon"
+    },
     {
-      "day": 28, 
-      "month": 4, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 28,
+      "month": 4,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 6, 
-      "month": 5, 
-      "phase": "New Moon", 
-    }, 
+      "day": 6,
+      "month": 5,
+      "phase": "New Moon"
+    },
     {
-      "day": 13, 
-      "month": 5, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 13,
+      "month": 5,
+      "phase": "First Quarter"
+    },
     {
-      "day": 20, 
-      "month": 5, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 20,
+      "month": 5,
+      "phase": "Full Moon"
+    },
     {
-      "day": 28, 
-      "month": 5, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 28,
+      "month": 5,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 4, 
-      "month": 6, 
-      "phase": "New Moon", 
-    }, 
+      "day": 4,
+      "month": 6,
+      "phase": "New Moon"
+    },
     {
-      "day": 11, 
-      "month": 6, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 11,
+      "month": 6,
+      "phase": "First Quarter"
+    },
     {
-      "day": 19, 
-      "month": 6, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 19,
+      "month": 6,
+      "phase": "Full Moon"
+    },
     {
-      "day": 27, 
-      "month": 6, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 27,
+      "month": 6,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 4, 
-      "month": 7, 
-      "phase": "New Moon", 
-    }, 
+      "day": 4,
+      "month": 7,
+      "phase": "New Moon"
+    },
     {
-      "day": 10, 
-      "month": 7, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 10,
+      "month": 7,
+      "phase": "First Quarter"
+    },
     {
-      "day": 18, 
-      "month": 7, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 18,
+      "month": 7,
+      "phase": "Full Moon"
+    },
     {
-      "day": 26, 
-      "month": 7, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 26,
+      "month": 7,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 2, 
-      "month": 8, 
-      "phase": "New Moon", 
-    }, 
+      "day": 2,
+      "month": 8,
+      "phase": "New Moon"
+    },
     {
-      "day": 9, 
-      "month": 8, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 9,
+      "month": 8,
+      "phase": "First Quarter"
+    },
     {
-      "day": 17, 
-      "month": 8, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 17,
+      "month": 8,
+      "phase": "Full Moon"
+    },
     {
-      "day": 25, 
-      "month": 8, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 25,
+      "month": 8,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 31, 
-      "month": 8, 
-      "phase": "New Moon", 
-    }, 
+      "day": 31,
+      "month": 8,
+      "phase": "New Moon"
+    },
     {
-      "day": 7, 
-      "month": 9, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 7,
+      "month": 9,
+      "phase": "First Quarter"
+    },
     {
-      "day": 15, 
-      "month": 9, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 15,
+      "month": 9,
+      "phase": "Full Moon"
+    },
     {
-      "day": 23, 
-      "month": 9, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 23,
+      "month": 9,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 30, 
-      "month": 9, 
-      "phase": "New Moon", 
-    }, 
+      "day": 30,
+      "month": 9,
+      "phase": "New Moon"
+    },
     {
-      "day": 7, 
-      "month": 10, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 7,
+      "month": 10,
+      "phase": "First Quarter"
+    },
     {
-      "day": 15, 
-      "month": 10, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 15,
+      "month": 10,
+      "phase": "Full Moon"
+    },
     {
-      "day": 22, 
-      "month": 10, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 22,
+      "month": 10,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 29, 
-      "month": 10, 
-      "phase": "New Moon", 
-    }, 
+      "day": 29,
+      "month": 10,
+      "phase": "New Moon"
+    },
     {
-      "day": 6, 
-      "month": 11, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 6,
+      "month": 11,
+      "phase": "First Quarter"
+    },
     {
-      "day": 14, 
-      "month": 11, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 14,
+      "month": 11,
+      "phase": "Full Moon"
+    },
     {
-      "day": 21, 
-      "month": 11, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 21,
+      "month": 11,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 28, 
-      "month": 11, 
-      "phase": "New Moon", 
-    }, 
+      "day": 28,
+      "month": 11,
+      "phase": "New Moon"
+    },
     {
-      "day": 6, 
-      "month": 12, 
-      "phase": "First Quarter", 
-    }, 
+      "day": 6,
+      "month": 12,
+      "phase": "First Quarter"
+    },
     {
-      "day": 13, 
-      "month": 12, 
-      "phase": "Full Moon", 
-    }, 
+      "day": 13,
+      "month": 12,
+      "phase": "Full Moon"
+    },
     {
-      "day": 20, 
-      "month": 12, 
-      "phase": "Last Quarter", 
-    }, 
+      "day": 20,
+      "month": 12,
+      "phase": "Last Quarter"
+    },
     {
-      "day": 27, 
-      "month": 12, 
-      "phase": "New Moon", 
+      "day": 27,
+      "month": 12,
+      "phase": "New Moon"
     }
-  ], 
+  ]
 }
