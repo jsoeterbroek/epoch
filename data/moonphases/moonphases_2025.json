@@ -1,303 +1,252 @@
 {
   "apiversion": "4.0.1",
   "numphases": 49,
-  "year": 2025,
   "phasedata": [
     {
       "day": 6,
       "month": 1,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 13,
       "month": 1,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 21,
       "month": 1,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 29,
       "month": 1,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 5,
       "month": 2,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 12,
       "month": 2,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 20,
       "month": 2,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 28,
       "month": 2,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 6,
       "month": 3,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 14,
       "month": 3,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 22,
       "month": 3,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 29,
       "month": 3,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 5,
       "month": 4,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 13,
       "month": 4,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 21,
       "month": 4,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 27,
       "month": 4,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 4,
       "month": 5,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 12,
       "month": 5,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 20,
       "month": 5,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 27,
       "month": 5,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 3,
       "month": 6,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 11,
       "month": 6,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 18,
       "month": 6,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 25,
       "month": 6,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 2,
       "month": 7,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 10,
       "month": 7,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 18,
       "month": 7,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 24,
       "month": 7,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 1,
       "month": 8,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 9,
       "month": 8,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 16,
       "month": 8,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 23,
       "month": 8,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 31,
       "month": 8,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 7,
       "month": 9,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 14,
       "month": 9,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 21,
       "month": 9,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 29,
       "month": 9,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 7,
       "month": 10,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 13,
       "month": 10,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 21,
       "month": 10,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 29,
       "month": 10,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 5,
       "month": 11,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 12,
       "month": 11,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 20,
       "month": 11,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 28,
       "month": 11,
       "phase": "First Quarter",
-      "year": 2025
     },
     {
       "day": 4,
       "month": 12,
       "phase": "Full Moon",
-      "year": 2025
     },
     {
       "day": 11,
       "month": 12,
       "phase": "Last Quarter",
-      "year": 2025
     },
     {
       "day": 20,
       "month": 12,
       "phase": "New Moon",
-      "year": 2025
     },
     {
       "day": 27,
       "month": 12,
       "phase": "First Quarter",
-      "year": 2025
     }
   ],
-  "year": 2025
 }
 
