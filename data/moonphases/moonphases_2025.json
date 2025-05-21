@@ -1,11 +1,40 @@
 {
-  "apiversion": "4.0.1",
-  "numphases": 49,
+  "year": 2025,
   "phasedata": [
     {
       "day": 6,
       "month": 1,
       "phase": "First Quarter"
+    },
+    {
+      "day": 7,
+      "month": 1,
+      "phase": "Waxing Gibbous-1"
+    },
+    {
+      "day": 8,
+      "month": 1,
+      "phase": "Waxing Gibbous-2"
+    },
+    {
+      "day": 9,
+      "month": 1,
+      "phase": "Waxing Gibbous-3"
+    },
+    {
+      "day": 10,
+      "month": 1,
+      "phase": "Waxing Gibbous-4"
+    },
+    {
+      "day": 11,
+      "month": 1,
+      "phase": "Waxing Gibbous-5"
+    },
+    {
+      "day": 12,
+      "month": 1,
+      "phase": "Waxing Gibbous-6"
     },
     {
       "day": 13,
