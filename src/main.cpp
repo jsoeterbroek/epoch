@@ -34,6 +34,9 @@
 #include <SPI.h>
 #include <JPEGDecoder.h>
 
+// FIXME: remove this
+#include "icons/icons_24x24.h"
+
 M5EPD_Canvas canvas(&M5.EPD);
 
 // touch
@@ -118,7 +121,7 @@ void drawSplash() {
 
 void drawMain() {
 
-  //M5.EPD.Clear(true);
+  M5.EPD.Clear(true);
   //canvas.createCanvas(960, 540);
   //canvas.fillCanvas(0);
   canvas.setFreeFont(&Orbitron_Bold_66);
@@ -315,7 +318,28 @@ void drawMain() {
   canvas.setTextColor(TFT_DARKGREY);
   canvas.drawString(timeStrbuff, 36, 40);
 
+  // moon
+  canvas.drawRoundRect(774, 30, 150, 120, 20, TFT_DARKGREY);
+  canvas.fillRoundRect(776, 32, 146, 116, 20, TFT_BLACK);  // FIXME, inverted colors
+  canvas.setTextDatum(0);
+  canvas.setFreeFont(&Orbitron_Medium_25);
+  canvas.setTextColor(TFT_DARKGREY);
+
+  std::string cpp_str = calendar::format_moon_phase_detailed(jd);
+  String moonStrbuff = String(cpp_str.c_str());
+  String png_moon_phase_path = getMoonPng96(moonStrbuff);
+
+  Serial.print("DEBUG: moon phase: ");  // FIXME: remove later
+  Serial.println(png_moon_phase_path);  // FIXME: remove later
+
+  //canvas.drawBitmap(600, 40, getMoonBitmap48(), 48, 48, TFT_DARKGREY);
+  //canvas.drawPngFile(SD, "/icons/48/wi-moon-waning-gibbous-2.png", 630, 46, 48, 48);
+  canvas.drawPngFile(SD, png_moon_phase_path.c_str(), 802, 46, 96, 96);
+  //canvas.drawString(moonStrbuff, 670, 52);
+
   // weekday, day, month, year
+  canvas.setFreeFont(&Orbitron_Bold_66);
+  canvas.setTextColor(TFT_DARKGREY);
   canvas.drawRoundRect(28, 140, 580, 340, 20, TFT_DARKGREY);
   canvas.fillRoundRect(30, 142, 576, 336, 20, TFT_BLACK);  // FIXME, invert colors
   canvas.setTextDatum(0);
@@ -389,7 +413,6 @@ void setup() {
   M5.EPD.Clear(true);
   M5.EPD.SetColorReverse(false);  // reverse color also affects the background image
   M5.RTC.begin();
-
   drawSplash();
 
   while (drawMode == 0) {
@@ -432,6 +455,8 @@ void setup() {
   }
 
   M5.EPD.Clear(true);
+  canvas.createCanvas(960, 540);
+  canvas.fillCanvas(0);
   Serial.begin(115200);
 
   canvas.setFreeFont(&Orbitron_Medium_25);

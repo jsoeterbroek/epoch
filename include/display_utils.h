@@ -20,12 +20,15 @@
 
 #include <vector>
 #include <time.h>
+#include <cstdint>
 
 uint32_t readBatteryVoltage();
 uint32_t calcBatPercent(uint32_t v, uint32_t minv, uint32_t maxv);
 const uint8_t *getBatBitmap24(uint32_t batPercent);
 void getRefreshTimeStr(String &s, bool timeSuccess, tm *timeInfo);
 const uint8_t *getWiFiBitmap16(int rssi);
+//const uint8_t *getMoonBitmap24();
+String getMoonPng48(String _moonPhase);
+String getMoonPng96(String _moonPhase);
 
 #endif
-

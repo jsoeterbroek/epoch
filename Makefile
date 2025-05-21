@@ -12,7 +12,7 @@ OBJS := $(patsubst test/%.cpp, build/%, $(TESTS))
 
 .PHONY: all clean run build \
 				french egyptian zoroastrian islamic saka germanic anglosaxon buddhist \
-				hindu \
+				hindu moon \
         ethiopian hebrew babylonian darian calendar icelandic chinese coptic
 
 # Build everything
@@ -59,6 +59,9 @@ buddhist: build/test_cal_buddhist
 	./$<
 
 hindu: build/test_cal_hindu
+	./$<
+
+moon: build/test_cal_moon
 	./$<
 
 ethiopian: build/test_cal_ethiopian

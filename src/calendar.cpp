@@ -13,6 +13,9 @@
 #include <array>
 #include "astro.h"
 #include <string>
+// icon header files
+#include "display_utils.h"
+#include <cstdint>
 
 namespace calendar {
 
@@ -155,4 +158,138 @@ int calculate_lunar_day(double jd) {
   // Lunar day is moon age rounded down + 1
   return static_cast<int>(std::floor(moon_age)) + 1;
 }
+
+// Compute the phase angle of the moon (0=new, 180=full)
+double moon_phase_angle(double jd) {
+  // Use Fourmilab's mean elongation approximation
+  constexpr double SYNODIC_MONTH = 29.53059;
+  constexpr double NEW_MOON_ANCHOR = 2451550.1;  // 2000-01-06 new moon
+  double days_since = jd - NEW_MOON_ANCHOR;
+  double phase = std::fmod(days_since, SYNODIC_MONTH);
+  if (phase < 0) {
+    phase += SYNODIC_MONTH;
+  }
+  return (phase / SYNODIC_MONTH) * 360.0;
+}
+
+// Return the phase name for a given JD, with more detailed waxing/waning phases
+std::string moon_phase_name_detailed(double jd) {
+  double angle = moon_phase_angle(jd);
+
+  if (angle < 7.5 || angle >= 352.5) {
+    return "New Moon";
+  }
+  if (angle < 22.5) {
+    return "Waxing Crescent-1";
+  }
+  if (angle < 37.5) {
+    return "Waxing Crescent-2";
+  }
+  if (angle < 52.5) {
+    return "Waxing Crescent-3";
+  }
+  if (angle < 67.5) {
+    return "Waxing Crescent-4";
+  }
+  if (angle < 82.5) {
+    return "Waxing Crescent-5";
+  }
+  if (angle < 97.5) {
+    return "Waxing Crescent-6";
+  }
+  if (angle < 112.5) {
+    return "First Quarter";
+  }
+  if (angle < 127.5) {
+    return "Waxing Gibbous-1";
+  }
+  if (angle < 142.5) {
+    return "Waxing Gibbous-2";
+  }
+  if (angle < 157.5) {
+    return "Waxing Gibbous-3";
+  }
+  if (angle < 172.5) {
+    return "Waxing Gibbous-4";
+  }
+  if (angle < 187.5) {
+    return "Waxing Gibbous-5";
+  }
+  if (angle < 202.5) {
+    return "Waxing Gibbous-6";
+  }
+  if (angle < 217.5) {
+    return "Full Moon";
+  }
+  if (angle < 232.5) {
+    return "Waning Gibbous-1";
+  }
+  if (angle < 247.5) {
+    return "Waning Gibbous-2";
+  }
+  if (angle < 262.5) {
+    return "Waning Gibbous-3";
+  }
+  if (angle < 277.5) {
+    return "Waning Gibbous-4";
+  }
+  if (angle < 292.5) {
+    return "Waning Gibbous-5";
+  }
+  if (angle < 307.5) {
+    return "Last Quarter";
+  }
+  if (angle < 322.5) {
+    return "Waning Crescent-1";
+  }
+  if (angle < 337.5) {
+    return "Waning Crescent-2";
+  }
+  if (angle < 352.5) {
+    return "Waning Crescent";
+  }
+  return "New Moon";
+}
+
+// Return the simple phase name for a given JD (8 phases)
+std::string moon_phase_name_simple(double jd) {
+  double angle = moon_phase_angle(jd);
+
+  if (angle < 22.5 || angle >= 337.5) {
+    return "New Moon";
+  }
+  if (angle < 67.5) {
+    return "Waxing Crescent";
+  }
+  if (angle < 112.5) {
+    return "First Quarter";
+  }
+  if (angle < 157.5) {
+    return "Waxing Gibbous";
+  }
+  if (angle < 202.5) {
+    return "Full Moon";
+  }
+  if (angle < 247.5) {
+    return "Waning Gibbous";
+  }
+  if (angle < 292.5) {
+    return "Last Quarter";
+  }
+  return "Waning Crescent";
+}
+
+// Format a string with phase name
+std::string format_moon_phase(double jd) {
+  return moon_phase_name_simple(jd);
+}
+
+std::string format_moon_phase_detailed(double jd) {
+  return moon_phase_name_detailed(jd);
+}
+
+// Optionally, adjust JD for local time using TIMEZONE, LAT, LON
+// Example usage:
+// double local_jd = jd + (timezone_offset_hours / 24.0);
+// std::string phase = format_moon_phase(local_jd);
 }  // namespace calendar

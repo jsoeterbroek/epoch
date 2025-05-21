@@ -39,6 +39,8 @@ std::string format_iso_date(double jd);
 std::string format_iso_week(double jd);
 int iso_day_of_week(double jd);
 int calculate_lunar_day(double jd);
+std::string format_moon_phase(double jd);
+std::string format_moon_phase_detailed(double jd);
 
 enum Weekday {
   Sunday = 0,
