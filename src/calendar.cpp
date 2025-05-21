@@ -172,10 +172,72 @@ double moon_phase_angle(double jd) {
   return (phase / SYNODIC_MONTH) * 360.0;
 }
 
-// Return the phase name for a given JD, with more detailed waxing/waning phases
-std::string moon_phase_name_detailed(double jd) {
-  double angle = moon_phase_angle(jd);
+// NOTE: This is a stub for using the USNO API for moon phase names.
+// In practice, you would need to perform an HTTP GET request to the USNO API
+// (https://aa.usno.navy.mil/data/api) and parse the JSON response.
+// This requires an HTTP client and a JSON parser, which are not shown here.
+// The functions below show the intended structure.
 
+#include <string>
+
+// Example stub for querying the USNO API (synchronous, blocking, for illustration only)
+std::string query_usno_moon_phase(const std::string &date_iso) {
+  // Example API endpoint:
+  // https://aa.usno.navy.mil/api/moon/phases/date?date=2025-05-21
+  // You would use an HTTP client to GET this URL and parse the JSON response.
+  // For now, return an empty string or a placeholder.
+  // In production, use a library like ArduinoHttpClient or similar for ESP32.
+  return "";  // Not implemented: network code required
+}
+
+// Use USNO API for simple phase name (stub)
+std::string moon_phase_name_simple(double jd) {
+  // Convert JD to Gregorian date (YYYY-MM-DD)
+  auto g = jd_to_gregorian(jd);
+  char date_iso[16];
+  snprintf(date_iso, sizeof(date_iso), "%04d-%02d-%02d", g[0], g[1], g[2]);
+  std::string phase = query_usno_moon_phase(date_iso);
+  if (!phase.empty()) {
+    return phase;
+  }
+  // Fallback to local calculation if API not available
+  double angle = moon_phase_angle(jd);
+  if (angle < 22.5 || angle >= 337.5) {
+    return "New Moon";
+  }
+  if (angle < 67.5) {
+    return "Waxing Crescent";
+  }
+  if (angle < 112.5) {
+    return "First Quarter";
+  }
+  if (angle < 157.5) {
+    return "Waxing Gibbous";
+  }
+  if (angle < 202.5) {
+    return "Full Moon";
+  }
+  if (angle < 247.5) {
+    return "Waning Gibbous";
+  }
+  if (angle < 292.5) {
+    return "Last Quarter";
+  }
+  return "Waning Crescent";
+}
+
+// Use USNO API for detailed phase name (stub)
+std::string moon_phase_name_detailed(double jd) {
+  // Convert JD to Gregorian date (YYYY-MM-DD)
+  auto g = jd_to_gregorian(jd);
+  char date_iso[16];
+  snprintf(date_iso, sizeof(date_iso), "%04d-%02d-%02d", g[0], g[1], g[2]);
+  std::string phase = query_usno_moon_phase(date_iso);
+  if (!phase.empty()) {
+    return phase;
+  }
+  // Fallback to local calculation if API not available
+  double angle = moon_phase_angle(jd);
   if (angle < 7.5 || angle >= 352.5) {
     return "New Moon";
   }
@@ -249,34 +311,6 @@ std::string moon_phase_name_detailed(double jd) {
     return "Waning Crescent";
   }
   return "New Moon";
-}
-
-// Return the simple phase name for a given JD (8 phases)
-std::string moon_phase_name_simple(double jd) {
-  double angle = moon_phase_angle(jd);
-
-  if (angle < 22.5 || angle >= 337.5) {
-    return "New Moon";
-  }
-  if (angle < 67.5) {
-    return "Waxing Crescent";
-  }
-  if (angle < 112.5) {
-    return "First Quarter";
-  }
-  if (angle < 157.5) {
-    return "Waxing Gibbous";
-  }
-  if (angle < 202.5) {
-    return "Full Moon";
-  }
-  if (angle < 247.5) {
-    return "Waning Gibbous";
-  }
-  if (angle < 292.5) {
-    return "Last Quarter";
-  }
-  return "Waning Crescent";
 }
 
 // Format a string with phase name
