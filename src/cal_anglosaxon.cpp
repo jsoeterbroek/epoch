@@ -7,6 +7,17 @@
 
                 This program is in the public domain. 
 */
+
+/* 
+Different reconstructions of the Old English calendar pick slightly different “month‐start” dates. 
+The version here implemented has Thrimilci beginning on April 24 (so May 22 → day 29), whereas 
+Mine Wyrtruman’s calendar apparently begins Thrimilci on April 28 (or thereabouts), which makes 
+May 22 only the 25th.
+
+Scholars don’t all agree on the precise day each month began—some tie month-starts to fixed equinox 
+dates, others to ecclesiastical reckonings—so you’ll see these 3–4-day offsets in different 
+reconstructions. Neither is “wrong”.
+ */
 #include "calendar.h"
 #include <cmath>
 #include <array>
