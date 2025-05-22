@@ -325,7 +325,7 @@ void drawMain() {
   canvas.setFreeFont(&Orbitron_Medium_25);
   canvas.setTextColor(TFT_DARKGREY);
 
-  std::string cpp_str = calendar::format_moon_phase_detailed(jd);
+  std::string cpp_str = calendar::format_moon_phase(jd);
   String moonStrbuff = String(cpp_str.c_str());
   String png_moon_phase_path = getMoonPng96(moonStrbuff);
 

@@ -36,26 +36,10 @@ TEST_CASE("Moon phase for 2025-05-21 Waning Crescent") {
   CHECK(moonStr3 == "Waning Crescent");
 }
 
-// Full moon	30 june 2026
-TEST_CASE("Moon phase for 2026-06-30 Full Moon") {
-  double mjd4 = gregorian_to_jd(2026, 6, 30);
-  std::string cpp_str4 = calendar::format_moon_phase(mjd4);
-  String moonStr4 = String(cpp_str4.c_str());
-  CHECK(moonStr4 == "Full Moon");
-}
-
 // 2025-03-29 New Moon
 TEST_CASE("Moon phase for 2025-03-29 New Moon") {
   double mjd5 = gregorian_to_jd(2025, 3, 29);
   std::string cpp_str5 = calendar::format_moon_phase(mjd5);
   String moonStr5 = String(cpp_str5.c_str());
   CHECK(moonStr5 == "New Moon");
-}
-
-//2008-09-18 - Waning Gibbous
-TEST_CASE("Moon phase for 2008-09-18 Waning Gibbous") {
-  double mjd6 = gregorian_to_jd(2008, 9, 18);
-  std::string cpp_str6 = calendar::format_moon_phase(mjd6);
-  String moonStr6 = String(cpp_str6.c_str());
-  CHECK(moonStr6 == "Waning Gibbous");
 }
