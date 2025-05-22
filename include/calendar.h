@@ -35,11 +35,10 @@ namespace calendar {
 const char *calendar_name(int index);
 std::array<int, 3> jd_to_iso_week(double jd);
 std::array<int, 3> jd_to_iso(double jd);
+int calculate_lunar_day(double jd);
 std::string format_iso_date(double jd);
 std::string format_iso_week(double jd);
 int iso_day_of_week(double jd);
-int calculate_lunar_day(double jd);
-std::string format_moon_phase(double jd);
 
 enum Weekday {
   Sunday = 0,

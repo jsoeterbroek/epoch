@@ -1,6 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "calendar.h"
+#include "moon.h"
 #include <iostream>
 
 /*
@@ -15,7 +16,7 @@ Volle maan	30 juni 2026
 //2025-05-4 - First Quarter
 TEST_CASE("Moon phase for 2025-05-4 First Quarter") {
   double mjd1 = gregorian_to_jd(2025, 5, 4);
-  std::string cpp_str1 = calendar::format_moon_phase(mjd1);
+  std::string cpp_str1 = moon_phase_name_detailed(mjd1);
   String moonStr1 = String(cpp_str1.c_str());
   CHECK(moonStr1 == "First Quarter");
 }
@@ -23,7 +24,7 @@ TEST_CASE("Moon phase for 2025-05-4 First Quarter") {
 // 2025-05-12 - Full Moon
 TEST_CASE("Moon phase for 2025-05-12 Full Moon") {
   double mjd2 = gregorian_to_jd(2025, 5, 21);
-  std::string cpp_str2 = calendar::format_moon_phase(mjd2);
+  std::string cpp_str2 = moon_phase_name_detailed(mjd2);
   String moonStr2 = String(cpp_str2.c_str());
   CHECK(moonStr2 == "Full Moon");
 }
@@ -31,7 +32,7 @@ TEST_CASE("Moon phase for 2025-05-12 Full Moon") {
 // 2025-05-21 - Waning Crescent
 TEST_CASE("Moon phase for 2025-05-21 Waning Crescent") {
   double mjd3 = gregorian_to_jd(2025, 5, 21);
-  std::string cpp_str3 = calendar::format_moon_phase(mjd3);
+  std::string cpp_str3 = moon_phase_name_detailed(mjd3);
   String moonStr3 = String(cpp_str3.c_str());
   CHECK(moonStr3 == "Waning Crescent");
 }
@@ -39,7 +40,7 @@ TEST_CASE("Moon phase for 2025-05-21 Waning Crescent") {
 // 2025-03-29 New Moon
 TEST_CASE("Moon phase for 2025-03-29 New Moon") {
   double mjd5 = gregorian_to_jd(2025, 3, 29);
-  std::string cpp_str5 = calendar::format_moon_phase(mjd5);
+  std::string cpp_str5 = moon_phase_name_detailed(mjd5);
   String moonStr5 = String(cpp_str5.c_str());
   CHECK(moonStr5 == "New Moon");
 }

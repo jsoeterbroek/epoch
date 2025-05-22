@@ -23,6 +23,7 @@
 #include "display_utils.h"
 #include "astro.h"
 #include "calendar.h"
+#include "moon.h"
 #include <WiFi.h>
 #include <WiFiManager.h>
 #include <HTTPClient.h>
@@ -33,9 +34,6 @@
 #include <FS.h>
 #include <SPI.h>
 #include <JPEGDecoder.h>
-
-// FIXME: remove this
-#include "icons/icons_24x24.h"
 
 M5EPD_Canvas canvas(&M5.EPD);
 
@@ -325,7 +323,7 @@ void drawMain() {
   canvas.setFreeFont(&Orbitron_Medium_25);
   canvas.setTextColor(TFT_DARKGREY);
 
-  std::string cpp_str = calendar::format_moon_phase(jd);
+  std::string cpp_str = format_moon_phase(jd);
   String moonStrbuff = String(cpp_str.c_str());
   String png_moon_phase_path = getMoonPng96(moonStrbuff);
 

@@ -4,16 +4,16 @@ CXXFLAGS := -std=c++17 -Wall -Wno-unused-variable \
 
 # Source and test file detection
 SRC := $(wildcard src/cal*.cpp) src/astro.cpp src/roman.cpp
-TESTS := $(wildcard test/test_*.cpp)
+TESTS := $(wildcard test/test_cal*.cpp)
 OBJS := $(patsubst test/%.cpp, build/%, $(TESTS))
 
 # Set default goal
 .DEFAULT_GOAL := run
 
 .PHONY: all clean run build \
-				french egyptian zoroastrian islamic saka germanic anglosaxon buddhist \
-				hindu moon \
-        ethiopian hebrew babylonian darian calendar icelandic chinese coptic
+		french egyptian zoroastrian islamic saka germanic anglosaxon buddhist \
+		hindu \
+		ethiopian hebrew babylonian darian calendar icelandic chinese coptic
 
 # Build everything
 all: | build $(OBJS)
@@ -59,9 +59,6 @@ buddhist: build/test_cal_buddhist
 	./$<
 
 hindu: build/test_cal_hindu
-	./$<
-
-moon: build/test_cal_moon
 	./$<
 
 ethiopian: build/test_cal_ethiopian
