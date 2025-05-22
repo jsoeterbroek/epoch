@@ -9,6 +9,8 @@
 // Constants
 
 // Function declarations
+std::array<int, 3> jd_to_anglosaxon(double jd);
+bool is_anglosaxon_holiday(double jd, const std::string &name);
 std::string format_anglosaxon_date(double jd);
 std::string format_anglosaxon_date_weekday(double jd);
 std::string format_anglosaxon_date_day(double jd);
