@@ -2,8 +2,8 @@ Gold Hat Calendar
 =================
 
 
-Schmidt-Kaler(2012)
-===================
+Schmidt-Kaler (2012)
+====================
 The document titled Ein Venus-Kalender auf dem Berliner Goldhut by T. Schmidt-Kaler (2012) presents a compelling hypothesis that the decorative patterns on the Berlin Gold Hat—a Late Bronze Age artifact—encode a sophisticated calendar system based on the synodic cycle of Venus.
 
 Key Insights
@@ -35,7 +35,7 @@ The illustration depicts the solar representation on the left and the lunar one 
 
 The values in the individual fields are reached by multiplying the number of symbols per zone with the number of rings or circles incorporated in each predominant symbol. The special symbols in Zone 5 are assigned the value of 38, as indicated by their number.
 
-Example
+**Example**
     Zone 12 is dominated by 20 repetitions of punched symbol No. 14, a circular disc symbol surrounded by 5 concentric circles.
     Thus, the symbol has the value of 20 × 5 = 100.
     The smaller ring symbols placed between the larger repetitions of No. 14 are considered as mere ornaments and thus not counted.
@@ -44,10 +44,10 @@ Through this system, the Hats can be used to calculate a lunisolar calendrical s
 
 The table can be used in the same way as the original Golden Hats. To determine the number of days in a specific time period (yellow fields), the values of the coloured fields above are added, reaching an intermediate sum. If any of the red intercalary zones are included, their sum has to be subtracted. This allows the calculation of 12, 24, 36, 48, 54, and 57 synodic months in the lunar system and of 12, 18, 24, 36, 48, 54, and 57 solar months (twelfths of a tropical year).
 
-Example
+**Example**
     To determine a 54 month cycle in the lunar system, the numerical values of the green or blue Zones 3 to 21 are added, reaching a sum of 1,739 days. From this, the values of the red intercalary fields 5, 16, and 17 are subtracted, The result is 1739 − 142 = 1597 days, exactly 54 synodic months of 29.5305 days each.
 
-The overall discrepancy of 2 days to the astronomically accurate value is probably the result of a slight imprecision in the Bronze Age observation of synodic and solar month.[citation needed]
+The overall discrepancy of 2 days to the astronomically accurate value is probably the result of a slight imprecision in the Bronze Age observation of synodic and solar month.
 
 Sources
 -------
