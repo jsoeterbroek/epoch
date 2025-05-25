@@ -29,6 +29,8 @@ The functions discovered so far would permit the counting of temporal units of u
 
 The system of this mathematical function incorporated into the artistic ornamentation has not been fully deciphered so far, but a schematic understanding of the Berlin Golden Hat and the periods it delimits has been achieved.
 
+![Berlin Gold hat calendar](https://github.com/jsoeterbroek/epoch/blob/main/assets/250px-Berlin_Gold_hat_calendar.jpg)
+
 In principle, starting with zone Z i {\displaystyle Z_{i}}, a sum is achieved by adding a relevant contiguous number of neighbouring sections: Z i . . . Z i + n {\displaystyle Z_{i}\,...\,Z_{i+n}}. To reach the equivalent lunar or solar value, from this initial sum must be subtracted the sum of symbols from the intercalary zone(s) within the area counted.
 
 The illustration depicts the solar representation on the left and the lunar one on the right. The red or blue fields in Zones 5, 7, 16, and 17 are intercalary zones.
