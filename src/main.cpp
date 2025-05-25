@@ -154,13 +154,9 @@ void drawMain() {
       format_year = format_babylonian_date_year(jd).c_str();
       break;
     case 1:  // 1 - gregorian
-      format_weekday = format_gregorian_date_weekday(jd).c_str();
-      format_day = format_gregorian_date_day(jd).c_str();
-      format_month = format_gregorian_date_month(jd).c_str();
-      format_year = format_gregorian_date_year(jd).c_str();
-      format_day_month = format_day + " " + format_month;
+      format_weekday = format_goldhat_zone(jd).c_str();
       break;
-    case 2:  // 2 - julian
+    case 2:  // 2 - roman
       format_weekday = format_julian_date_weekday(jd).c_str();
       format_day = format_julian_date_day(jd).c_str();
       format_month = format_julian_date_month(jd).c_str();
@@ -210,10 +206,6 @@ void drawMain() {
       format_day_month = format_day + " " + format_month;
       break;
     case 10:  // saka        // 10
-      //CHECK(format_saka_date_day(jd) == "29");
-      //CHECK(format_saka_date_weekday_local(jd, false) == "Somavara");
-      //CHECK(format_saka_date_month_local(jd, false) == "Vaishakha");
-      //CHECK(format_saka_date_year_local(jd, false) == "1947");
       format_weekday = format_saka_date_weekday_local(jd, false).c_str();
       format_day = format_saka_date_day(jd).c_str();
       format_month = format_saka_date_month_local(jd, false).c_str();
@@ -253,7 +245,7 @@ void drawMain() {
       format_day_month_year = "Not yet implemented";
       break;
     case 16:  // mandaean    // 16
-      format_weekday = "Mandaean Calendar";
+      format_weekday = "Negev Venus Calendar";
       format_day_month_year = "Not yet implemented";
       break;
     case 17:  // chinese     // 17
@@ -533,8 +525,8 @@ void setup() {
     case 0:  // 0 - babylonian
       canvas.drawJpgFile(SD, "/back_babylonian.jpg");
       break;
-    case 1:  // 1 - gregorian
-      canvas.drawJpgFile(SD, "/back_gregorian.jpg");
+    case 1:  // 1 - gold hat
+      canvas.drawJpgFile(SD, "/back_goldhat.jpg");
       break;
     case 2:  // 2 - julian
       canvas.drawJpgFile(SD, "/back_julian.jpg");

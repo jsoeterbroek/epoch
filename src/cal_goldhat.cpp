@@ -5,21 +5,34 @@
 #include <numeric>
 
 /* 
- https://en.wikipedia.org/wiki/Berlin_Gold_Hat
- https://www.quantenbit.physik.uni-mainz.de/files/2020/03/Goldhut-TSchmidtKaler-2012.pdf
+ see file: gold_hat.md
 */
 
 // Data for Berlin Gold Hat zones (example, based on Wikipedia and Schmidt-Kaler 2012)
 // zone_number, symbol_count, rings_per_symbol, intercalary, intercalary_value
 const std::vector<GoldhatZone> goldhat_zones = {
   // zone, symbols, rings, intercalary, intercalary_value
-  {1, 19, 5, false, 0},  {2, 20, 5, false, 0},  {3, 20, 5, false, 0},  {4, 20, 5, false, 0},  {5, 38, 1, true, 38},  // intercalary
-  {6, 20, 5, false, 0},  {7, 20, 5, true, 0},                                                                        // intercalary (value by sum)
-  {8, 20, 5, false, 0},  {9, 20, 5, false, 0},  {10, 20, 5, false, 0}, {11, 20, 5, false, 0}, {12, 20, 5, false, 0},
-  {13, 20, 5, false, 0}, {14, 20, 5, false, 0}, {15, 20, 5, false, 0}, {16, 20, 5, true, 0},  // intercalary (value by sum)
-  {17, 20, 5, true, 0},                                                                       // intercalary (value by sum)
-  {18, 20, 5, false, 0}, {19, 20, 5, false, 0}, {20, 20, 5, false, 0}, {21, 20, 5, false, 0}
-  // ... fill in all zones as needed ...
+  {1, 19, 5, false, 0},   // zone 1: 19 symbols × 5 rings = 95 days
+  {2, 20, 5, false, 0},   // zone 2: 20 symbols × 5 rings = 100 days
+  {3, 20, 5, false, 0},   // zone 3: 20 symbols × 5 rings = 100 days
+  {4, 20, 5, false, 0},   // zone 4: 20 symbols × 5 rings = 100 days
+  {5, 38, 1, true, 38},   // intercalary, value 38 (special)
+  {6, 20, 5, false, 0},   // zone 6: 20 symbols × 5 rings = 100 days
+  {7, 20, 5, true, 0},    // intercalary (not used in 54-month calculation)
+  {8, 20, 5, false, 0},   // zone 8: 20 symbols × 5 rings = 100 days
+  {9, 20, 5, false, 0},   // zone 9: 20 symbols × 5 rings = 100 days
+  {10, 20, 5, false, 0},  // zone 10: 20 symbols × 5 rings = 100 days
+  {11, 20, 5, false, 0},  // zone 11: 20 symbols × 5 rings = 100 days
+  {12, 20, 5, false, 0},  // zone 12: 20 symbols × 5 rings = 100 days
+  {13, 20, 5, false, 0},  // zone 13: 20 symbols × 5 rings = 100 days
+  {14, 20, 5, false, 0},  // zone 14: 20 symbols × 5 rings = 100 days
+  {15, 20, 5, false, 0},  // zone 15: 20 symbols × 5 rings = 100 days
+  {16, 13, 4, true, 52},  // intercalary, value 52 (13 symbols × 4 rings)
+  {17, 13, 4, true, 52},  // intercalary, value 52 (13 symbols × 4 rings)
+  {18, 20, 5, false, 0},  // zone 18: 20 symbols × 5 rings = 100 days
+  {19, 20, 5, false, 0},  // zone 19: 20 symbols × 5 rings = 100 days
+  {20, 20, 5, false, 0},  // zone 20: 20 symbols × 5 rings = 100 days
+  {21, 20, 5, false, 0}   // zone 21: 20 symbols × 5 rings = 100 days
 };
 
 // Calculate sum of days for a range of zones (inclusive), optionally subtracting intercalary zones

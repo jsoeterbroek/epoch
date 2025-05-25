@@ -3,7 +3,7 @@ CXXFLAGS := -std=c++17 -Wall -Wno-unused-variable \
             -Iinclude -Itest -I.pio/libdeps/m5paper/doctest/doctest
 
 # Source and test file detection
-SRC := $(wildcard src/cal*.cpp) src/astro.cpp src/roman.cpp
+SRC := $(wildcard src/cal*.cpp) src/astro.cpp src/roman.cpp src/venus.cpp
 TESTS := $(wildcard test/test_cal*.cpp)
 OBJS := $(patsubst test/%.cpp, build/%, $(TESTS))
 
@@ -12,7 +12,7 @@ OBJS := $(patsubst test/%.cpp, build/%, $(TESTS))
 
 .PHONY: all clean run build \
 		french egyptian zoroastrian islamic saka germanic anglosaxon buddhist \
-		hindu \
+		hindu goldhat \
 		ethiopian hebrew babylonian darian calendar icelandic chinese coptic
 
 # Build everything
@@ -59,6 +59,9 @@ buddhist: build/test_cal_buddhist
 	./$<
 
 hindu: build/test_cal_hindu
+	./$<
+
+goldhat: build/test_cal_goldhat
 	./$<
 
 ethiopian: build/test_cal_ethiopian

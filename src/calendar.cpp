@@ -8,7 +8,6 @@
                 This program is in the public domain.
 */
 #include "calendar.h"
-#include "cal_gregorian.h"
 #include <cmath>
 #include <array>
 #include "astro.h"
@@ -25,8 +24,8 @@ int jd_to_weekday(double jd) {
 const char *calendar_name(int index) {
   static const char *calendar_names[] = {
     "Babylonian",             //  0
-    "Gregorian",              //  1
-    "Julian",                 //  2
+    "Gold Hat",               //  1
+    "Roman",                  //  2
     "Hebrew",                 //  3
     "Islamic",                //  4
     "Old Egyptian",           //  5
@@ -40,7 +39,7 @@ const char *calendar_name(int index) {
     "Germanic",               // 13
     "Armenian",               // 14
     "Georgian",               // 15
-    "Mandaean",               // 16
+    "Negev",                  // 16
     "Chinese Zodiac",         // 17
     "Buddhist (Thai solar)",  // 18
     "Mongolian",              // 19
