@@ -25,7 +25,7 @@ Now, the sum for zones 3–21 is 1739, and the sum of intercalary zones 5, 16, 1
 So, 1739 − 142 = 1597, matching the expected test result.
 
 */
-TEST_CASE("get number of days for 54 lunar months in Goldhat calendar") {
+TEST_CASE("Wikipedia example: get number of days for 54 lunar months in Goldhat calendar") {
   int days = goldhat_days_54_lunar_months();  // should be 1597
   CHECK(days == 1597);
 }

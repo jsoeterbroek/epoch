@@ -41,7 +41,7 @@ int goldhat_sum_days(int start_zone, int end_zone, bool subtract_intercalary) {
   int intercalary_sum = 0;
   for (const auto &zone : goldhat_zones) {
     if (zone.zone_number >= start_zone && zone.zone_number <= end_zone) {
-      int value = zone.symbol_count;  // Here, symbol_count is actually the value for this zone
+      int value = zone.zone_value;
       sum += value;
       // Only subtract zones 5, 16, 17 as intercalary for the 54 lunar month calculation
       if (subtract_intercalary && (zone.zone_number == 5 || zone.zone_number == 16 || zone.zone_number == 17)) {
@@ -68,7 +68,7 @@ std::string format_goldhat_zone(double jd) {
   int day = venus::day_in_cycle(jd);
   int total_days = 0;
   for (const auto &zone : goldhat_zones) {
-    int zone_days = zone.symbol_count * zone.rings_per_symbol;
+    int zone_days = zone.zone_value;
     if (day < total_days + zone_days) {
       int day_in_zone = day - total_days + 1;
       return "Zone " + std::to_string(zone.zone_number) + " (Day " + std::to_string(day_in_zone) + " of " + std::to_string(zone_days) + ")";

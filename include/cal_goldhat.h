@@ -6,10 +6,8 @@
 
 struct GoldhatZone {
   int zone_number;
-  int symbol_count;
-  int rings_per_symbol;
+  int zone_value;
   bool intercalary;
-  int intercalary_value;  // for special symbols (e.g. zone 5)
 };
 
 extern const std::vector<GoldhatZone> goldhat_zones;
