@@ -23,7 +23,7 @@ Wikipedia
 Calendrical function of the Berlin Gold Hat
 -------------------------------------------
 
-Modern scholarship has demonstrated that the ornamentation of the gold leaf cones of the Schifferstadt type, to which the Berlin example belongs, represent systematic sequences in terms of number and types of ornaments per band. A detailed study of the Berlin example, which is the only one fully preserved, showed that the symbols probably represent a lunisolar calendar. The object would have permitted the determination of dates or periods in both lunar and solar calendars.[1][2]
+Modern scholarship has demonstrated that the ornamentation of the gold leaf cones of the Schifferstadt type, to which the Berlin example belongs, represent systematic sequences in terms of number and types of ornaments per band. A detailed study of the Berlin example, which is the only one fully preserved, showed that the symbols probably represent a lunisolar calendar. The object would have permitted the determination of dates or periods in both lunar and solar calendars.
 
 The functions discovered so far would permit the counting of temporal units of up to 57 months. A simple multiplication of such values would also permit the calculation of longer periods, such as metonic cycles. Each symbol, or each ring of a symbol, represents a single day. Apart from ornament bands incorporating differing numbers of rings there are special symbols and zones in intercalary areas, which would have had to be added to or subtracted from the periods in question.
 
@@ -31,16 +31,15 @@ The system of this mathematical function incorporated into the artistic ornament
 
 ![Berlin Gold hat calendar](https://github.com/jsoeterbroek/epoch/blob/main/assets/960px-Berlin_Gold_hat_calendar.jpeg)
 
-In principle, starting with zone Z i {\displaystyle Z_{i}}, a sum is achieved by adding a relevant contiguous number of neighbouring sections: Z i . . . Z i + n {\displaystyle Z_{i}\,...\,Z_{i+n}}. To reach the equivalent lunar or solar value, from this initial sum must be subtracted the sum of symbols from the intercalary zone(s) within the area counted.
+In principle, starting with zone ***Z i***, a sum is achieved by adding a relevant contiguous number of neighbouring sections: ***Z i . . . Z i + n***. To reach the equivalent lunar or solar value, from this initial sum must be subtracted the sum of symbols from the intercalary zone(s) within the area counted.
 
 The illustration depicts the solar representation on the left and the lunar one on the right. The red or blue fields in Zones 5, 7, 16, and 17 are intercalary zones.
 
 The values in the individual fields are reached by multiplying the number of symbols per zone with the number of rings or circles incorporated in each predominant symbol. The special symbols in Zone 5 are assigned the value of 38, as indicated by their number.
 
 **Example**
-    Zone 12 is dominated by 20 repetitions of punched symbol No. 14, a circular disc symbol surrounded by 5 concentric circles.
-    Thus, the symbol has the value of 20 × 5 = 100.
-    The smaller ring symbols placed between the larger repetitions of No. 14 are considered as mere ornaments and thus not counted.
+Zone 12 is dominated by 20 repetitions of punched symbol No. 14, a circular disc symbol surrounded by 5 concentric circles.
+Thus, the symbol has the value of 20 × 5 = 100. The smaller ring symbols placed between the larger repetitions of No. 14 are considered as mere ornaments and thus not counted.
 
 Through this system, the Hats can be used to calculate a lunisolar calendrical system, i.e. a direct reading in either lunar or solar dates, as well as the conversion between them.
 
@@ -53,20 +52,7 @@ The overall discrepancy of 2 days to the astronomically accurate value is probab
 
 Sources
 -------
-* Equinox Journal
-The Golden Hat of Schifferstadt - Equinox Publishing
-* archaeoastronomie.org
-  [PDF] Maß und Mythos, Zahl und Zauber - Gesellschaft für Archäoastronomie, July 1, 2018
-* quantenbit.physik.uni-mainz.de
-  [PDF] Ein Venus Kalender auf dem Berliner Goldhut (2012)
-* ResearchGate
-  (PDF) Astronomische Forschungen und staatliche Strukturen in der ... Mondbeobachtungen (Paderborn 2012). Schmidt-Kaler 2012b – T. Schmidt-Kaler, Ein. Venus-Kalender auf dem Berliner Goldhut. Zur Entstehung und Entwicklung der ...
-* Academia
-  (PDF) Astronomische Forschungen und staatliche Strukturen in der ... ... 2012). Schmidt-Kaler 2012b – T. Schmidt-Kaler, Ein Venus-Kalender auf dem Berliner Goldhut.
-  https://www.quantenbit.physik.uni-mainz.de/files/2020/03/Goldhut-TSchmidtKaler-2012.pdf
-* earningcharts.net
-  Brieger und Veneter bis 1200 vChr ӭ Incepta Etnologica Genetica
-* journal.sternfreunde.de
-  Inhaltsverzeichnis des VdS-Journals 91
-  Goldhut-TSchmidtKaler-2012.pdf [3] Ferdinand Bork, 1910: ,,Das Venusjahr", in: Memnon, Zeit- [3]
+* Equinox Journal, The Golden Hat of Schifferstadt - Equinox Publishing,  DOI: https://doi.org/10.1558/jsa.18113
+* archaeoastronomie.org, Maß und Mythos, Zahl und Zauber - Gesellschaft für Archäoastronomie, July 1, 2018
+* quantenbit.physik.uni-mainz.de, Ein Venus Kalender auf dem Berliner Goldhut (2012), https://www.quantenbit.physik.uni-mainz.de/files/2020/03/Goldhut-TSchmidtKaler-2012.pdf
 * Wikipedia, https://en.wikipedia.org/wiki/Berlin_Gold_Hat

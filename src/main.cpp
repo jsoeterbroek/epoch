@@ -154,7 +154,11 @@ void drawMain() {
       format_year = format_babylonian_date_year(jd).c_str();
       break;
     case 1:  // 1 - gregorian
-      format_weekday = format_goldhat_zone(jd).c_str();
+      format_weekday = format_gregorian_date_weekday(jd).c_str();
+      format_day = format_gregorian_date_day(jd).c_str();
+      format_month = format_gregorian_date_month(jd).c_str();
+      format_year = format_gregorian_date_year(jd).c_str();
+      format_day_month = format_day + " " + format_month;
       break;
     case 2:  // 2 - roman
       format_weekday = format_julian_date_weekday(jd).c_str();
@@ -526,7 +530,7 @@ void setup() {
       canvas.drawJpgFile(SD, "/back_babylonian.jpg");
       break;
     case 1:  // 1 - gold hat
-      canvas.drawJpgFile(SD, "/back_goldhat.jpg");
+      canvas.drawJpgFile(SD, "/back_gregorian.jpg");
       break;
     case 2:  // 2 - julian
       canvas.drawJpgFile(SD, "/back_julian.jpg");

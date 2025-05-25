@@ -10,7 +10,7 @@ struct GoldhatZone {
   bool intercalary;
 };
 
-extern const std::vector<GoldhatZone> goldhat_zones;
+extern const std::vector<GoldhatZone> berlin_goldhat_zones;
 
 // Calculate sum of days for a range of zones (inclusive), optionally subtracting intercalary zones
 int goldhat_sum_days(int start_zone, int end_zone, bool subtract_intercalary = true);

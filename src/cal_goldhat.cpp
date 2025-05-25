@@ -10,7 +10,7 @@
 */
 
 // zone, value, intercalary
-const std::vector<GoldhatZone> goldhat_zones = {
+const std::vector<GoldhatZone> berlin_goldhat_zones = {
   // zone, value, intercalary
   {1, 0, false},     // zone 1
   {2, 44, false},    // zone 2:
@@ -39,7 +39,7 @@ const std::vector<GoldhatZone> goldhat_zones = {
 int goldhat_sum_days(int start_zone, int end_zone, bool subtract_intercalary) {
   int sum = 0;
   int intercalary_sum = 0;
-  for (const auto &zone : goldhat_zones) {
+  for (const auto &zone : berlin_goldhat_zones) {
     if (zone.zone_number >= start_zone && zone.zone_number <= end_zone) {
       int value = zone.zone_value;
       sum += value;
@@ -67,7 +67,7 @@ std::string format_goldhat_zone(double jd) {
   // For demonstration: map Venus day-in-cycle to a zone
   int day = venus::day_in_cycle(jd);
   int total_days = 0;
-  for (const auto &zone : goldhat_zones) {
+  for (const auto &zone : berlin_goldhat_zones) {
     int zone_days = zone.zone_value;
     if (day < total_days + zone_days) {
       int day_in_zone = day - total_days + 1;

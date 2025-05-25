@@ -24,7 +24,7 @@ int jd_to_weekday(double jd) {
 const char *calendar_name(int index) {
   static const char *calendar_names[] = {
     "Babylonian",             //  0
-    "Gold Hat",               //  1
+    "Gregorian",              //  1
     "Roman",                  //  2
     "Hebrew",                 //  3
     "Islamic",                //  4
