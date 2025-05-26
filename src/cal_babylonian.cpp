@@ -14,9 +14,29 @@
 // * Month Start: First visible crescent moon after sunset
 // * Year Start: Around the vernal equinox (Nisannu 1)
 
-// Babylonian month names (13 months max + 1 for Ululu II)
-static const char *const BABYLONIAN_MONTHS[14] = {"Nisannu",   "Ayyaru",  "Simanu", "Du'uzu",   "Abu",    "Ululu",     "Tashritu",
-                                                  "Aratsamna", "Kislimu", "Ṭebetu", "Shabaatu", "Addaru", "Addaru II", "Ululu II"};
+/* 
+    Sumerian  Semitic     Seleucid 
+    --------  -------     --------
+1   Barzagga  Nisanu      Artemisios
+2   Gusisa    Ayaru       Daisios
+3   Sigga     Simanu      Panemos
+4   Shunumun  Du'uzu      Loos
+5   Nenegar   Abu         Gorpaios
+6   Kinninni  Ululu       Hyperberetaios
+7   Du        Tashritu    Dios
+8   Apindua   Arakhsamnu  Apellaios
+9   Gangan    Kislimu     Audynaios
+10  Ziz       Tebetu      Peritios
+11  Abbae     Shabatu     Dystros
+12  Shegurku  Adam        Xanthikos 
+*/
+
+static const char *const BABYLONIAN_SUMERIAN_MONTHS[12] = {"Barzagga", "Gusisa",  "Sigga",  "Shunumun", "Nenegar", "Kinninni",
+                                                           "Du",       "Apindua", "Gangan", "Ziz",      "Abbae",   "Shegurku"};
+static const char *const BABYLONIAN_SEMITIC_MONTHS[12] = {"Nisannu",  "Ayyaru",    "Simanu",  "Du'uzu", "Abu",     "Ululu",
+                                                          "Tashritu", "Aratsamna", "Kislimu", "Ṭebetu", "Shabatu", "Adam"};
+static const char *const BABYLONIAN_SELEUCID_MONTHS[12] = {"Artemisios", "Daisios",   "Panemos",   "Loos",     "Gorpaios", "Hyperberetaios",
+                                                           "Dios",       "Apellaios", "Audynaios", "Peritios", "Dystros",  "Xanthikos"};
 
 // Weekday names in a standard 7-day cycle
 static const char *const BABYLONIAN_WEEKDAYS[7] = {"Umu 1", "Umu 2", "Umu 3", "Umu 4", "Umu 5", "Umu 6", "Umu 7"};
@@ -95,7 +115,7 @@ std::string format_babylonian_date(double jd) {
   auto date = jd_to_babylonian(jd);
   int month = date[1];
   int day = date[2];
-  const char *month_name = BABYLONIAN_MONTHS[month - 1];
+  const char *month_name = BABYLONIAN_SEMITIC_MONTHS[month - 1];
   char buffer[60];
   snprintf(buffer, sizeof(buffer), "%s %d", month_name, day);
   return std::string(buffer);
@@ -112,7 +132,7 @@ std::string format_babylonian_date_weekday(double jd) {
 std::string format_babylonian_date_month(double jd) {
   auto date = jd_to_babylonian(jd);
   int month = date[1];
-  const char *month_name = BABYLONIAN_MONTHS[month - 1];
+  const char *month_name = BABYLONIAN_SEMITIC_MONTHS[month - 1];
   char buffer[60];
   snprintf(buffer, sizeof(buffer), "%s", month_name);
   return std::string(buffer);
