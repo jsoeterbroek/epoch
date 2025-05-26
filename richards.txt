@@ -1,0 +1,257 @@
+Mapping Time : The Calendar and Its History,
+Richards, E. G
+
+Chapter 23
+Mathematical Notes
+
+Conventions
+-----------
+The descriptions of the algorithms presented in this section are unavoidably mathematical in character.
+Nevertheless, I have aimed to keep the algebra and arithmetic as simple as possible. All the numbers involved
+are whole numbers or integers (with one exception is algorithm H); these may be combined in various ways to
+yield further integers by addition, subtraction, multiplication, division, and remaindering. The evaluation of the
+equations requires some comment. First you should evaluate expressions within brackets starting with the
+innermost bracket. To avoid an excessive number of these, a rule of precedence (familiar to computer
+programmers) has been used: first evaluate multiplications and divisions; only when this has been done should
+you evaluate additions and subtractions. Multiplication is usually implied in the usual way by writing the
+symbols for two or more quantities next to one another (but note that in deference to tradition I have used SOL
+and LUN to stand for single quantifies). Invariably in the algorithms, and sometimes elsewhere, multiplication
+is denoted by*.
+
+Division denoted by /, is invariably integral division; this is slightly different but simpler than the division we
+are used to. So, A/B denotes the result of dividing the dividend, A, by the divisor, B, and discarding any
+remainder; this quotient is thus an integer. Some writers on calendrical matters have used (A/B)w to denote the
+same thing.
+
+If we divide A by B, there is often a remainder. This is denoted by MOD(A,B); mathematicians would write
+instead 'A modulo B'; and other writers have used (A/B)rthe MOD function is available in many computer
+languages. This remainder lies in the range 0 to B - 1. If A is exactly divisible by B, the remainder MOD(A,B)
+is zero. We always assume that A and B are positive integers. Some examples are, in order:
+  
+  3+5 = 8   
+  5-3 = 2
+  5/3 = 1
+  3/5 = 0
+  6/3 = 2
+  MOD (5,3) = 2
+  MOD (3,5) = 3
+  MOD (6,3) = 0
+
+Sometimes it is necessary to limit a quantity to some maximum value. We use the MIN function to denote this
+so that MIN (A,B) represents the smaller of A and B; this function is available in many computer languages.
+
+Quotients and remainders
+------------------------
+I have mentioned integral division and remaindering; the results of these two operations are related:
+
+      MOD(A,B) = A - (A/B) * B           // (23.1)
+   or  A = (A/B) * B + MOD(A,B)          // (23.2)
+   or  A/B = (A - MOD(A,B))/B            // (23.3)
+
+We may add any positive multiple, n, of B to A, in the MOD function, without changing the result, so that:
+
+      MOD(A + n * B,B) = MOD(A,B)        // (23.4)
+
+This is sometimes useful if A might be negative; we may add some multiple of B to A so as to make A + n* B
+positive without altering the result. Likewise we find:
+
+      (A + n * B)/B = n + A/B            // (23.5)
+
+as long as A,B, and n are positive.
+
+It is also useful to note that MOD (P + Q,B) where Q = MOD (R + S,B) is equivalent to MOD (P + R + S,B)
+and that MOD (A + C,B) is equivalent to MOD (MOD (A,B) + MOD (C,B),B).
+
+A useful feature of the MOD function is that if A is exactly divisible by B, then there is no remainder when A is
+divided by B and MOD (A,B) = 0. In particular, MOD (A,2) = 0 if A is even and = 1 if A is odd.
+Finally, we may note that:
+
+        0 <= MOD(A,B) <= B - 1
+    or  1 <= 1 + MOD(A,B) <= B
+
+It is convenient to say that the 'range' of MOD (A,B) is 0 to B - 1.
+
+Further uses of the MOD function and integer division
+-----------------------------------------------------
+A useful technique involves the use of cyclic permutations; one example suffices. The months of the year are
+usually numbered from January (1) to December (12). Sometimes it is useful to assign a new number, M', to
+each month of number M; so March (month (M) = 3) is assigned the number M' = 0, April (M = 4) is given M' = 1,
+May is given 2, and so forth. December is thus given 9 and the numbering continues into the new year with
+January and February getting 10 and 11. This has the advantage that any leap day (29 February) is now the last
+day in the new sequence. This amounts to renumbering the months from o to n instead of 1 to 12, and then
+arranging them in a new cyclic permutation. The numbers M and M' are related in a simple manner:
+
+      M' = MOD(M + 9,12)                //  (23.6)
+      M = MOD(M' + 1,12) + 2            //  (23.7)
+
+Sometimes we may want to add B to A, but only if some other quantity, C, is greater than or equal to D. This
+can all be done using a succinct formula based upon the notion that C/D = 0 if C is less than D and C/D = 1 if
+C is greater or equal to D but less than 2D. We thus find that:
+
+      A + B * (C/D) = A     if 0 <= C < D   // (23.8)
+      A + B * (C/D) = A + B if D <= C < 2D   // (23.9)
+
+It is relatively easy to devise a formula in which B is added to A only if it falls in a certain range of values.
+
+The number of days in the months
+--------------------------------
+The number of days in the months of our Gregorian calendar would seem to be an arbitrary sequence of 30, 31,
+with 28 or 29 thrown in for February. It is unexpected that a simple, albeit somewhat ponderous, formula can
+deliver the number of days in month M.
+First rearrange the months so that January and February follow December, as already explained. I list the
+months in TABLE 23.1, together with the number of days, L, in each and the 'excess number of days', X, which
+is the number of days beyond 28 (that is, L - 28).
+Note that when we start with March, the sequence of Xs forms a repeated pattern3,2,3,2,3. The third repetition
+stops uncompleted at February, the last of the renumbered months. The pattern itself consists of 3,2 repeated
+three times with the third repetition truncated.
+It is thus clear that, for the first five renumbered months, X = 3 for months for which M' is even and X = 2 if M'
+is odd. Thus, we may write for these:
+
+          X = 3 - MOD(M',2)                      // (23.10)
+
+This holds for the other months as well if we replace M' by 1 + MOD (M',5). We then obtain, after adding in
+the 28 which was subtracted in calculating X:
+
+          L = 31 - MOD(MOD(M',5),2)              //  (23.11)
+
+or in terms of the conventional month number, M:
+          
+          L = 31 - MOD(MOD(MOD(M + 9,12),5),2)   //  (23.12)
+
+which is valid for all months except February. This ponderous formula must be evaluated from the inside out,
+starting with MOD(M + 9,12).
+
+This result has its uses, but perhaps of greater interest is the day of the year, T, of the day defined by D and M.
+The day of the year is dearly equal to D plus the sum of the days in all the preceding months. If the year were
+to begin on 1 March, T would thus be given by:
+
+          T = 28M' + Z + D                       // (23.13)
+
+where Z is the sum of the Xs of the preceding months as shown in TABLE 23.1. We may note that the excess,
+X, for February (which we know is wrong) is never included in Z.
+
+A simple formula for Z was discovered by Christian Zeller (1824-99), a director of a women's teacher training
+college and a school inspector in Germany. He delivered a short account in Latin at a meeting of the
+Mathematical Society of France on 16 March 1883, and it is reprinted in the journal of that society. Zeller
+discovered that:
+
+          T = (13M' + 2)/5                      // (23.14)
+
+so that:
+          
+          T = 28M' + (13M' + 2)/5 + D
+            = (153M' +2)/5 + D
+            = (2 + 153MOD(M + 9,12))/5 + D      // (23.15)
+
+However, we have tacitly assumed that the year starts on 1 March. We need to adjust this formula for T if we
+take the year to start properly on 1 January.
+
+If the month is January or February (M = 1 or 2 with M' = 11 or 12) we must subtract the number of days from
+1 March to 31 December inclusive (306). For the other months, we must add the number of days from 1
+January to the last day of February inclusive; this is 59 or 60 in a leap year. This results in the formula:
+
+          T = (153M' - 151)/5 + 59 - 365(M'/10) + P + D  // (23.16)
+
+This stratagem depends on the fact that M'/10 = 1 for January and February; but is otherwise zero. P must be
+set equal to 1 in a leap year if the month is not January or February; otherwise set it to zero. Those adept at
+simple algebra might care to compress this expression further.
+
+The lengths of the months in other calendars often follow a much simpler pattern. The months of the Islamic
+calendar alternate between 29 and 30; the first six months of the Saka calendar contain 31 days (except in a
+leap year) and the remaining months contain 30. In Chapter 24 I present similar formulae for these calendars.
+
+Congruence relations
+--------------------
+Zellor's congruence is an example of a type of expression that is very useful in calendar calculations. Many
+such expressions were used by Gauss in his work in this field. He did not, however, describe how they might
+be discovered. Burnaby went some way to remedy this omission and the following discussion is based on his
+work.
+
+The problem is to find a formula which takes values from 1 to N as n increases from 1 to B, but not in a regular
+way. Here n is an integer variable. As an example, consider the number of common years, C, which have
+occurred by year n of a Metonic cycle as employed by the Jewish calendar. We may tabulate values of C for all
+19 values of n in TABLE 23.2 (below).
+
+The problem is to derive a formula for C in terms of n. If the embolismic years were equally spaced, we might
+suppose that the relation required would be C = (12n)/19 but this formula is plainly wrong. We therefore try the
+relation C = (12n + x)/19 and the problem then is to determine x. It must be emphasized that it is not
+necessarily true that any value of x can be found or that, if there is a value, that it is unique.
+
+Burnaby proceeds as follows. First, we may see from TABLE 23.2 that when n = 1, C = 1, and that 12n + x =
+12 + x. Now (12 + x)/19 only gives the right value of 1 for C when 12 + x lies between 19 and 37. This gives
+an upper and lower limit to 12 + x, and hence to x:7<=x<=25.
+Likewise, when n = 2, C = 2, and the limits are 4<=x<=32. In this way we can construct tables of the minimum 
+and maximum values of x for each value of n as shown in TABLE 23.2. 
+Any value of x which delivers the correct value of C for all n must, simultaneously, lie
+in all 19 of these ranges. That can only happen if the largest minimum is greater than or equal to the smallest
+maximum. The largest minimum is seen to be 17 and the smallest minimum is also 17, so 17 is a valid value of
+x which gives a correct relation:
+
+                 (12n + 17)
+            C =  ----------                    // (23.17)
+                     19
+
+In general we would try first a relation of the form:
+
+                 (An + x)
+            C =  ----------                    // (23.18)
+                     B
+
+and note that for each value of n, with a corresponding value of C:
+
+            BC <= An + x <= BC + B             // (23.19)
+
+so that:
+
+            BC - An <= x <= BC + B - An        // (23.20)
+
+It may occur that no value of x can be found which satisfies all of the relationships; in this case one could try
+an expression of the form:
+
+            C =  (AnK + x)/(BK)                // (23.21)
+
+using several values of K in turn. If this fails one might try more complicated expressions involving n.
+
+A particularly simple congruence is the formula G = 3 C/4, which transforms the number, C, of a century in the
+Gregorian calendar into the difference between the day numbers of a date in the Julian and Gregorian
+calendars; this difference is valid throughout the century. The relation between C and G is illustrated below:
+
+            C = 1,2,3,4,5,6,7,8,9,...
+            G = 0,1,2,3,3,4,5,6,6,...
+
+Note how G skips an increment every fourth century. I discuss the use of this formula in a later chapter.
+
+TABLE 23.1
+----------
+Days in the months
+      Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec   Jan   Feb
+M     1     2     3     4     5     6     7     8     9     10    11    12    1     2
+M'    10    11    0     1     2     3     4     5     6     7     8     9     10    11
+L     31    28    31    30    31    30    31    31    30    31    30    31    31    28
+X     3     0     3     2     3     2     3     3     2     3     2     3     3     0
+Z                 0     3     5     8     10    13    16    18    21    23    26    29
+
+Keys
+----
+M = Conventional month number
+M' = Rearranged month number
+L = Number of days in month
+X = Excess = L - 28
+Z = Total excess days by first of month starting from 1 March
+
+TABLE 23.2
+----------
+Embolismic years in the Metonic cycle
+
+n           1     2     3     4     5     6     7     8     9     10    11    12    13    14    15    16    17    18    19    
+C           1     2     2*    3     4     4*    5     5*    6     7     7*    8     9     9*    10    11    11*   12    12*
+min. x      7     4     2     9     16    4     11    0     6     13    1     8     15    3     10    17    5     12    0
+max. x      25    32    20    27    34    22    29    17    24    31    19    26    33    21    28    25    23    30    18
+
+Keys
+----
+n  = Year number in the Metonic cycle
+*  = Embolismic year
+C = Aggregate number of common years by year n
+min. x      (19* C) - (12* n) (See above)
+max. x      19* (C + 1) - (12* n) (See above)
