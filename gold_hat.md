@@ -23,28 +23,28 @@ The integration of astronomical knowledge into the hat's design implies a societ
 
 This interpretation aligns with broader research on Bronze Age artifacts, such as the Nebra Sky Disk, which also reflects complex astronomical understanding. The Berlin Gold Hat thus exemplifies the fusion of art, science, and spirituality in ancient European cultures.
 
-Main Calculation Concepts
--------------------------
-1. Venus Synodic Period and Symbol Counting
-Venus Cycle:
+# Main Calculation Concepts
+
+## 1. Venus Synodic Period and Symbol Counting
+* **Venus Cycle:**
 The synodic period of Venus—the time between two successive similar appearances (e.g., as the morning star)—is about 584 days.
 
-Counting Symbols:
+* **Counting Symbols:**
 The author notes that the gold hat is decorated with horizontal bands (zones), each containing rows of symbols. By counting the symbols in each zone, Schmidt-Kaler proposes that the total number of symbols encodes calendrical cycles.
 
-Bands and Totals:
+* **Bands and Totals:**
 The gold hat has 21 bands with different numbers of symbols per band.
 By summing up certain groups of bands, the author obtains numbers close to multiples of the Venus synodic period.
 
-2. Multiples and Cycles
-Venus Cycle Approximation:
+## 2. Multiples and Cycles
+* **Venus Cycle Approximation:**
 5 Venus synodic periods ≈ 8 Earth years (because 5 × 584 = 2,920 days and 8 × 365 = 2,920 days).
 This relationship is well-known from ancient times and is the basis for the so-called “Venus Table.”
 
 How the Hat Encodes the Cycles:
 Schmidt-Kaler claims the arrangement and repetition of the symbols in the bands allow a user to track the 584-day Venus cycle and its 5-fold repetition within 8 years.
 
-3. Practical Calculation (Example from the Paper):
+## 3. Practical Calculation (Example from the Paper):
 The author gives an example of using the symbols as counting aids. A possible calculation method would be:
 
 User marks a starting point (e.g., the first symbol of a band) on a given date when Venus is first visible as the morning star.
@@ -55,12 +55,12 @@ When the user reaches the symbol at 584 days, Venus will again be at a similar p
 
 After 5 cycles (2,920 days, or 8 years), the symbols repeat and the calendar is reset.
 
-4. Other Details and Calculations:
+## 4. Other Details and Calculations:
 Some bands are thought to represent phases of Venus (as evening or morning star), possibly by their position or symbol type.
 
 Summing certain bands gives numbers like 292, which is half the Venus synodic period (the time Venus spends as morning or evening star).
 
-5. Interpretation Table (from the paper):
+## 5. Interpretation Table (from the paper):
 The paper presents a table where the sum of symbols in specific bands or groups of bands closely matches:
 
 292: Length of one visible phase of Venus (morning or evening star)
