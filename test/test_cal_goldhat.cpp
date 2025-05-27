@@ -26,6 +26,17 @@ So, 1739 − 142 = 1597, matching the expected test result.
 
 */
 TEST_CASE("Wikipedia example: get number of days for 54 lunar months in Goldhat calendar") {
-  int days = goldhat_days_54_lunar_months();  // should be 1597
+  int days = goldhat_days_54_lunar_months();
   CHECK(days == 1597);
+}
+
+TEST_CASE("Venus day in cycle for May 22, 2025") {
+  int venus_day = venus::day_in_cycle(gregorian_to_jd(2025, 5, 22));
+  CHECK(venus_day == 435);  // FIXME: replace with actual expected value for May 22, 2025
+}
+
+TEST_CASE("Goldhat zone for May 22, 2025") {
+  double jd = gregorian_to_jd(2025, 5, 22);
+  std::string zone = format_goldhat_zone(jd);
+  CHECK(zone == "Zone 8 (Day 90 of 105)");  // FIXME: replace with actual expected value for May 22, 2025
 }

@@ -8,6 +8,6 @@ constexpr double SYNODIC_PERIOD = 583.92;
 double phase_angle(double jd);
 // Day‐in‐cycle index [0..SYNODIC_PERIOD)
 int day_in_cycle(double jd);
-}
+}  // namespace venus
 
-#endif // VENUS_H
+#endif  // VENUS_H

@@ -64,7 +64,7 @@ int goldhat_days_54_lunar_months() {
 
 // Format the current Goldhat zone for a given JD (for visual pointer/calendar use)
 std::string format_goldhat_zone(double jd) {
-  // For demonstration: map Venus day-in-cycle to a zone
+  // Map Venus day-in-cycle to a zone
   int day = venus::day_in_cycle(jd);
   int total_days = 0;
   for (const auto &zone : berlin_goldhat_zones) {
