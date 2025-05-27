@@ -104,18 +104,19 @@ The author provides a table in the paper that lists the number of symbols in eac
 | 20            | 34 |
 | 21            | 21 |
 
-Calculation Table from the Paper
+## Calculation Table from the Paper
 The paper discusses grouping the bands to yield numbers that relate to the Venus cycle and its phases. The following table summarizes the calculations as described by Schmidt-Kaler:
 
-Calculation / Band Group	Number of Symbols	        Interpretation
-Bands 3 to 8	            29+33+34+29+33+34 = 192	    Not directly interpreted, but grouping example
-Bands 9 to 14	            33+34+33+34+33+34 = 201	
-Bands 15 to 20	            33+34+33+34+33+34 = 201	
-Bands 3 to 20  	            29+33+34+29+33+34+33+34+33+34+33+34+33+34+33+34+33+34 = 1,184	2 x 592 (twice the Venus half-cycle)
-Bands 3 to 12	            29+33+34+29+33+34+33+34+33+34 = 326	
-Bands 13 to 20	            33+34+33+34+33+34+33+34 = 268	
+| Calculation / Band Group | Number of Symbols | Interpretation |
+| :----------------------- | :---------------- | :------------- | 
+| Bands 3 to 8	           | 29+33+34+29+33+34 = **192** | Not directly interpreted, but grouping example |
+| Bands 9 to 14	           | 33+34+33+34+33+34 = **201** | 	                                              |
+| Bands 15 to 20	       | 33+34+33+34+33+34 = **201** |	                                              |
+| Bands 3 to 20  	       | 29+33+34+29+33+34+33+34+33+34+33+34+33+34+33+34+33+34 = **1,184**	| 2 x 592 (twice the Venus half-cycle) |
+| Bands 3 to 12	           | 29+33+34+29+33+34+33+34+33+34 = **326** |	                                  |
+| Bands 13 to 20	       | 33+34+33+34+33+34+33+34 = **268** |	                                      |
 
-Key Calendar Numbers Derived
+### Key Calendar Numbers Derived
 * 584: Venus synodic period (days)
 * 292: Half the Venus synodic period (days as morning or evening star)
 * 2,920: 5 Venus periods ≈ 8 solar years
