@@ -121,28 +121,28 @@ The paper discusses grouping the bands to yield numbers that relate to the Venus
 * 292: Half the Venus synodic period (days as morning or evening star)
 * 2,920: 5 Venus periods ≈ 8 solar years
 
-Symbol Sum Examples Matching Venus Periods:
+#### Symbol Sum Examples Matching Venus Periods:
 * Bands 3-20 (main decorative field):
-1,184 symbols
-→ 1,184 / 2 = 592
-→ This is almost exactly 2 × 584 (Venus synodic periods).
+  1,184 symbols
+  → 1,184 / 2 = 592
+  → This is almost exactly 2 × 584 (Venus synodic periods).
 
 * Subgroupings:
-In some arrangements, sums of 292 can be formed (half-cycle).
+In some arrangements, sums of **292** can be formed (half-cycle).
 
-Sample Translated Table (from the original):
+### Sample Translated Table (from the original):
 "Additions of the main field's symbols yield:
-(29 + 33 + 34 + 29 + 33 + 34 + 33 + 34 + 33 + 34 + 33 + 34 + 33 + 34 + 33 + 34 + 33 + 34) = 1,184"
+(29 + 33 + 34 + 29 + 33 + 34 + 33 + 34 + 33 + 34 + 33 + 34 + 33 + 34 + 33 + 34 + 33 + 34) = **1,184**"
 
 "This is 2 × 592, which matches two cycles of Venus's 584-day period almost exactly."
 
-Usage as Calendar
+## Usage as Calendar
 * Mark a starting symbol on a specific date.
 * Advance one symbol per day.
 * When reaching the 584th symbol, Venus’s phase repeats.
 * Continue through 5 cycles (2,920 days) for the full Venus calendar.
 
-Conclusion:
+## Conclusion:
 The symbol counts in the Berlin Gold Hat’s bands closely correspond to the Venus cycle and its subdivisions.
 
 By grouping and summing symbols, the hat functions as a practical counting tool for Venus’s cycles, encoding advanced astronomical knowledge.
