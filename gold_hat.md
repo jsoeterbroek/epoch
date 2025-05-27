@@ -41,70 +41,68 @@ By summing up certain groups of bands, the author obtains numbers close to multi
 5 Venus synodic periods ≈ 8 Earth years (because 5 × 584 = 2,920 days and 8 × 365 = 2,920 days).
 This relationship is well-known from ancient times and is the basis for the so-called “Venus Table.”
 
-How the Hat Encodes the Cycles:
+* **How the Hat Encodes the Cycles:**
 Schmidt-Kaler claims the arrangement and repetition of the symbols in the bands allow a user to track the 584-day Venus cycle and its 5-fold repetition within 8 years.
 
 ## 3. Practical Calculation (Example from the Paper):
 The author gives an example of using the symbols as counting aids. A possible calculation method would be:
 
-User marks a starting point (e.g., the first symbol of a band) on a given date when Venus is first visible as the morning star.
+* **User marks a starting point** (e.g., the first symbol of a band) on a given date when Venus is first visible as the morning star.
 
-Each day, the user advances one symbol. When the end of a band is reached, the next band is started.
+* **Each day, the user advances one symbol.** When the end of a band is reached, the next band is started.
 
-When the user reaches the symbol at 584 days, Venus will again be at a similar point in its cycle (e.g., first visible as morning star).
+* **When the user reaches the symbol at 584 days**, Venus will again be at a similar point in its cycle (e.g., first visible as morning star).
 
-After 5 cycles (2,920 days, or 8 years), the symbols repeat and the calendar is reset.
+* **After 5 cycles (2,920 days, or 8 years)**, the symbols repeat and the calendar is reset.
 
 ## 4. Other Details and Calculations:
-Some bands are thought to represent phases of Venus (as evening or morning star), possibly by their position or symbol type.
+* Some bands are thought to represent phases of Venus (as evening or morning star), possibly by their position or symbol type.
 
-Summing certain bands gives numbers like 292, which is half the Venus synodic period (the time Venus spends as morning or evening star).
+* Summing certain bands gives numbers like 292, which is half the Venus synodic period (the time Venus spends as morning or evening star).
 
 ## 5. Interpretation Table (from the paper):
 The paper presents a table where the sum of symbols in specific bands or groups of bands closely matches:
 
-292: Length of one visible phase of Venus (morning or evening star)
+* 292: Length of one visible phase of Venus (morning or evening star)
+* 584: One full synodic Venus cycle
+* 2,920: 5 Venus cycles (8 years)
 
-584: One full synodic Venus cycle
-
-2,920: 5 Venus cycles (8 years)
-
-6. Conclusion of the Calculation Section:
+## 6. Conclusion of the Calculation Section:
 The author argues that the gold hat is not just decorative, but a functional calendar based on these calculations.
 
 The counting of symbols, when properly grouped, allows the tracking of Venus’s synodic cycle, confirming that Bronze Age cultures could have used this as an astronomical and ritual tool.
 
 
-Calculation Details:
---------------------
-Overview
-The Berlin Gold Hat consists of 21 horizontal bands ("Zonen"), each decorated with repeated symbols. The main calculation hypothesis is that counting the symbols in each band or grouped bands enables the tracking of Venus's synodic cycle (584 days).
+# Calculation Details:
+## Overview
+The Berlin Gold Hat consists of **21 horizontal bands** ("Zonen"), each decorated with repeated symbols. The main calculation hypothesis is that **counting the symbols** in each band or grouped bands enables the tracking of Venus's synodic cycle (584 days).
 
-Exact Symbol Counts per Band
+## Exact Symbol Counts per Band
 The author provides a table in the paper that lists the number of symbols in each of the 21 bands. Here is the translated table:
 
-Band (Zone)	Symbol Count
-1	        17
-2	        19
-3	29
-4	33
-5	34
-6	29
-7	33
-8	34
-9	33
-10	34
-11	33
-12	34
-13	33
-14	34
-15	33
-16	34
-17	33
-18	34
-19	33
-20	34
-21	21
+| Band (Zone)	| Symbol Count |
+| :------------ | :----------- | 
+| 1	            | 17 |
+| 2	            | 19 |
+| 3	            | 29 |
+| 4	            | 33 |
+| 5	            | 34 |
+| 6	            | 29 |
+| 7	            | 33 |
+| 8	            | 34 |
+| 9	            | 33 |
+| 10            | 34 |
+| 11            | 33 |
+| 12	        | 34 |
+| 13            | 33 |
+| 14            | 34 |
+| 15            | 33 |
+| 16            | 34 |
+| 17            | 33 |
+| 18            | 34 |
+| 19            | 33 |
+| 20            | 34 |
+| 21            | 21 |
 
 Calculation Table from the Paper
 The paper discusses grouping the bands to yield numbers that relate to the Venus cycle and its phases. The following table summarizes the calculations as described by Schmidt-Kaler:
