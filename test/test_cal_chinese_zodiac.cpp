@@ -15,6 +15,8 @@ Chinese Date:	Xin-Si (Snake) (4th month), 5, 4723
 */
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
+#include "calendar.h"
+#include "cal_gregorian.h"
 #include "cal_chinese_zodiac.h"
 
 TEST_CASE("Chinese Zodiac full date formatting") {

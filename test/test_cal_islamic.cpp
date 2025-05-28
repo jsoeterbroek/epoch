@@ -12,8 +12,9 @@ Is it leap year:	2025 It's not leap year
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "cal_islamic.h"
+#include "calendar.h"
 #include "cal_gregorian.h"
+#include "cal_islamic.h"
 #include <iostream>
 
 TEST_CASE("Islamic calendar date conversion and formatting for may 18, 2025") {

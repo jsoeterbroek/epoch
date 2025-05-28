@@ -14,8 +14,9 @@ Created by: nsobbi@gmail.com
 */
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest.h>
-#include "cal_mandaean.h"
+#include "calendar.h"
 #include "cal_gregorian.h"
+#include "cal_mandaean.h"
 #include <iostream>
 
 //TEST_CASE("Mandaean calendar conversion and formatting for gregorian 20th May 2025") {

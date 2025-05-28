@@ -1,8 +1,9 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "calendar.h"
-#include <iostream>
+#include "cal_gregorian.h"
 #include "cal_hindu.h"
+#include <iostream>
 
 /*
 https://planetcalc.com/9166/

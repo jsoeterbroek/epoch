@@ -5,8 +5,9 @@ The 17 May 1805 corresponds to 27 Floréal Year XIII
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "cal_rev_french.h"
+#include "calendar.h"
 #include "cal_gregorian.h"
+#include "cal_rev_french.h"
 
 TEST_CASE("French revolutionary calendar returns for 17th of may 1805") {
   double jd = gregorian_to_jd(1805, 05, 17);

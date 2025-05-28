@@ -8,6 +8,7 @@ Harpa
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "cal_icelandic.h"
+#include "calendar.h"
 #include "cal_gregorian.h"
 
 TEST_CASE("Icelandic calendar returns for 17th of may 2025") {

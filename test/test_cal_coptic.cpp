@@ -3,6 +3,8 @@
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
+#include "calendar.h"
+#include "cal_gregorian.h"
 #include "cal_coptic.h"
 
 TEST_CASE("Coptic date conversion and formatting") {

@@ -2,6 +2,4 @@
 #include "doctest.h"
 #include "calendar.h"
 #include "cal_gregorian.h"
-#include "venus.h"
-#include "cal_negev.h"
 #include <iostream>

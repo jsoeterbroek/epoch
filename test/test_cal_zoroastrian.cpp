@@ -10,8 +10,9 @@
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "cal_zoroastrian.h"
+#include "calendar.h"
 #include "cal_gregorian.h"
+#include "cal_zoroastrian.h"
 #include <iostream>
 
 TEST_CASE("Zoroastrian Fasli calendar date conversion and formatting for May 18, 2025") {

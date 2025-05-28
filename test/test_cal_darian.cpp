@@ -1,6 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "calendar.h"
+#include "cal_darian.h"
+#include "cal_gregorian.h"
 #include <iostream>
 
 // https://interimm.org/mars-clock/en/

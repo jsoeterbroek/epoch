@@ -9,6 +9,8 @@ Week day name Sanyo
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
+#include "calendar.h"
+#include "cal_gregorian.h"
 #include "cal_ethiopian.h"
 
 TEST_CASE("Ethiopian calendar date conversion and formatting for May 12, 2025") {

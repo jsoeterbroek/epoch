@@ -11,6 +11,8 @@ Day 4
  */
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
+#include "calendar.h"
+#include "cal_gregorian.h"
 #include "cal_hebrew.h"
 
 TEST_CASE("Hebrew date conversion and formatting") {

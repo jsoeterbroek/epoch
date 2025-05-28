@@ -1,6 +1,8 @@
 // test_babylonian.cpp
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest.h>
+#include "calendar.h"
+#include "cal_gregorian.h"
 #include "cal_babylonian.h"
 
 TEST_CASE("Babylonian calendar date conversion for April 1, 2024") {
