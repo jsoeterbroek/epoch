@@ -19,9 +19,9 @@ TEST_CASE("Babylonian calendar date conversion for April 1, 2024") {
     std::string date_str = format_babylonian_date(jd);
 
     CHECK(weekday_str == "Umu 3");
-    CHECK(month_str == "Addaru");
+    CHECK(month_str == "Adam");
     CHECK(year_str == "2221 SE");
-    CHECK(date_str == "Addaru 5");
+    CHECK(date_str == "Adam 5");
   }
 }
 //TEST_CASE("Babylonian intercalary year with Addaru II") {

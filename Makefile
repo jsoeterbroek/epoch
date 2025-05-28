@@ -79,9 +79,6 @@ hebrew: build/test_cal_hebrew
 babylonian: build/test_cal_babylonian
 	./$<
 
-darian: build/test_cal_darian
-	./$<
-
 calendar: build/test_calendar
 	./$<
 
