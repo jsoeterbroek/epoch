@@ -33,9 +33,7 @@ int zeller_weekday(int year, int month, int day);
 int metonic_common_years(int n);
 
 // Utility: rearranged month number M' = MOD(M+9,12)
-inline int rearranged_month(int m) {
-  return imod(m + 9, 12);
-}
+inline int rearranged_month(int m);
 
 // Utility: excess days X for Gregorian months (see Table 23.1)
 int gregorian_month_excess(int m);

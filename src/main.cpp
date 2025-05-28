@@ -293,7 +293,11 @@ void drawMain() {
       int darian_year, darian_month, sol;
       jd_to_darian(jd, darian_year, darian_month, sol);
       format_weekday = format_darian_date_weekday(darian_year, darian_month, sol, DarianWeekStyle::Latin).c_str();
-      format_day_month_year = format_darian_date(darian_year, darian_month, sol, DarianMonthStyle::Mythological).c_str();
+      //format_day_month_year = format_darian_date(darian_year, darian_month, sol, DarianMonthStyle::Mythological).c_str();
+      format_day = format_darian_date_day(sol).c_str();
+      format_month = format_darian_date_month(darian_month, DarianMonthStyle::Mythological).c_str();
+      format_year = format_darian_date_year(darian_year).c_str();
+      format_day_month = format_day + " " + format_month;
       break;
     default:
       format_weekday = "unknown";

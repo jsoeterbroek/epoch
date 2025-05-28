@@ -17,28 +17,31 @@ inline bool is_darian_leap_year(int year);
 JD darian_to_jd(int year, int month, int sol);
 
 // --- Convert Julian Date to Darian date ---
-void jd_to_darian(JD jd, int& year, int& month, int& sol);
+void jd_to_darian(JD jd, int &year, int &month, int &sol);
 
 // --- Optional MSD <-> JD helpers ---
 inline JD msd_to_jd(double msd) {
-    return msd * EARTH_DAYS_PER_SOL + JD_EPOCH;
+  return msd * EARTH_DAYS_PER_SOL + JD_EPOCH;
 }
 
 inline double jd_to_msd(JD jd) {
-    return (jd - JD_EPOCH) / EARTH_DAYS_PER_SOL;
+  return (jd - JD_EPOCH) / EARTH_DAYS_PER_SOL;
 }
 enum class DarianWeekStyle {
-    Latin,
-    Vedic
+  Latin,
+  Vedic
 };
 
 enum class DarianMonthStyle {
-    Mythological,
-    Zodiac
+  Mythological,
+  Zodiac
 };
 
 std::string format_darian_date_weekday(int year, int month, int sol, DarianWeekStyle style);
 std::string format_darian_date_full(int year, int month, int sol, DarianWeekStyle week_style, DarianMonthStyle month_style);
 std::string format_darian_date(int year, int month, int sol, DarianMonthStyle style);
+std::string format_darian_date_day(int sol);
+std::string format_darian_date_month(int month, DarianMonthStyle month_style);
+std::string format_darian_date_year(int year);
 
-#endif // CAL_DARIAN_H
+#endif  // CAL_DARIAN_H
