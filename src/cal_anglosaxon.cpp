@@ -19,6 +19,8 @@ dates, others to ecclesiastical reckonings—so you’ll see these 3–4-day off
 reconstructions. Neither is “wrong”.
  */
 #include "calendar.h"
+#include "cal_gregorian.h"
+#include "cal_anglosaxon.h"
 #include <cmath>
 #include <array>
 #include "astro.h"

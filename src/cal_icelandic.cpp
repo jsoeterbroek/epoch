@@ -1,4 +1,6 @@
 #include "calendar.h"
+#include "cal_gregorian.h"
+#include "cal_icelandic.h"
 #include "astro.h"
 #include <cmath>
 #include <string>

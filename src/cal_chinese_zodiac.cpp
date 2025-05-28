@@ -1,5 +1,7 @@
 
 #include "calendar.h"
+#include "cal_gregorian.h"
+#include "cal_chinese_zodiac.h"
 #include <cmath>
 #include <array>
 #include "astro.h"

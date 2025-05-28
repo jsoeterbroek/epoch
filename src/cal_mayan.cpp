@@ -8,6 +8,7 @@
                 This program is in the public domain.
 */
 #include "calendar.h"
+#include "cal_mayan.h"
 #include "cal_gregorian.h"
 #include <cmath>
 #include <array>

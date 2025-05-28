@@ -8,6 +8,7 @@
                 This program is in the public domain.
 */
 #include "calendar.h"
+#include "cal_persian.h"
 #include <cmath>
 #include <array>
 #include "astro.h"

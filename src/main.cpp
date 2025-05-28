@@ -21,9 +21,38 @@
 #include "_locale.h"
 #include "datetime.h"
 #include "display_utils.h"
-#include "astro.h"
+
 #include "calendar.h"
+#include "cal_anglosaxon.h"
+#include "cal_armenian.h"
+#include "cal_babylonian.h"
+#include "cal_gregorian.h"
+#include "cal_julian.h"
+#include "cal_egyptian.h"
+#include "cal_ethiopian.h"
+#include "cal_rev_french.h"
+#include "cal_islamic.h"
+#include "cal_coptic.h"
+#include "cal_hebrew.h"
+#include "cal_persian.h"
+#include "cal_mayan.h"
+#include "cal_saka.h"
+#include "cal_icelandic.h"
+#include "cal_zoroastrian.h"
+#include "cal_anglosaxon.h"
+#include "cal_germanic.h"
+#include "cal_mandaean.h"
+#include "cal_chinese_zodiac.h"
+#include "cal_buddhist.h"
+#include "cal_hindu.h"
+#include "cal_darian.h"
+#include "cal_negev.h"
+#include "cal_goldhat.h"
+
 #include "moon.h"
+#include "venus.h"
+#include "astro.h"
+
 #include <WiFi.h>
 #include <WiFiManager.h>
 #include <HTTPClient.h>
@@ -241,8 +270,11 @@ void drawMain() {
       format_day_month = format_day + " " + format_month;
       break;
     case 14:  // armenian    // 14
-      format_weekday = "Armenian Calendar";
-      format_day_month_year = "Not yet implemented";
+      format_weekday = format_armenian_date_weekday(jd).c_str();
+      format_day = format_armenian_date_day(jd).c_str();
+      format_month = format_armenian_date_month(jd).c_str();
+      format_year = format_armenian_date_year(jd).c_str();
+      format_day_month = format_day + " " + format_month;
       break;
     case 15:  // georgian    // 15
       format_weekday = "Georgian Calendar";

@@ -11,6 +11,7 @@
 /*  https://en.wikipedia.org/wiki/Islamic_calendar */
 
 #include "calendar.h"
+#include "cal_islamic.h"
 #include <cmath>
 #include <array>
 #include "astro.h"
