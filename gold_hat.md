@@ -282,5 +282,5 @@ The differences in complexity could reflect their age, local calendrical needs, 
 - Spurk, Gebhard, Schauer, et al.: Analyses show relationships between band/symbol counts and astronomical cycles.
 - Wolfgang Schlosser (2004, 2012): Argues for a systematic calendrical interpretation for all hats, with regional adaptations.
 - I. Mathieson, "The Golden Hat Calendar" (2010):
-PDF – offers detailed calculations for several hats.
+PDF (http://www.mathieson-foster.com/MathiesonFoster.com/Golden_Hat_Calendar_files/The%20Golden%20Hat%20Calendar.pdf) – offers detailed calculations for several hats.
 - Wikipedia, https://en.wikipedia.org/wiki/Berlin_Gold_Hat
