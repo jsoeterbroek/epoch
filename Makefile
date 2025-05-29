@@ -70,6 +70,9 @@ negev: build/test_cal_negev
 darian: build/test_cal_darian
 	./$<
 
+armenian: build/test_cal_armenian
+	./$<
+
 ethiopian: build/test_cal_ethiopian
 	./$<
 
