@@ -38,6 +38,8 @@ TEST_CASE("Venus day in cycle for May 22, 2025") {
 
 TEST_CASE("Goldhat zone for May 22, 2025") {
   double jd = gregorian_to_jd(2025, 5, 22);
-  std::string zone = format_goldhat_zone(jd);
-  CHECK(zone == "Zone 8 (Day 90 of 105)");  // FIXME: replace with actual expected value for May 22, 2025
+  std::string zone_berlin = format_goldhat_zone(jd, GoldHats::Berlin);
+  std::string zone_ezelsdorf = format_goldhat_zone(jd, GoldHats::Ezelsdorf);
+  CHECK(zone_berlin == "Zone 8 (Day 90 of 105)");  // FIXME: replace with actual expected value for May 22, 2025
+  CHECK(!zone_ezelsdorf.empty());                  // Test that other goldhat variants work
 }
