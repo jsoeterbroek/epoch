@@ -50,25 +50,33 @@ Volle maan	30 juni 2026
 //	test `./frontend 361411200` = 93.6
 //	test `./frontend 1704931200` = 0.4
 //	test `./frontend 2898374400` = 44.2
+
 TEST_CASE("Moon phase -178070400") {
-  char *argv[] = {"frontend", "-178070400"};
-  int argc = 2;
-  int phase = get_phase(argc, argv);
-  CHECK(phase == 1.2);
+  const char *phase_arg = "-178070400";
+  int phase1 = get_phase(phase_arg);
+  CHECK(phase1 == 1);
 }
 
-// TEST_CASE("Moon phase 361411200") {
-//   int phase = get_phase(361411200, nullptr);
-//   CHECK(phase == 93.6);
-// }
+TEST_CASE("Moon phase 361411200") {
+  const char *phase_arg = "361411200";
+  int phase2 = get_phase(phase_arg);
+  CHECK(phase2 == 94);
+}
 
-// TEST_CASE("Moon phase 2898374400") {
-//   int phase = get_phase(2898374400, nullptr);
-//   CHECK(phase == 44.2);
-// }
+TEST_CASE("Moon phase 2898374400") {
+  const char *phase_arg = "2898374400";
+  int phase3 = get_phase(phase_arg);
+  CHECK(phase3 == 44);
+}
 
-// TEST_CASE("Moon phase name") {
-//   std::string cpp_str = moon_phase_name();
-//   String moonStr = String(cpp_str.c_str());
-//   CHECK(moonStr == "New Moon");
-// }
+// {"time":"02-06-2025", "phase":43.61},
+TEST_CASE("Moon phase now") {
+  int phase4 = get_phase();
+  CHECK(phase4 == 43);
+}
+
+TEST_CASE("Moon phase name") {
+  std::string cpp_str = moon_phase_name();
+  String moonStr = String(cpp_str.c_str());
+  CHECK(moonStr == "Waxing Crescent");
+}
