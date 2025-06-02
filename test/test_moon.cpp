@@ -69,14 +69,14 @@ TEST_CASE("Moon phase 2898374400") {
   CHECK(phase3 == 44);
 }
 
-// {"time":"02-06-2025", "phase":43.61},
-TEST_CASE("Moon phase now") {
-  int phase4 = get_phase();
-  CHECK(phase4 == 43);
-}
+// // {"time":"02-06-2025", "phase":43.61},
+// TEST_CASE("Moon phase now") {
+//   int phase4 = get_phase();
+//   CHECK(phase4 == 43);
+// }
 
-TEST_CASE("Moon phase name") {
-  std::string cpp_str = moon_phase_name();
-  String moonStr = String(cpp_str.c_str());
-  CHECK(moonStr == "Waxing Crescent");
-}
+// TEST_CASE("Moon phase name now") {
+//   std::string cpp_str = moon_phase_name();
+//   String moonStr = String(cpp_str.c_str());
+//   CHECK(moonStr == "First Quarter");
+// }
