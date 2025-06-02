@@ -355,17 +355,14 @@ void drawMain() {
   canvas.setFreeFont(&Orbitron_Medium_25);
   canvas.setTextColor(TFT_DARKGREY);
 
-  std::string cpp_str = format_moon_phase(jd);
+  std::string cpp_str = format_moon_phase();
   String moonStrbuff = String(cpp_str.c_str());
   String png_moon_phase_path = getMoonPng96(moonStrbuff);
 
   Serial.print("DEBUG: moon phase: ");  // FIXME: remove later
   Serial.println(png_moon_phase_path);  // FIXME: remove later
 
-  //canvas.drawBitmap(600, 40, getMoonBitmap48(), 48, 48, TFT_DARKGREY);
-  //canvas.drawPngFile(SD, "/icons/48/wi-moon-waning-gibbous-2.png", 630, 46, 48, 48);
   canvas.drawPngFile(SD, png_moon_phase_path.c_str(), 802, 46, 96, 96);
-  //canvas.drawString(moonStrbuff, 670, 52);
 
   // weekday, day, month, year
   canvas.setFreeFont(&Orbitron_Bold_66);
