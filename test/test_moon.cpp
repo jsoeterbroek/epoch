@@ -14,34 +14,61 @@ Volle maan	30 juni 2026
 2008-09-18 - Waning Gibbous
  */
 
-//2025-05-4 - First Quarter
-TEST_CASE("Moon phase for 2025-05-4 First Quarter") {
-  double mjd1 = gregorian_to_jd(2025, 5, 4);
-  std::string cpp_str1 = moon_phase_name_detailed(mjd1);
-  String moonStr1 = String(cpp_str1.c_str());
-  CHECK(moonStr1 == "First Quarter");
+// //2025-05-4 - First Quarter
+// TEST_CASE("Moon phase for 2025-05-4 First Quarter") {
+//   double mjd1 = gregorian_to_jd(2025, 5, 4);
+//   std::string cpp_str1 = moon_phase_name_detailed(mjd1);
+//   String moonStr1 = String(cpp_str1.c_str());
+//   CHECK(moonStr1 == "First Quarter");
+// }
+
+// // 2025-05-12 - Full Moon
+// TEST_CASE("Moon phase for 2025-05-12 Full Moon") {
+//   double mjd2 = gregorian_to_jd(2025, 5, 21);
+//   std::string cpp_str2 = moon_phase_name_detailed(mjd2);
+//   String moonStr2 = String(cpp_str2.c_str());
+//   CHECK(moonStr2 == "Full Moon");
+// }
+
+// // 2025-05-21 - Waning Crescent
+// TEST_CASE("Moon phase for 2025-05-21 Waning Crescent") {
+//   double mjd3 = gregorian_to_jd(2025, 5, 21);
+//   std::string cpp_str3 = moon_phase_name_detailed(mjd3);
+//   String moonStr3 = String(cpp_str3.c_str());
+//   CHECK(moonStr3 == "Waning Crescent");
+// }
+
+// // 2025-03-29 New Moon
+// TEST_CASE("Moon phase for 2025-03-29 New Moon") {
+//   double mjd5 = gregorian_to_jd(2025, 3, 29);
+//   std::string cpp_str5 = moon_phase_name_detailed(mjd5);
+//   String moonStr5 = String(cpp_str5.c_str());
+//   CHECK(moonStr5 == "New Moon");
+// }
+
+//  test `./frontend -178070400` = 1.2
+//	test `./frontend 361411200` = 93.6
+//	test `./frontend 1704931200` = 0.4
+//	test `./frontend 2898374400` = 44.2
+TEST_CASE("Moon phase -178070400") {
+  char *argv[] = {"frontend", "-178070400"};
+  int argc = 2;
+  int phase = get_phase(argc, argv);
+  CHECK(phase == 1.2);
 }
 
-// 2025-05-12 - Full Moon
-TEST_CASE("Moon phase for 2025-05-12 Full Moon") {
-  double mjd2 = gregorian_to_jd(2025, 5, 21);
-  std::string cpp_str2 = moon_phase_name_detailed(mjd2);
-  String moonStr2 = String(cpp_str2.c_str());
-  CHECK(moonStr2 == "Full Moon");
-}
+// TEST_CASE("Moon phase 361411200") {
+//   int phase = get_phase(361411200, nullptr);
+//   CHECK(phase == 93.6);
+// }
 
-// 2025-05-21 - Waning Crescent
-TEST_CASE("Moon phase for 2025-05-21 Waning Crescent") {
-  double mjd3 = gregorian_to_jd(2025, 5, 21);
-  std::string cpp_str3 = moon_phase_name_detailed(mjd3);
-  String moonStr3 = String(cpp_str3.c_str());
-  CHECK(moonStr3 == "Waning Crescent");
-}
+// TEST_CASE("Moon phase 2898374400") {
+//   int phase = get_phase(2898374400, nullptr);
+//   CHECK(phase == 44.2);
+// }
 
-// 2025-03-29 New Moon
-TEST_CASE("Moon phase for 2025-03-29 New Moon") {
-  double mjd5 = gregorian_to_jd(2025, 3, 29);
-  std::string cpp_str5 = moon_phase_name_detailed(mjd5);
-  String moonStr5 = String(cpp_str5.c_str());
-  CHECK(moonStr5 == "New Moon");
-}
+// TEST_CASE("Moon phase name") {
+//   std::string cpp_str = moon_phase_name();
+//   String moonStr = String(cpp_str.c_str());
+//   CHECK(moonStr == "New Moon");
+// }

@@ -3,7 +3,7 @@ CXXFLAGS := -std=c++17 -Wall -Wno-unused-variable \
             -Iinclude -Itest -I.pio/libdeps/m5paper/doctest/doctest
 
 # Source and test file detection
-SRC := $(wildcard src/cal*.cpp) src/astro.cpp src/roman.cpp src/venus.cpp
+SRC := $(wildcard src/cal*.cpp) src/astro.cpp src/roman.cpp src/venus.cpp src/moon.cpp
 TESTS := $(wildcard test/test_cal*.cpp)
 OBJS := $(patsubst test/%.cpp, build/%, $(TESTS))
 
@@ -92,6 +92,9 @@ chinese: build/test_cal_chinese_zodiac
 	./$<
 
 coptic: build/test_cal_coptic
+	./$<
+
+moon: build/test_moon
 	./$<
 
 # Clean build artifacts
