@@ -6,14 +6,10 @@
 
 // Armenian calendar implementation
 
-// Corrected Armenian epoch calculation
-// Working backwards from test: May 28, 2025 should be 1474 Margach 12
-// May 28, 2025 = JD 2460458.5
-// This should be Armenian year 1474, month 11, day 12
-constexpr double ARMENIAN_EPOCH = 1922867.5;  // Adjusted epoch
+// Armenian epoch: July 11, 552 CE (Julian) = July 13, 552 (Gregorian)
+constexpr double ARMENIAN_EPOCH = 1922867.5;  // Confirmed epoch
 
 // Armenian calendar functions
-bool is_armenian_leap_year(int year);
 double armenian_to_jd(int year, int month, int day);
 std::array<int, 3> jd_to_armenian(double jd);
 

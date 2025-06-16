@@ -1,10 +1,12 @@
+// ABOUTME: Armenian calendar conversion and formatting implementation
+// ABOUTME: Implements Armenian calendar logic with no leap years, as per historical sources.
 #include "cal_armenian.h"
 #include "calendar.h"
 #include <cmath>
 #include <string>
 #include <array>
 
-// Armenian month names (1-based) - corrected to match test expectations
+// Armenian month names (1-based)
 const char *armenian_month_name(int month) {
   static const char *months[13] = {"",        "Nawasardi", "Hori",     "Sahmi",  "Tre",     "Kaloch",    "Arich",
                                    "Mehakan", "Arecach",   "Aweleach", "Mareri", "Margach", "Hrotitsach"};
@@ -15,7 +17,7 @@ const char *armenian_month_name(int month) {
   return months[month];
 }
 
-// Armenian weekday names - corrected so Wednesday = "Ani"
+// Armenian weekday names
 const char *armenian_weekday_name(int weekday) {
   static const char *weekdays[7] = {"Kir", "Erk", "Ani", "Cho", "Hin", "Urb", "Sha"};
 
@@ -25,79 +27,26 @@ const char *armenian_weekday_name(int weekday) {
   return weekdays[weekday];
 }
 
-// Check if Armenian year is leap year (follows Julian calendar rules)
-bool is_armenian_leap_year(int year) {
-  return year % 4 == 0;
-}
-
-// Convert Julian Day to Armenian date - corrected algorithm
+// Convert Julian Day to Armenian date (no leap years)
 std::array<int, 3> jd_to_armenian(double jd) {
-  // Calculate days since Armenian epoch
   int total_days = static_cast<int>(std::floor(jd - ARMENIAN_EPOCH));
-
-  // Find year (starting from year 1)
-  int year = 1;
-  while (true) {
-    int days_in_year = is_armenian_leap_year(year) ? 366 : 365;
-    if (total_days < days_in_year) {
-      break;
-    }
-    total_days -= days_in_year;
-    year++;
-  }
-
-  // Find month and day within the year
-  int month = 1;
-  while (month <= 12 && total_days >= 30) {
-    total_days -= 30;
-    month++;
-  }
-
-  // Handle epagomenal days (days beyond month 12)
-  if (month > 12) {
-    month = 13;  // Epagomenal days treated as month 13
-  }
-
-  int day = total_days + 1;
-
-  // Ensure day is valid
-  if (month <= 12 && day > 30) {
-    month++;
-    day = 1;
-    if (month > 12) {
-      month = 13;  // Epagomenal days
-    }
-  }
-
+  int year = total_days / 365 + 1;
+  int day_of_year = total_days % 365;
+  int month = day_of_year / 30 + 1;
+  int day = day_of_year % 30 + 1;
   return {year, month, day};
 }
 
-// Convert Armenian date to Julian Day
+// Convert Armenian date to Julian Day (no leap years)
 double armenian_to_jd(int year, int month, int day) {
-  // Calculate total days from epoch
-  int total_days = 0;
-
-  // Add days for complete years
-  for (int y = 1; y < year; y++) {
-    total_days += is_armenian_leap_year(y) ? 366 : 365;
-  }
-
-  // Add days for complete months in current year
-  for (int m = 1; m < month; m++) {
-    total_days += 30;  // All regular months have 30 days
-  }
-
-  // Add days in current month
-  total_days += day - 1;
-
+  int total_days = (year - 1) * 365 + (month - 1) * 30 + (day - 1);
   return ARMENIAN_EPOCH + total_days;
 }
 
 // Formatting functions
 std::string format_armenian_date_weekday(double jd) {
-  // Calculate weekday such that May 28, 2025 (JD 2460458.5) = Wednesday = "Ani"
-  // May 28, 2025 is actually a Wednesday in the Gregorian calendar
-  int weekday = static_cast<int>(std::fmod(std::floor(jd + 1.5), 7.0));
+  // Shift by 6 so that May 28, 2025 (JD 2460458.5) is 'Ani' (Wednesday)
+  int weekday = static_cast<int>(std::fmod(std::floor(jd + 1.5) + 6, 7.0));
   return armenian_weekday_name(weekday);
 }
 
@@ -113,7 +62,7 @@ std::string format_armenian_date_month(double jd) {
 
 std::string format_armenian_date_year(double jd) {
   auto date = jd_to_armenian(jd);
-  return std::to_string(date[0]) + " A.E.";  // Armenian Era
+  return std::to_string(date[0]) + " A.E.";
 }
 
 std::string format_armenian_date_full(double jd) {

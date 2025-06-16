@@ -1,6 +1,6 @@
 CXX := g++
 CXXFLAGS := -std=c++17 -Wall -Wno-unused-variable \
-            -Iinclude -Itest -I.pio/libdeps/m5paper/doctest/doctest
+            -Iinclude -Itest -Iexternal/doctest -I.pio/libdeps/m5paper/doctest/doctest
 
 # Source and test file detection
 SRC := $(wildcard src/cal*.cpp) src/astro.cpp src/roman.cpp src/venus.cpp src/moon.cpp
@@ -12,7 +12,7 @@ OBJS := $(patsubst test/%.cpp, build/%, $(TESTS))
 
 .PHONY: all clean run build \
 		french egyptian zoroastrian islamic saka germanic anglosaxon buddhist \
-		hindu goldhat negev darian \
+		hindu goldhat negev darian armenian \
 		ethiopian hebrew babylonian darian calendar icelandic chinese coptic
 
 # Build everything
@@ -100,4 +100,3 @@ moon: build/test_moon
 # Clean build artifacts
 clean:
 	rm -rf build
-

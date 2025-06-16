@@ -38,8 +38,4 @@ TEST_CASE("Armenian calendar basic functionality") {
   CHECK(epoch_date[0] == 1);
   CHECK(epoch_date[1] == 1);
   CHECK(epoch_date[2] == 1);
-
-  // Test leap year calculation
-  CHECK(is_armenian_leap_year(4) == true);
-  CHECK(is_armenian_leap_year(5) == false);
 }

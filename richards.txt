@@ -27,8 +27,8 @@ If we divide A by B, there is often a remainder. This is denoted by MOD(A,B); ma
 instead 'A modulo B'; and other writers have used (A/B)rthe MOD function is available in many computer
 languages. This remainder lies in the range 0 to B - 1. If A is exactly divisible by B, the remainder MOD(A,B)
 is zero. We always assume that A and B are positive integers. Some examples are, in order:
-  
-  3+5 = 8   
+
+  3+5 = 8
   5-3 = 2
   5/3 = 1
   3/5 = 0
@@ -115,7 +115,7 @@ the 28 which was subtracted in calculating X:
           L = 31 - MOD(MOD(M',5),2)              //  (23.11)
 
 or in terms of the conventional month number, M:
-          
+
           L = 31 - MOD(MOD(MOD(M + 9,12),5),2)   //  (23.12)
 
 which is valid for all months except February. This ponderous formula must be evaluated from the inside out,
@@ -138,7 +138,7 @@ discovered that:
           T = (13M' + 2)/5                      // (23.14)
 
 so that:
-          
+
           T = 28M' + (13M' + 2)/5 + D
             = (153M' +2)/5 + D
             = (2 + 153MOD(M + 9,12))/5 + D      // (23.15)
@@ -180,8 +180,8 @@ necessarily true that any value of x can be found or that, if there is a value, 
 Burnaby proceeds as follows. First, we may see from TABLE 23.2 that when n = 1, C = 1, and that 12n + x =
 12 + x. Now (12 + x)/19 only gives the right value of 1 for C when 12 + x lies between 19 and 37. This gives
 an upper and lower limit to 12 + x, and hence to x:7<=x<=25.
-Likewise, when n = 2, C = 2, and the limits are 4<=x<=32. In this way we can construct tables of the minimum 
-and maximum values of x for each value of n as shown in TABLE 23.2. 
+Likewise, when n = 2, C = 2, and the limits are 4<=x<=32. In this way we can construct tables of the minimum
+and maximum values of x for each value of n as shown in TABLE 23.2.
 Any value of x which delivers the correct value of C for all n must, simultaneously, lie
 in all 19 of these ranges. That can only happen if the largest minimum is greater than or equal to the smallest
 maximum. The largest minimum is seen to be 17 and the smallest minimum is also 17, so 17 is a valid value of
@@ -243,7 +243,7 @@ TABLE 23.2
 ----------
 Embolismic years in the Metonic cycle
 
-n           1     2     3     4     5     6     7     8     9     10    11    12    13    14    15    16    17    18    19    
+n           1     2     3     4     5     6     7     8     9     10    11    12    13    14    15    16    17    18    19
 C           1     2     2*    3     4     4*    5     5*    6     7     7*    8     9     9*    10    11    11*   12    12*
 min. x      7     4     2     9     16    4     11    0     6     13    1     8     15    3     10    17    5     12    0
 max. x      25    32    20    27    34    22    29    17    24    31    19    26    33    21    28    25    23    30    18
