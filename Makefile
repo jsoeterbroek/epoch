@@ -67,8 +67,8 @@ goldhat: build/test_cal_goldhat
 negev: build/test_cal_negev
 	./$<
 
-#darian: build/test_cal_darian
-#	./$<
+darian: build/test_cal_darian
+	./$<
 
 armenian: build/test_cal_armenian
 	./$<

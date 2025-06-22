@@ -7,12 +7,15 @@
 
                 This program is in the public domain.
 */
+// ABOUTME: Gregorian calendar conversion functions and utilities
+// ABOUTME: Provides conversion between Gregorian dates and Julian Day numbers
 #include "calendar.h"
 #include "cal_gregorian.h"
 #include "astro.h"
 #include <cmath>
 #include <array>
 #include <string>
+#include <iostream>
 
 //
 // Gregorian
@@ -41,6 +44,16 @@ int gregorian_jd_to_weekday(double jd) {
 double gregorian_to_jd(int year, int month, int day) {
   return (GREGORIAN_EPOCH - 1) + (365 * (year - 1)) + std::floor((year - 1) / 4.0) + -std::floor((year - 1) / 100.0) + std::floor((year - 1) / 400.0)
          + std::floor((((367 * month) - 362) / 12.0) + ((month <= 2) ? 0 : (leap_gregorian(year) ? -1 : -2)) + day);
+}
+
+double gregorian_to_jd_proleptic(int year, int month, int day) {
+  // Fourmilab algorithm, always Gregorian
+  return (1721425.5 - 1) + 365 * (year - 1) + std::floor((year - 1) / 4.0) - std::floor((year - 1) / 100.0) + std::floor((year - 1) / 400.0)
+         + std::floor((367.0 * month - 362.0) / 12.0 + (month <= 2 ? 0.0 : (leap_gregorian(year) ? -1.0 : -2.0)) + day);
+}
+
+double gregorian_to_jd_astronomical(int year, int month, int day) {
+  return gregorian_to_jd_proleptic(year, month, day) + 0.5;
 }
 
 std::array<int, 3> jd_to_gregorian(double jd) {
